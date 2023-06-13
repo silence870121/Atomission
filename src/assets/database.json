@@ -1,0 +1,139 @@
+{
+    "member": [
+        {
+            "memberId": "AM123456",
+            "type": "member",
+            "username": "Atomision",
+            "email": "atomision@example.com",
+            "phone": "123-456-7890",
+            "joinDate": "2023-01-01",
+            "account": {
+                "username": "username@atomision.com",
+                "password": "********"
+            }
+        },
+        {
+            "memberId": null,
+            "type": "guest",
+            "username": "Guest#0001",
+            "joinDate": "2023-01-01",
+            "account": {
+                "username": "guest@atomision.com",
+                "password": "********"
+            }
+        }
+    ],
+    "mission": [
+        {
+            "missionId": "1",
+            "title": "任務標題",
+            "type": "每日 | 每周 | 副本 | 階段 | 限時 | 循環 | 單次",
+            "branch": "master | branch | other",
+            "content": "任務內容",
+            "difficulty": "Easier | Easy | Normal | Hard | Harder",
+            "creationDate": "2023-01-01",
+            "editDate": "",
+            "missionItems": [
+                {
+                    "itemId": "1",
+                    "content": "細項內容1",
+                    "unit": "個",
+                    "requestNum": 50
+                },
+                {
+                    "itemId": "2",
+                    "content": "細項內容2",
+                    "unit": "個",
+                    "requestNum": 50
+                },
+                {
+                    "itemId": "3",
+                    "content": "細項內容3",
+                    "unit": "個",
+                    "requestNum": 50
+                },
+                {
+                    "itemId": "4",
+                    "content": "細項內容4",
+                    "unit": "個",
+                    "requestNum": 50
+                }
+            ]
+        },
+        {}
+    ],
+    "missionHistory": [
+        {
+            "missionId": "1",
+            "completeDate": "2023-01-01",
+            "completionRecords": [
+                {
+                    "itemId": "1",
+                    "completeNum": 10
+                },
+                {
+                    "itemId": "2",
+                    "completeNum": 10
+                },
+                {
+                    "itemId": "3",
+                    "completeNum": 10
+                },
+                {
+                    "itemId": "4",
+                    "completeNum": 10
+                }
+            ]
+        },
+        {}
+    ],
+    "chartData": [
+        {
+            "month": "2023-01",
+            "data": [
+                {
+                    "date": "2023-01-01",
+                    "value": 10
+                },
+                {
+                    "date": "2023-01-02",
+                    "value": 15
+                },
+                {
+                    "date": "2023-01-03",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "month": "2023-02",
+            "data": [
+                {
+                    "date": "2023-02-01",
+                    "value": 12
+                },
+                {
+                    "date": "2023-02-02",
+                    "value": 18
+                },
+                {
+                    "date": "2023-02-03",
+                    "value": 6
+                }
+            ]
+        }
+    ],
+    "target": [
+        {
+            "name": "目標名稱",
+            "stage": "入門 | 初學者 | 初階 | 中階 | 精通",
+            "tracker": true,
+            "weight": 0.8,
+            "maximumScore": 200,
+            "accumulatedScore": 150,
+            "createdDate": "2023-01-01",
+            "modifiedDate": "2023-01-02"
+        },
+        {}
+    ]
+}
