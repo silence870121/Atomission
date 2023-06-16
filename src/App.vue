@@ -5,12 +5,6 @@ import Theme from './components/Theme.vue'
 </script>
 <template>
   <Theme />
-  <div class="theme-display">
-    <div class="primary">primary</div>
-    <div class="secondary">secondary</div>
-    <div class="background">background</div>
-    <div class="surface">surface</div>
-  </div>
   <Router />
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -24,53 +18,54 @@ import Theme from './components/Theme.vue'
 </template>
 
 <style scoped>
-:root {
-  --primary-color: white;
-  --secondary-color: purple;
+.theme-light :root {
+  --primary-color: rgb(0, 85, 204);
+  --primary-variant-color: rgb(102, 166, 255);
+  --on-primary-color: rgb(255, 255, 255);
+
+  --background-color: rgb(229, 240, 255);
+  --background-variant-color: rgb(204, 225, 255);
+
+  --surface-color: rgba(255, 255, 255, 0.75);
+  --surface-variant-color: rgb(204, 225, 255);
+
+  --on-background-color: rgb(0, 85, 204);
+  --on-surface-color: rgb(0, 42, 102);
+
+  --border-color: rgb(102, 166, 255);
+  --border-variant-color: rgb(204, 225, 255);
+
+  --border-center-color: rgb(0, 106, 255);
+  --border-center-variant-color: rgba(102, 166, 255, 0);
+
+  --error-color: rgb(204, 0, 0);
 }
 
-.theme-btn {
-  background-color: var(--primary-color);
-  color: var(--on-primary-color);
-  transition: all 200ms linear;
+.theme-dark :root {
+  --primary-color: rgb(255, 204, 51);
+  --primary-variant-color: rgb(153, 115, 0);
+  --on-primary-color: rgb(0, 0, 0);
+
+  --background-color: rgb(51, 38, 0);
+  --background-variant-color: rgb(102, 77, 0);
+
+  --surface-color: rgba(0, 0, 0, 0.75);
+  --surface-variant-color: rgb(77, 57, 0);
+
+  --on-background-color: rgb(255, 204, 51);
+  --on-surface-color: rgb(255, 229, 153);
+
+  --border-color: rgb(204, 153, 0);
+  --border-variant-color: rgb(255, 217, 102);
+
+  --border-center-color: rgb(255, 191, 0);
+  --border-center-variant-color: rgba(153, 115, 0, 0);
+
+  --error-color: rgb(255, 51, 51);
+
 }
 
-.theme-display {
-  padding: 1rem;
-  margin: 1rem;
-  background-color: rgb(128, 128, 128);
-  display: flex;
-  border: 1px solid var(--grid-color);
-  border-radius: 0.5rem;
-}
 
-.theme-display>div {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--grid-color);
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-  transition: all 200ms linear;
-}
-
-.primary {
-  background-color: var(--primary-color);
-  color: var(--on-primary-color);
-}
-
-.secondary {
-  background-color: var(--secondary-color);
-  color: var(--on-secondary-color);
-}
-
-.background {
-  background-color: var(--background-color);
-  color: var(--on-background-color);
-}
-
-.surface {
-  background-color: var(--surface-color);
-  color: var(--on-surface-color);
-}
 
 .logo {
   height: 6em;
