@@ -83,16 +83,16 @@ function switchTheme() {
 
 <template>
     <button class="theme-btn" @click="switchTheme">Light Mode</button>
-    <div class="theme">
+    <div class="theme border">
         <div class="theme-row">
             <div class="primary">primary</div>
             <div class="primary-variant">primary variant</div>
-            <div class="on-primary">on primary</div>
+            <div class="on-primary border">on primary</div>
         </div>
 
         <div class="theme-row">
             <div class="background">background</div>
-            <div class="surface">surface</div>
+            <div class="surface border">surface</div>
             <div class="surface-variant">surface variant</div>
         </div>
 
@@ -102,7 +102,7 @@ function switchTheme() {
         </div>
 
         <div class="theme-row">
-            <div class="border">border</div>
+            <div class="border-box">border</div>
             <div class="border-center">border center</div>
             <div class="error">error</div>
         </div>
@@ -156,19 +156,27 @@ function switchTheme() {
     --border-center-variant-color: rgba(153, 115, 0, 0);
 
     --error-color: rgb(255, 51, 51);
-
 }
 
 .theme {
-    background: linear-gradient(135deg, var(--background-base-color) 0%, var(--background-color) 33.3%, var(--background-base-color) 66.6%, var(--background-variant-color) 100%);
+    --background: linear-gradient(135deg, var(--background-base-color), var(--background-color), var(--background-base-color), var(--background-variant-color));
+    --border: linear-gradient(135deg, var(--border-color), var(--border-variant-color), var(--border-color), var(--border-variant-color));
+    --border-center: linear-gradient(90deg, var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
+    background: var(--background);
     color: var(--on-background-color);
-    transition: all 200ms linear;
     min-width: 960px;
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
     flex-direction: column;
     border-radius: 0.5rem;
+    margin: 1rem 0;
+    transition: all 2000ms linear;
+}
+
+.theme-row>div {
+    transition: all 200ms linear;
+
 }
 
 .theme-btn {
@@ -202,34 +210,75 @@ function switchTheme() {
 }
 
 .on-primary {
-    position: relative;
-    /* background-color: transparent; */
     color: var(--primary-color);
-    /* border-image: linear-gradient(135deg, var(--border-color) 0%, var(--border-variant-color) 33.3%, var(--border-color) 66.6%, var(--border-variant-color) 100%); */
+    background-color: var(--surface-color);
 }
 
-/* TODO */
-.on-primary:after {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    z-index: -1;
-    background-image: linear-gradient(135deg, var(--border-color) 0%, var(--border-variant-color) 33.3%, var(--border-color) 66.6%, var(--border-variant-color) 100%);
-    background-color: var(--on-primary-color);
-    border-radius: 10px;
-    box-shadow: 0 0 0 2px transparent;
-}
 
 .background {
-    background: linear-gradient(135deg, var(--background-base-color) 0%, var(--background-color) 33.3%, var(--background-base-color) 66.6%, var(--background-variant-color) 100%);
+    background: var(--background);
     color: var(--on-background-color);
 }
 
 .surface {
     background-color: var(--surface-color);
     color: var(--on-surface-color);
+}
+
+.surface-variant {
+    background-color: var(--surface-variant-color);
+    color: var(--on-surface-color);
+}
+
+.on-background {
+    color: var(--background-color);
+    background: var(--on-background-color);
+}
+
+.on-surface {
+    background-color: var(--on-surface-color);
+    color: var(--surface-color);
+}
+
+.border-box {
+    background: var(--border);
+    color: var(--on-primary-color);
+}
+
+.border-center {
+    background: var(--border-center);
+    color: var(--on-primary-color);
+}
+
+.error {
+    background: var(--error-color);
+    color: var(--on-primary-color);
+}
+
+/* global border */
+.border {
+    position: relative;
+}
+
+.border::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0.5px;
+    border-radius: 8px;
+    background: var(--border);
+    --m-o: content-box, padding-box;
+    --m-i: linear-gradient(white, black);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-origin: var(--m-o);
+    -webkit-mask-origin: var(--m-o);
+    mask-clip: var(--m-o);
+    -webkit-mask-clip: var(--m-o);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
 }
 </style>
