@@ -83,7 +83,7 @@ function switchTheme() {
 
 <template>
     <button class="theme-btn" @click="switchTheme">Light Mode</button>
-    <div class="theme border">
+    <!-- <div class="theme border">
         <div class="theme-row">
             <div class="primary">primary</div>
             <div class="primary-variant">primary variant</div>
@@ -106,7 +106,7 @@ function switchTheme() {
             <div class="border-center">border center</div>
             <div class="error">error</div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style>
@@ -180,8 +180,9 @@ function switchTheme() {
 }
 
 .theme-btn {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
+    font-size: 0.5rem;
+    background-color: var(--surface-color);
+    color: var(--on-surface-color);
     transition: all 200ms linear;
 }
 
@@ -267,7 +268,7 @@ function switchTheme() {
     top: 0;
     bottom: 0;
     right: 0;
-    padding: 0.5px;
+    padding: 1px;
     border-radius: 8px;
     background: var(--border);
     --m-o: content-box, padding-box;
