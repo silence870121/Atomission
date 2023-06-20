@@ -1,13 +1,9 @@
 <script setup>
-import Router from './components/Router.vue'
-import Theme from './components/Theme.vue'
+import Navigation from './components/Router.vue'
 import Logo from './components/Logo.vue'
 </script>
 <template>
-  <div class="navbar">
-    <Router />
-    <Theme />
-  </div>
+  <Navigation />
   <main>
     <Logo />
     <router-view class="contect" />
@@ -25,10 +21,11 @@ import Logo from './components/Logo.vue'
 <style scoped>
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   border-bottom: 1px solid;
-  padding: 15PX 1rem;
+  font-size: 1.5rem;
 }
 
 main {
