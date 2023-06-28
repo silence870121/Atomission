@@ -12,7 +12,7 @@ const LIGHT_THEME = new Map([
     ['--background-base-color', 'rgb(255, 255, 255)'],
     ['--background-variant-color', 'rgb(204, 225, 255)'],
 
-    ['--surface-color', 'rgba(255, 255, 255, 0.75)'],
+    ['--surface-color', 'rgba(255, 255, 255, 0.5)'],
     ['--surface-variant-color', 'rgb(204, 225, 255)'],
 
     ['--on-background-color', 'rgb(0, 85, 204)'],
@@ -35,7 +35,7 @@ const DARK_THEME = new Map([
     ['--background-base-color', 'rgb(0, 0, 0)'],
     ['--background-variant-color', ' rgb(102, 77, 0)'],
 
-    ['--surface-color', 'rgba(0, 0, 0, 0.75)'],
+    ['--surface-color', 'rgba(0, 0, 0, 0.5)'],
     ['--surface-variant-color', 'rgb(77, 57, 0)'],
 
     ['--on-background-color', 'rgb(255, 204, 51)'],
@@ -82,31 +82,7 @@ function switchTheme() {
 </script>
 
 <template>
-    <button class="theme-btn" @click="switchTheme">Light Mode</button>
-    <!-- <div class="theme border">
-        <div class="theme-row">
-            <div class="primary">primary</div>
-            <div class="primary-variant">primary variant</div>
-            <div class="on-primary border">on primary</div>
-        </div>
-
-        <div class="theme-row">
-            <div class="background">background</div>
-            <div class="surface border">surface</div>
-            <div class="surface-variant">surface variant</div>
-        </div>
-
-        <div class="theme-row">
-            <div class="on-background">on background</div>
-            <div class="on-surface">on surface</div>
-        </div>
-
-        <div class="theme-row">
-            <div class="border-box">border</div>
-            <div class="border-center">border center</div>
-            <div class="error">error</div>
-        </div>
-    </div> -->
+    <button class="theme-btn border" @click="switchTheme">Light Mode</button>
 </template>
 
 <style>
@@ -158,102 +134,12 @@ function switchTheme() {
     --error-color: rgb(255, 51, 51);
 }
 
-.theme {
-    --background: linear-gradient(135deg, var(--background-base-color), var(--background-color), var(--background-base-color), var(--background-variant-color));
-    --border: linear-gradient(135deg, var(--border-color), var(--border-variant-color), var(--border-color), var(--border-variant-color));
-    --border-center: linear-gradient(90deg, var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
-    background: var(--background);
-    color: var(--on-background-color);
-    min-width: 960px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    flex-direction: column;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-    transition: all 2000ms linear;
-}
-
-.theme-row>div {
-    transition: all 200ms linear;
-
-}
 
 .theme-btn {
     font-size: 0.5rem;
     background-color: var(--surface-color);
     color: var(--on-surface-color);
     transition: all 200ms linear;
-}
-
-.theme-row {
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.theme-row>div {
-    flex: 1;
-    align-self: center;
-    padding: 0.5rem 1rem;
-    margin: 0 1rem;
-    border-radius: 0.5rem;
-}
-
-.primary {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
-}
-
-.primary-variant {
-    background-color: var(--primary-variant-color);
-    color: var(--on-primary-color);
-}
-
-.on-primary {
-    color: var(--primary-color);
-    background-color: var(--surface-color);
-}
-
-
-.background {
-    background: var(--background);
-    color: var(--on-background-color);
-}
-
-.surface {
-    background-color: var(--surface-color);
-    color: var(--on-surface-color);
-}
-
-.surface-variant {
-    background-color: var(--surface-variant-color);
-    color: var(--on-surface-color);
-}
-
-.on-background {
-    color: var(--background-color);
-    background: var(--on-background-color);
-}
-
-.on-surface {
-    background-color: var(--on-surface-color);
-    color: var(--surface-color);
-}
-
-.border-box {
-    background: var(--border);
-    color: var(--on-primary-color);
-}
-
-.border-center {
-    background: var(--border-center);
-    color: var(--on-primary-color);
-}
-
-.error {
-    background: var(--error-color);
-    color: var(--on-primary-color);
 }
 
 /* global border */

@@ -5,33 +5,26 @@ import Logo from './components/Logo.vue'
 <template>
   <Navigation />
   <main>
-    <Logo />
     <router-view class="contect" />
+    <div>
+      <a href="https://vitejs.dev" target="_blank">
+        <img src="/vite.svg" class="logo" alt="Vite logo" />
+      </a>
+      <a href="https://vuejs.org/" target="_blank">
+        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+      </a>
+    </div>
   </main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
 </template>
 
 <style scoped>
-.navbar {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: 1px solid;
-  font-size: 1.5rem;
-}
-
 main {
-  padding-top: 2rem;
+  height: 100%;
+  flex: 1;
+  padding: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  flex-direction: column;
 }
 </style>

@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-    <div class="logo">
-        <a class=" border" href="/" target="_self">
+    <div class="border">
+        <a href=" /" target="_self">
             <!-- <img src="/favicon.svg"  alt="Atomission logo" /> -->
             <svg width="100%" height="100%" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g>
@@ -27,20 +27,5 @@
 #svg-lineGradient {
     --color-stop: var(--border-color);
     --color-bot: var(--border-variant-color);
-}
-
-.logo {
-    display: flex;
-    margin: 0 auto;
-}
-
-.logo a {
-    display: block;
-    width: 4rem;
-    height: 4rem;
-}
-
-.logo::after {
-    border-radius: 4px;
 }
 </style>
