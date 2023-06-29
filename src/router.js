@@ -19,6 +19,10 @@ export default createRouter({
         {
             path: '/profile',
             component: () => import('@/views/Profile.vue'),
+        },
+        {
+            path: '/setting',
+            component: () => import('@/views/Setting.vue'),
         }
     ],
 })
