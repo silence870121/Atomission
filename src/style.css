@@ -183,10 +183,6 @@ a {
   text-decoration: inherit;
 }
 
-a:hover {
-  color: var(--on-surface-color);
-}
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
