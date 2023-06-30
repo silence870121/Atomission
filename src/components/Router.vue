@@ -1,47 +1,54 @@
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import ThemeBtn from './Theme.vue'
 import Logo from './Logo.vue'
-let location = 'Atomission'
+let location = ref('Atomission')
 
 function toggleMenu(params) {
     document.querySelector('.navbar-menu').classList.toggle('show')
-    console.log(
-        document.querySelector('.navbar-menu').classList
-    );
+}
+function openMenu(params) {
+    document.querySelector('.navbar-menu').classList.add('show')
+}
+function closeMenu(params) {
+    document.querySelector('.navbar-menu').classList.remove('show')
+}
+function toLocal(page) {
+    location.value = page
+    closeMenu()
 }
 
 </script>
 
 <template>
     <nav class="navbar">
-        <h2>{{ location }}</h2>
+        <h2 class="title">{{ location }}</h2>
         <button class="navbar-user" @click="toggleMenu">
             <Logo class="logo" />
             <span>UserName</span>
         </button>
         <div class="navbar-menu">
-            <button class="btn" @click="toggleMenu">X</button>
+            <button class="btn" @click="closeMenu">X</button>
             <ul>
-                <li>
+                <li class="active">
                     <img src="/public/Icon/home.svg" alt="Home icon">
-                    <router-link to="/" @click="location = 'Home'">Home</router-link>
+                    <router-link to="/" @click="toLocal('Home')">Home</router-link>
                 </li>
                 <li>
                     <img src="/public/Icon/mission.svg" alt="Mission icon">
-                    <router-link to="/missions" @click="location = 'Mission'">Mission</router-link>
+                    <router-link to="/missions" @click="toLocal('Mission')">Mission</router-link>
                 </li>
                 <li>
                     <img src="/public/Icon/target.svg" alt="Target icon">
-                    <router-link to="/targets" @click="location = 'Target'">Target</router-link>
+                    <router-link to="/targets" @click="toLocal('Target')">Target</router-link>
                 </li>
                 <li>
                     <img src="/public/Icon/profiles.svg" alt="Profiles icon">
-                    <router-link to="/profile" @click="location = 'Profiles'">Profiles</router-link>
+                    <router-link to="/profile" @click="toLocal('Profiles')">Profiles</router-link>
                 </li>
                 <li>
                     <img src="/public/Icon/setting.svg" alt="Setting icon">
-                    <router-link to="/setting" @click="location = 'Setting'">Setting</router-link>
+                    <router-link to="/setting" @click="toLocal('Setting')">Setting</router-link>
                 </li>
                 <li>
                     <ThemeBtn />
@@ -55,7 +62,7 @@ function toggleMenu(params) {
 <style scoped>
 .navbar {
     background-color: var(--surface-color);
-    padding: 3rem 2rem;
+    padding: 3rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,12 +71,21 @@ function toggleMenu(params) {
     border-image: var(--border-center) 1;
 }
 
+
+
+.navbar .title {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+
 .navbar-user {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    padding: 0;
 }
 
 .logo {
@@ -83,32 +99,42 @@ function toggleMenu(params) {
 
 .navbar-menu {
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .navbar-menu .btn {
     display: none;
 }
 
+
 .navbar-menu ul {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
-
+    gap: 0.5rem;
 }
 
 .navbar-menu li {
+    width: 100%;
+    padding: 0.5rem 1rem;
     gap: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    color: var(--on-background-color);
+    color: var(--primary-variant-color);
+    transition: all 200ms ease-in-out;
+}
+
+.navbar-menu li:hover,
+.navbar-menu .active {
+    background-color: var(--surface-variant-color);
+    /* background-color: var(--primary-variant-color); */
+    color: var(--primary-color);
+    border-radius: 0.5rem;
+    transition: all 0s;
 }
 
 .navbar-menu li img {
@@ -134,9 +160,18 @@ function toggleMenu(params) {
         border-image: var(--border-center-row) 1;
     }
 
+    .navbar .title {
+        padding-bottom: 0.25rem;
+    }
+
     .navbar-user span {
         display: none;
         order: 0;
+    }
+
+    .logo {
+        width: 2rem;
+        height: 2rem;
     }
 
     .navbar h2 {
