@@ -17,12 +17,12 @@ function toLocal(page) {
     location.value = page
     closeMenu()
 }
-
 </script>
 
 <template>
     <nav class="navbar">
-        <h2 class="title">{{ location }}</h2>
+        <h2 class="title">Atomission</h2>
+        <h2 class="location">{{ location }}</h2>
         <button class="navbar-user" @click="toggleMenu">
             <Logo class="logo" />
             <span>UserName</span>
@@ -30,25 +30,35 @@ function toLocal(page) {
         <div class="navbar-menu">
             <button class="btn" @click="closeMenu">X</button>
             <ul>
-                <li class="active">
-                    <img src="/public/Icon/home.svg" alt="Home icon">
-                    <router-link to="/" @click="toLocal('Home')">Home</router-link>
+                <li>
+                    <router-link to="/" @click="toLocal('Atomission')">
+                        <img src="/public/Icon/home.svg" alt="Home icon">
+                        Home
+                    </router-link>
                 </li>
                 <li>
-                    <img src="/public/Icon/mission.svg" alt="Mission icon">
-                    <router-link to="/missions" @click="toLocal('Mission')">Mission</router-link>
+                    <router-link to="/missions" @click="toLocal('Mission')">
+                        <img src="/public/Icon/mission.svg" alt="Mission icon">
+                        Mission
+                    </router-link>
                 </li>
                 <li>
-                    <img src="/public/Icon/target.svg" alt="Target icon">
-                    <router-link to="/targets" @click="toLocal('Target')">Target</router-link>
+                    <router-link to="/targets" @click="toLocal('Target')">
+                        <img src="/public/Icon/target.svg" alt="Target icon">
+                        Target
+                    </router-link>
                 </li>
                 <li>
-                    <img src="/public/Icon/profiles.svg" alt="Profiles icon">
-                    <router-link to="/profile" @click="toLocal('Profiles')">Profiles</router-link>
+                    <router-link to="/profile" @click="toLocal('Profiles')">
+                        <img src="/public/Icon/profiles.svg" alt="Profiles icon">
+                        Profiles
+                    </router-link>
                 </li>
                 <li>
-                    <img src="/public/Icon/setting.svg" alt="Setting icon">
-                    <router-link to="/setting" @click="toLocal('Setting')">Setting</router-link>
+                    <router-link to="/setting" @click="toLocal('Setting')">
+                        <img src="/public/Icon/setting.svg" alt="Setting icon">
+                        Setting
+                    </router-link>
                 </li>
                 <li>
                     <ThemeBtn />
@@ -59,7 +69,7 @@ function toLocal(page) {
     </nav>
 </template>
 
-<style scoped>
+<style scoped  >
 .navbar {
     background-color: var(--surface-color);
     padding: 3rem 1rem;
@@ -71,13 +81,15 @@ function toLocal(page) {
     border-image: var(--border-center) 1;
 }
 
-
-
-.navbar .title {
+.navbar .title,
+.navbar .location {
     font-weight: 600;
     font-size: 1.5rem;
 }
 
+.navbar .location {
+    display: none;
+}
 
 .navbar-user {
     display: flex;
@@ -117,19 +129,22 @@ function toLocal(page) {
 
 .navbar-menu li {
     width: 100%;
+}
+
+.navbar-menu li a {
+    color: var(--primary-variant-color);
     padding: 0.5rem 1rem;
-    gap: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
-    color: var(--primary-variant-color);
+    gap: 0.5rem;
     transition: all 200ms ease-in-out;
 }
 
-.navbar-menu li:hover,
-.navbar-menu .active {
+.navbar-menu li a:hover,
+.navbar-menu li a.router-link-exact-active {
     background-color: var(--surface-variant-color);
     /* background-color: var(--primary-variant-color); */
     color: var(--primary-color);
@@ -151,6 +166,8 @@ function toLocal(page) {
     flex: 1;
 }
 
+
+
 @media (max-width:375px) {
     .navbar {
         flex-direction: row;
@@ -161,6 +178,11 @@ function toLocal(page) {
     }
 
     .navbar .title {
+        display: none;
+    }
+
+    .navbar .location {
+        display: block;
         padding-bottom: 0.25rem;
     }
 
