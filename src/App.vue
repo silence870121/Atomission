@@ -1,6 +1,5 @@
 <script setup>
 import Navigation from './components/Router.vue'
-import Logo from './components/Logo.vue'
 </script>
 <template>
   <Navigation />
