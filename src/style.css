@@ -165,6 +165,11 @@ img {
   --border: linear-gradient(135deg, var(--border-color), var(--border-variant-color), var(--border-color), var(--border-variant-color));
   --border-center: linear-gradient(var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
   --border-center-row: linear-gradient(90deg, var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
+
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+
 }
 
 body {
