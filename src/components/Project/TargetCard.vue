@@ -20,6 +20,10 @@ defineProps({
             <p class="target-progress">{{ progress }}%</p>
             <p v-if="detail" class="target-date">
                 <span>Create: {{ createDate }}</span>
+
+            </p>
+            <p v-if="detail" class="target-date">
+
                 <span>Edit: {{ modifiedDate }}</span>
             </p>
         </div>
@@ -30,7 +34,7 @@ defineProps({
 <style scoped>
 .target-card {
     flex: 1;
-    max-width: 22.5rem;
+    /* max-width: calc(100%/3*2 - 0.25rem); */
     color: var(--on-surface-color);
     background-color: var(--surface-color);
     border-radius: var(--border-radius-md);
@@ -86,6 +90,10 @@ defineProps({
     font-size: 0.75rem;
     /* margin-top: 1rem; */
     width: 100%;
+}
+
+.target-date span {
+    white-space: nowrap;
 }
 
 .target-track {

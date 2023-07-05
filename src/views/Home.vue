@@ -51,7 +51,6 @@ import TargetCard from '@/components/Project/TargetCard.vue';
 }
 
 .home-sub {
-    width: 15rem;
     background-color: rgba(0, 0, 0, 0.25);
     padding: 1rem 0;
 }
@@ -99,7 +98,7 @@ import TargetCard from '@/components/Project/TargetCard.vue';
     border-radius: var(--border-radius-md);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .home-sub {
         display: none;
     }
