@@ -29,15 +29,16 @@ defineProps({
 
 <style scoped>
 .target-card {
+    flex: 1;
     max-width: 22.5rem;
-    background-color: var(--surface-color);
     color: var(--on-surface-color);
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 1rem;
-    border-radius: var(--border-radius-md);
-    position: relative;
 }
 
 .target-svg {
@@ -57,10 +58,6 @@ defineProps({
     align-items: flex-start;
     gap: 0.5rem;
     /* justify-content: space-between; */
-}
-
-.target-content>* {
-    /* border: 1px solid black; */
 }
 
 .target-title {
