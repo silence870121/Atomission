@@ -21,7 +21,7 @@ function toLocal(page) {
 
 <template>
     <nav class="navbar">
-        <h2 class="title">Atomission</h2>
+        <h1 class="title">Atomission</h1>
         <h2 class="location">{{ location }}</h2>
         <button class="navbar-user" @click="toggleMenu">
             <Logo class="logo" />
