@@ -5,11 +5,6 @@ import Navigation from './components/Router.vue'
 	<Navigation />
 	<main>
 		<router-view />
-		<div>
-			<a href="https://vitejs.dev" target="_blank">
-				<img src="/vite.svg" class="logo" alt="Vite logo" />
-			</a>
-		</div>
 	</main>
 </template>
 
@@ -22,6 +17,12 @@ main {
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: left;
 }
 
 @media (max-width: 375px) {
