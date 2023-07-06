@@ -24,5 +24,10 @@ export default createRouter({
             path: '/setting',
             component: () => import('@/views/Setting.vue'),
         }
+        ,
+        {
+            path: '/:pathMatch(.*)*',
+            component: () => import('@/views/Notfound.vue'),
+        }
     ],
 })
