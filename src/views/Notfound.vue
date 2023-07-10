@@ -1,7 +1,8 @@
 <script setup>
 </script>
-
+<!-- TODO -->
 <template>
+    <svg-icon name="favicon" />
     <img src="@icons/favicon.svg" alt="" srcset="">
     <h2>404 Not Found</h2>
 </template>

@@ -61,6 +61,12 @@ function toLocal(page) {
                     </router-link>
                 </li>
                 <li>
+                    <router-link to="/404" @click="toLocal('Setting')">
+                        <img src="/public/Icon/setting.svg" alt="Setting icon">
+                        Not Found
+                    </router-link>
+                </li>
+                <li>
                     <ThemeBtn />
                 </li>
             </ul>
