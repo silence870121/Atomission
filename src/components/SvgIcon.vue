@@ -1,17 +1,46 @@
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     name: {
         type: String,
         required: true,
     },
+    size: {
+        type: String,
+        default: "sm",
+    }
 })
-const symbolId = `#icon-${props.name}`
+const symbolId = computed(() => { return `#icon-${props.name}` })
+
+const SvgSize = computed(() => { return `svg-icon-${props.size}` })
+
 </script>
 
 <template>
-    <svg aria-hidden="true">
+    <svg aria-hidden="true" :class="SvgSize">
         <use :xlink:href="symbolId" />
     </svg>
 </template>
 
-<style scoped></style>
+<style scoped>
+.svg-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg-icon-sm {
+    width: 2rem;
+    height: 2rem;
+}
+
+.svg-icon-md {
+    width: 3rem;
+    height: 3rem;
+}
+
+.svg-icon-lg {
+    width: 4rem;
+    height: 4rem;
+}
+</style>

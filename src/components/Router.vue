@@ -32,37 +32,37 @@ function toLocal(page) {
             <ul>
                 <li>
                     <router-link to="/" @click="toLocal('Atomission')">
-                        <img src="/public/Icon/home.svg" alt="Home icon">
+                        <svg-icon name="home" />
                         Home
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/missions" @click="toLocal('Mission')">
-                        <img src="/public/Icon/mission.svg" alt="Mission icon">
+                        <svg-icon name="mission" />
                         Mission
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/targets" @click="toLocal('Target')">
-                        <img src="/public/Icon/target.svg" alt="Target icon">
+                        <svg-icon name="target" />
                         Target
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/profile" @click="toLocal('Profiles')">
-                        <img src="/public/Icon/profiles.svg" alt="Profiles icon">
+                        <svg-icon name="profiles" />
                         Profiles
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/setting" @click="toLocal('Setting')">
-                        <img src="/public/Icon/setting.svg" alt="Setting icon">
+                        <svg-icon name="setting" />
                         Setting
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/404" @click="toLocal('Setting')">
-                        <img src="/public/Icon/setting.svg" alt="Setting icon">
+                        <svg-icon name="setting" />
                         Not Found
                     </router-link>
                 </li>
