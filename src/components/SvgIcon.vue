@@ -23,7 +23,12 @@ const SvgSize = computed(() => { return `svg-icon-${props.size}` })
     </svg>
 </template>
 
-<style scoped>
+<style>
+svg {
+    width: 100%;
+    height: 100%;
+}
+
 .svg-icon {
     width: 2rem;
     height: 2rem;

@@ -18,7 +18,6 @@
                 </linearGradient>
             </defs>
         </svg>
-
     </div>
 </template>
 
