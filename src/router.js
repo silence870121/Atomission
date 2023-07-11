@@ -6,28 +6,40 @@ export default createRouter({
     routes: [
         {
             path: '/',
+            name: 'home',
             component: Home,
         },
         {
             path: '/missions',
+            name: 'missions',
             component: () => import('@/views/Missions.vue'),
         },
         {
             path: '/targets',
+            name: 'targets',
             component: () => import('@/views/Targets.vue'),
         },
         {
             path: '/profile',
+            name: 'profile',
             component: () => import('@/views/Profile.vue'),
         },
         {
             path: '/setting',
+            name: 'setting',
             component: () => import('@/views/Setting.vue'),
         }
         ,
         {
+            path: '/404',
+            name: '404',
+            component: () => import('@/views/Error.vue'),
+            hidden: true
+        },
+        {
             path: '/:pathMatch(.*)*',
-            component: () => import('@/views/Notfound.vue'),
+            redirect: '/404',
+            hidden: true
         }
     ],
 })

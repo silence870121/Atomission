@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue';
 //? Default Theme Style
 let THEME_STYLE = false
 
@@ -60,10 +61,14 @@ const setProperty = (config) => {
     })
 }
 //? Default Theme Style
-const setDefaultProperty = setProperty(LIGHT_THEME)
+onMounted(() => {
+    console.log(THEME_STYLE);
+    getTheme(THEME_STYLE)
+})
+
 
 //? Switch Theme Style
-function switchTheme() {
+function getTheme() {
     switch (THEME_STYLE) {
         case true:
             setProperty(LIGHT_THEME)
@@ -77,7 +82,10 @@ function switchTheme() {
         default:
             break;
     }
+}
+function switchTheme() {
     THEME_STYLE = !THEME_STYLE
+    getTheme(THEME_STYLE)
 }
 </script>
 
@@ -140,32 +148,5 @@ function switchTheme() {
     background-color: var(--surface-color);
     color: var(--on-surface-color);
     transition: all 200ms linear;
-}
-
-/* global border */
-.border {
-    position: relative;
-}
-
-.border::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    padding: 1px;
-    border-radius: 8px;
-    background: var(--border);
-    --m-o: content-box, padding-box;
-    --m-i: linear-gradient(white, black);
-    mask-image: var(--m-i), var(--m-i);
-    -webkit-mask-image: var(--m-i), var(--m-i);
-    mask-origin: var(--m-o);
-    -webkit-mask-origin: var(--m-o);
-    mask-clip: var(--m-o);
-    -webkit-mask-clip: var(--m-o);
-    mask-composite: exclude;
-    -webkit-mask-composite: destination-out;
 }
 </style>

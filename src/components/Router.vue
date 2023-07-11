@@ -1,9 +1,10 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import ThemeBtn from './Theme.vue'
-import Logo from './Logo.vue'
+import { ref, onMounted } from 'vue'
 let location = ref('Atomission')
 
+const getLocation = onMounted(() => {
+    if (window.location.pathname.substring(1)) return location.value = window.location.pathname.substring(1)
+})
 function toggleMenu(params) {
     document.querySelector('.navbar-menu').classList.toggle('show')
 }
@@ -17,6 +18,7 @@ function toLocal(page) {
     location.value = page
     closeMenu()
 }
+
 </script>
 
 <template>
@@ -24,7 +26,8 @@ function toLocal(page) {
         <h1 class="title">Atomission</h1>
         <h2 class="location">{{ location }}</h2>
         <button class="navbar-user" @click="toggleMenu">
-            <Logo class="logo" />
+            <!-- <Logo class="logo" /> -->
+            <svg-icon class="logo" name="favicon" size="sm" />
             <span>UserName</span>
         </button>
         <div class="navbar-menu">
@@ -37,37 +40,28 @@ function toLocal(page) {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/missions" @click="toLocal('Mission')">
+                    <router-link to="/missions" @click="toLocal('missions')">
                         <svg-icon name="mission" />
                         Mission
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/targets" @click="toLocal('Target')">
+                    <router-link to="/targets" @click="toLocal('targets')">
                         <svg-icon name="target" />
                         Target
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/profile" @click="toLocal('Profiles')">
+                    <router-link to="/profile" @click="toLocal('profile')">
                         <svg-icon name="profiles" />
                         Profiles
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/setting" @click="toLocal('Setting')">
+                    <router-link to="/setting" @click="toLocal('setting')">
                         <svg-icon name="setting" />
                         Setting
                     </router-link>
-                </li>
-                <li>
-                    <router-link to="/404" @click="toLocal('Setting')">
-                        <svg-icon name="setting" />
-                        Not Found
-                    </router-link>
-                </li>
-                <li>
-                    <ThemeBtn />
                 </li>
             </ul>
         </div>
@@ -77,20 +71,20 @@ function toLocal(page) {
 
 <style scoped  >
 .navbar {
-    background-color: var(--surface-color);
-    padding: 3rem 1rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 1.5rem;
-    border-right: 1px solid;
+    flex-direction: column;
+    padding: 3rem 1rem;
+    background-color: var(--surface-color);
     border-image: var(--border-center) 1;
+    border-right: 1px solid;
 }
 
 .navbar .title,
 .navbar .location {
     font-weight: 600;
     font-size: 1.5rem;
+    text-transform: capitalize;
 }
 
 .navbar .location {
@@ -99,16 +93,17 @@ function toLocal(page) {
 
 .navbar-user {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-    padding: 0;
+    padding: 0 16px;
+    font-size: 1rem;
 }
 
 .logo {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .logo::after {
@@ -138,7 +133,7 @@ function toLocal(page) {
 }
 
 .navbar-menu li a {
-    color: var(--primary-variant-color);
+    color: var(--primary-color);
     padding: 0.5rem 1rem;
     display: flex;
     flex-direction: row;
@@ -153,7 +148,7 @@ function toLocal(page) {
 .navbar-menu li a.router-link-exact-active {
     background-color: var(--surface-variant-color);
     /* background-color: var(--primary-variant-color); */
-    color: var(--primary-color);
+    color: var(--on-surface-color);
     border-radius: 0.5rem;
     transition: all 0s;
 }
@@ -174,9 +169,12 @@ function toLocal(page) {
 
 
 
-@media (max-width:375px) {
+@media (max-width:540px) {
     .navbar {
+        width: 100%;
+        gap: 0.5rem;
         flex-direction: row;
+        align-items: center;
         padding: 0 15px;
         height: 44px;
         border-bottom: 1px solid;
@@ -190,6 +188,10 @@ function toLocal(page) {
     .navbar .location {
         display: block;
         padding-bottom: 0.25rem;
+    }
+
+    .navbar-user {
+        padding: 0;
     }
 
     .navbar-user span {
