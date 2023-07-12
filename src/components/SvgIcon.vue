@@ -29,9 +29,9 @@ svg {
     height: 100%;
 }
 
-.svg-icon {
-    width: 2rem;
-    height: 2rem;
+.svg-icon-xs {
+    width: 1rem;
+    height: 1rem;
 }
 
 .svg-icon-sm {

@@ -142,6 +142,22 @@ img {
   height: auto;
 }
 
+input,
+select {
+  outline: none;
+  color: inherit;
+  caret-color: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+
+}
+
 *,
 *::before,
 *::after {

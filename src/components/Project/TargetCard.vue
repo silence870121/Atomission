@@ -13,28 +13,22 @@ defineProps({
 
 <template>
     <div class="target-card border">
-        <div class="target-svg" />
+        <svg-icon name="progress" class="target-svg" />
         <div class="target-content">
             <h3 class="target-title">{{ title }} </h3>
             <p v-if="detail" class="target-stage">{{ stage }}</p>
             <p class="target-progress">{{ progress }}%</p>
             <p v-if="detail" class="target-date">
                 <span>Create: {{ createDate }}</span>
-
-            </p>
-            <p v-if="detail" class="target-date">
-
-                <span>Edit: {{ modifiedDate }}</span>
+                <span v-if="modifiedDate">Edit: {{ modifiedDate }}</span>
             </p>
         </div>
-        <div v-if="tracked && detail" class="target-track"></div>
+        <svg-icon name="tracked" v-if="tracked && detail" class="target-track" />
     </div>
 </template>
 
 <style scoped>
 .target-card {
-    flex: 1;
-    /* max-width: calc(100%/3*2 - 0.25rem); */
     color: var(--on-surface-color);
     background-color: var(--surface-color);
     border-radius: var(--border-radius-md);
@@ -43,6 +37,7 @@ defineProps({
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .target-svg {
@@ -51,7 +46,7 @@ defineProps({
     margin-right: 1rem;
     border: 1px solid var(--primary-variant-color);
     border-radius: var(--border-radius-md);
-    background: var(--background);
+    /* background: var(--background); */
 }
 
 .target-content {
@@ -68,6 +63,7 @@ defineProps({
     width: 100%;
     font-weight: bold;
     text-align: left;
+    white-space: nowrap;
 }
 
 .target-stage {
@@ -84,12 +80,13 @@ defineProps({
 
 .target-date {
     width: 100%;
+    width: 100%;
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
     color: var(--primary-variant-color);
     font-size: 0.75rem;
-    /* margin-top: 1rem; */
-    width: 100%;
+    margin-top: 1rem;
 }
 
 .target-date span {
@@ -99,7 +96,7 @@ defineProps({
 .target-track {
     width: 1rem;
     height: 1rem;
-    background-color: var(--surface-variant-color);
+    color: var(--on-surface-color);
     border-radius: var(--border-radius-sm);
     position: absolute;
     top: 0.5rem;
