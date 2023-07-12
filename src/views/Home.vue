@@ -43,6 +43,7 @@ import TargetCard from '@/components/Project/TargetCard.vue';
 <style scoped>
 .home {
     display: flex;
+    justify-content: space-between;
     gap: 2rem;
 }
 
@@ -83,6 +84,11 @@ import TargetCard from '@/components/Project/TargetCard.vue';
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.home-area-target>* {
+    flex: 1;
+    /* min-width: 15rem; */
 }
 
 .home-area-target>>>.target-svg {

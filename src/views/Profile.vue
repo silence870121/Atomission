@@ -1,3 +1,10 @@
+<script setup></script>
+
 <template>
-    <h2> Profile </h2>
+    <Router />
+    <div class="container">
+        <h2> Profile </h2>
+    </div>
 </template>
+
+<style scoped></style>

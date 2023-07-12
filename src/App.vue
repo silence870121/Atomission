@@ -20,13 +20,19 @@ main {
 .container {
 	flex: 1;
 	padding: 2rem;
+	gap: 2rem;
+	display: flex;
+	flex-direction: row;
 }
 
 .theme {
 	position: fixed;
 	top: 0;
 	right: 0;
-	margin: 1rem;
+	margin: 0 1rem;
+	height: 44px;
+	display: flex;
+	align-items: center;
 	z-index: 9;
 }
 
@@ -69,6 +75,7 @@ h2 {
 
 	.container {
 		padding: 2rem 15px;
+		flex-direction: column;
 	}
 
 }

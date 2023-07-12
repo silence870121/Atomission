@@ -1,5 +1,10 @@
 <script setup></script>
 
-<template></template>
+<template>
+    <Router />
+    <div class="container">
+        <h2> Setting </h2>
+    </div>
+</template>
 
 <style scoped></style>

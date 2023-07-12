@@ -1,3 +1,10 @@
+<script setup></script>
+
 <template>
-    <h2> Mission </h2>
+    <Router />
+    <div class="container">
+        <h2> Mission </h2>
+    </div>
 </template>
+
+<style scoped></style>

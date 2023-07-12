@@ -3,7 +3,7 @@
 <!-- TODO -->
 <template>
     <div class="container">
-        <div class="error border">
+        <div class="error">
             <svg-icon name="favicon" size="lg" />
             <h2>404 Not Found</h2>
         </div>
@@ -25,6 +25,7 @@ h2 {
 }
 
 .error {
+    flex: 1;
     height: 100%;
     display: flex;
     justify-content: center;
