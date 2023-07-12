@@ -43,6 +43,10 @@ h2 {
     padding-bottom: 1rem;
 }
 
+.container {
+    justify-content: space-between;
+}
+
 .target {
     display: flex;
     gap: 1rem;
@@ -51,7 +55,6 @@ h2 {
 }
 
 .target-option {
-    flex: 1;
     display: flex;
     flex-direction: column;
 }

@@ -47,16 +47,15 @@ defineProps({
     border: 1px solid var(--primary-variant-color);
     border-radius: var(--border-radius-md);
     /* background: var(--background); */
+    flex-shrink: 0;
 }
 
 .target-content {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
     align-items: flex-start;
     gap: 0.5rem;
-    /* justify-content: space-between; */
 }
 
 .target-title {
@@ -67,6 +66,7 @@ defineProps({
 }
 
 .target-stage {
+    line-height: 1.25rem;
     color: var(--primary-color);
 }
 
@@ -87,6 +87,7 @@ defineProps({
     color: var(--primary-variant-color);
     font-size: 0.75rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
 .target-date span {

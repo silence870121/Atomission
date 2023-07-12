@@ -13,6 +13,7 @@ import Title from "@/components/OptionItem_title.vue"
 
 <style>
 .option {
+    max-width: 375px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
