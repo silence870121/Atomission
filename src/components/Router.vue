@@ -31,7 +31,9 @@ function toLocal(page) {
             <span>UserName</span>
         </button>
         <div class="navbar-menu">
-            <button class="btn" @click="closeMenu">X</button>
+            <button class="close-btn" @click="closeMenu">
+                <svg-icon name="close" />
+            </button>
             <ul>
                 <li>
                     <router-link to="/" @click="toLocal('Atomission')">
@@ -115,7 +117,7 @@ function toLocal(page) {
     flex-direction: column;
 }
 
-.navbar-menu .btn {
+.navbar-menu .close-btn {
     display: none;
 }
 
@@ -233,15 +235,8 @@ function toLocal(page) {
         opacity: 1;
     }
 
-    .navbar-menu .btn {
+    .navbar-menu .close-btn {
         display: block;
-        position: fixed;
-        top: 0;
-        right: 0;
-        padding: 0;
-        margin: 0.5rem;
-        width: 1.5rem;
-        height: 1.5rem;
     }
 
     .navbar-menu ul {

@@ -6,36 +6,38 @@ import TargetCard from '@/components/Project/TargetCard.vue';
     <Router />
     <div class="container">
         <div class="home">
-            <div class="home-main">
-                <div class="home-area">
-                    <h2 class="home-area-title">
-                        App bar
-                    </h2>
-                </div>
-                <div class="home-area">
-                    <h2 class="home-area-title">
-                        Target
-                        <router-link to="/targets" @click="toLocal('Target')">more ></router-link>
-                    </h2>
-                    <div class="home-area-target">
-                        <TargetCard :title="'First Target'" :progress=100 />
-                        <TargetCard :title="'First Target'" :progress=100 />
-                        <TargetCard :title="'First Target'" :progress=100 />
-                        <TargetCard :title="'First Target'" :progress=100 />
-                    </div>
-                </div>
-                <div class="home-area">
-                    <h2 class="home-area-title">
-                        Mission
-                        <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
-                    </h2>
+
+            <div class="home-area">
+                <h2 class="home-area-title">
+                    App bar
+                </h2>
+            </div>
+            <div class="home-area">
+                <h2 class="home-area-title">
+                    Target
+                    <router-link to="/targets" @click="toLocal('Target')">more ></router-link>
+                </h2>
+                <div class="home-area-target">
+                    <TargetCard :title="'First Target'" :progress=100 />
+                    <TargetCard :title="'First Target'" :progress=100 />
+                    <TargetCard :title="'First Target'" :progress=100 />
+                    <TargetCard :title="'First Target'" :progress=100 />
                 </div>
             </div>
-            <div class="home-sub">
-                <h2>Sub Container</h2>
-                <div class="home-chart"></div>
-                <div class="home-chart"></div>
+            <div class="home-area">
+                <h2 class="home-area-title">
+                    Mission
+                    <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
+                </h2>
             </div>
+
+        </div>
+        <div class="home">
+
+            <h2>Sub Container</h2>
+            <div class="home-chart"></div>
+            <div class="home-chart"></div>
+
         </div>
     </div>
 </template>
@@ -45,18 +47,7 @@ import TargetCard from '@/components/Project/TargetCard.vue';
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-}
-
-.home-main,
-.home-sub {
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-
-.home-sub {
-    background-color: rgba(0, 0, 0, 0.25);
-    padding: 1rem 0;
 }
 
 .home-area-title {

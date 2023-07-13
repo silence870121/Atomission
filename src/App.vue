@@ -23,6 +23,8 @@ main {
 	gap: 2rem;
 	display: flex;
 	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
 }
 
 .theme {
@@ -44,17 +46,19 @@ h2 {
 
 .border {
 	position: relative;
+	border-radius: var(--border-radius-md);
 }
 
 .border::after {
 	content: "";
 	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
+	z-index: -1;
+	left: -1px;
+	top: -1px;
+	bottom: -1px;
+	right: -1px;
 	padding: 1px;
-	border-radius: 8px;
+	border-radius: var(--border-radius-md);
 	background: var(--border);
 	--m-o: content-box, padding-box;
 	--m-i: linear-gradient(white, black);
@@ -66,6 +70,14 @@ h2 {
 	-webkit-mask-clip: var(--m-o);
 	mask-composite: exclude;
 	-webkit-mask-composite: destination-out;
+}
+
+.close-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0;
+	margin: 0.5rem;
 }
 
 @media (max-width: 540px) {

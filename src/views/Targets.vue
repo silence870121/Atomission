@@ -27,9 +27,8 @@ function closeOption() {
                 :modified-date="'2023-07-01'" tracked @click="openOption" />
         </div>
 
-        <div v-show="activeTargetOption" class="target-option">
-            <h2> Area </h2>
-            <button @click="closeOption"> <svg-icon name="close" /> </button>
+        <div v-show="activeTargetOption" class="target target-option border">
+            <button class="close-btn" @click="closeOption"> <svg-icon name="close" /> </button>
             <TargetOption />
         </div>
     </div>
@@ -43,9 +42,6 @@ h2 {
     padding-bottom: 1rem;
 }
 
-.container {
-    justify-content: space-between;
-}
 
 .target {
     display: flex;
@@ -55,7 +51,7 @@ h2 {
 }
 
 .target-option {
-    display: flex;
-    flex-direction: column;
+    margin-top: 3.5rem;
+    background-color: var(--surface-color);
 }
 </style>
