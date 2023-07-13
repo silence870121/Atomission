@@ -31,7 +31,6 @@ defineProps({
 .target-card {
     color: var(--on-surface-color);
     background-color: var(--surface-color);
-    border-radius: var(--border-radius-md);
     position: relative;
     display: flex;
     flex-direction: row;

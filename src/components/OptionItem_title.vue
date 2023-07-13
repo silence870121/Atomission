@@ -1,5 +1,8 @@
 <script setup>
 
+import Select from "@/components/OptionItem_select.vue";
+
+
 const prop = defineProps({
     title: {
         type: String,
@@ -9,18 +12,7 @@ const prop = defineProps({
 
 </script>
 
-<template>
-    <div class="option-content">
-        <input type="text" :value="title">
-        <div class="option-branch">
-            <svg-icon name="branch" size="xs" />
-            <select name="" id="">
-                <option value="main"> Main</option>
-                <option value="sub">Sub</option>
-            </select>
-        </div>
-    </div>
-</template>
+<template></template>
 
 <style scoped>
 .option-content {
@@ -31,7 +23,7 @@ const prop = defineProps({
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 0 1rem var(--surface-variant-color);
+    border: 1px solid var(--border-color);
 }
 
 .option-content input {
@@ -66,6 +58,5 @@ const prop = defineProps({
     text-align: center;
     border: none;
     height: 2rem;
-
 }
 </style>
