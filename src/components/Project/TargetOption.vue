@@ -25,11 +25,11 @@ const selectTimer = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
             <input type="text">
             <div class="option-branch">
                 <svg-icon name="branch" size="xs" />
-                <Select :option="selectTitle" />
+                <Select :items="selectTitle" />
             </div>
         </div>
-        <Select :option="selectTimer" unit="month" />
-        <Select :option="selectParts" :hex="selectPartsColor" colorful />
+        <Select :items="selectTimer" unit="month" />
+        <!-- <Select :option="selectParts" :hex="selectPartsColor" colorful /> -->
     </div>
 </template>
 
