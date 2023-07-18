@@ -51,7 +51,21 @@ h2 {
 }
 
 .target-option {
+    position: fixed;
+    right: 0;
+    margin: 2rem;
     margin-top: 3.5rem;
-    background-color: var(--surface-color);
+    /* background-color: var(--surface-color); */
+    box-shadow: 0 0 1rem var(--on-surface-color);
+    backdrop-filter: blur(1rem);
+}
+
+@media (max-width: 540px) {
+    .target-option {
+        left: 0;
+        margin: 1rem 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 </style>

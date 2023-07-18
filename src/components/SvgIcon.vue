@@ -34,6 +34,11 @@ svg {
     height: 1rem;
 }
 
+.svg-icon-s {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .svg-icon-sm {
     width: 2rem;
     height: 2rem;

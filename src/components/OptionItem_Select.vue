@@ -7,7 +7,9 @@ const prop = defineProps({
     colorful: Boolean,
     hex: Object,
     unit: String,
+    iconSize: String,
 })
+
 function openSelect(params) {
     isSelect.value = true
 }
@@ -20,18 +22,24 @@ function toggleSelect(params) {
 function selectItem(item) {
     selectValue.value = item
 }
-document.addEventListener('click', closeSelect())
-
-document.querySelectorAll('.select')
+document.addEventListener('click', function close() {
+    closeSelect()
+})
 </script>
 
 <template>
     <div class="select" @click.stop>
-        <div class="select-overlay" @click="toggleSelect"> {{ selectValue }} <svg-icon name="select" size="xs" /></div>
+        <div class="select-overlay" @click="toggleSelect">
+            <p> {{ selectValue }}</p>
+            <svg-icon name="select" :size="iconSize" />
+        </div>
+        <p class="select-unit" v-if="prop.unit">{{ prop.unit }}</p>
         <ul v-if="isSelect" class="select-list">
-            <li v-for="item in prop.items" @click="selectItem(item), closeSelect()" :aria-valuetext="item">{{ item }} </li>
+            <li v-for="item in prop.items" @click="$emit('return', item), selectItem(item), closeSelect()"
+                :aria-valuetext="item">
+                {{ item }}
+            </li>
         </ul>
-
 
     </div>
 </template>
@@ -41,14 +49,26 @@ document.querySelectorAll('.select')
     text-transform: capitalize;
     display: flex;
     position: relative;
+    /* border: 1px solid var(--surface-variant-color); */
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .select-overlay {
-    min-width: 3rem;
     white-space: nowrap;
     cursor: pointer;
-    border: 1px solid var(--surface-variant-color);
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0.25rem;
+    border: 1px solid var(--surface-variant-color);
+    background: var(--surface-variant-color);
+    border-radius: var(--border-radius-sm);
+}
+
+.select-overlay p {
+    min-width: 2.5rem;
 }
 
 .select-list {
