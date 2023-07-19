@@ -143,7 +143,8 @@ img {
 }
 
 input,
-select {
+select,
+textarea {
   outline: none;
   color: inherit;
   caret-color: inherit;
@@ -195,7 +196,8 @@ body {
   /* min-width: 360px; */
   /* min-height: 100vh; */
   background: var(--background);
-  color: var(--on-background-color)
+  color: var(--on-background-color);
+
 }
 
 a {

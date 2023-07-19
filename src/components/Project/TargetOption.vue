@@ -21,7 +21,7 @@ const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             </div>
         </div>
         <div class="option-item">
-            <textarea name="" id="" cols="30" rows="3" placeholder="Trget Dec."></textarea>
+            <textarea name="dec" id="dec" rows="3" wrap="hard" placeholder="Target Dec."></textarea>
         </div>
 
         <div class="option-item">
@@ -76,15 +76,40 @@ const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     border-bottom: 1px solid var(--surface-variant-color);
     /* border-image: var(--border-center-row) 1; */
     white-space: nowrap;
+    color: var(--on-surface-color);
 }
 
 .option-item textarea {
-    background: none;
+    height: auto;
+    padding: 0.5rem 0;
+    margin: 0 0.5rem;
+    flex: 1;
+    resize: none;
+    color: var(--on-surface-color);
+    /* background-color: var(--surface-variant-color); */
+    line-height: 1.5rem;
+    overflow-x: hidden;
+    border-bottom: 1px solid var(--surface-variant-color);
+}
+
+.option-item textarea::-webkit-scrollbar-track {
+    background-color: inherit;
+}
+
+.option-item textarea::-webkit-scrollbar {
+    width: var(--border-radius-sm);
+
+    background-color: inherit;
+}
+
+.option-item textarea::-webkit-scrollbar-thumb {
+    background-color: var(--surface-variant-color);
+    border-radius: var(--border-radius-sm);
 }
 
 .option-item input::placeholder,
 .option-item textarea::placeholder {
-    color: var(--surface-variant-color);
+    color: var(--primary-variant-color);
 }
 
 .option-branch {
@@ -98,6 +123,7 @@ const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 .option-branch>.select .select-overlay {
     padding: 0.25rem 0;
+    padding-left: 0.25rem;
 }
 
 
