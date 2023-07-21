@@ -86,7 +86,6 @@ function toLocal(page) {
 .navbar .location {
     font-weight: 600;
     font-size: 1.5rem;
-    text-transform: capitalize;
 }
 
 .navbar .location {

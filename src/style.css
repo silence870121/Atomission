@@ -163,6 +163,7 @@ select {
 *::before,
 *::after {
   box-sizing: border-box;
+  text-transform: capitalize;
 }
 
 /** start index css */

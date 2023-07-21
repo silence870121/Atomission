@@ -46,7 +46,6 @@ document.addEventListener('click', function close() {
 
 <style scoped>
 .select {
-    text-transform: capitalize;
     display: flex;
     position: relative;
     /* border: 1px solid var(--surface-variant-color); */
