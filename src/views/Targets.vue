@@ -3,13 +3,68 @@ import TargetCard from '@/components/Project/TargetCard.vue';
 import TargetOption from '@/components/Project/TargetOption.vue';
 import { ref } from 'vue';
 
-let activeTargetOption = ref(true)
+let activeTargetOption = ref(false)
+
+let defaultTarget = {
+    id: String,
+    title: String,
+    ability: Number,
+    stage: String,
+    tracked: Boolean,
+    timerMon: Number,
+    timerYear: Number,
+    progress: Number,
+    createDate: String,
+    modifiedDate: String,
+}
+
+let targetList = ref([{
+    id: 't0001',
+    title: 'First Target',
+    ability: 3,
+    stage: '初階',
+    tracked: false,
+    timerMon: 12,
+    timerYear: 1,
+    progress: 0,
+    createDate: "2023-01-01",
+    modifiedDate: "2023-02-01",
+}, {
+    id: 't0002',
+    title: 'second Target',
+    ability: 5,
+    stage: '中階',
+    tracked: true,
+    timerMon: 0,
+    timerYear: 2,
+    progress: 50000,
+    createDate: "2023-05-31",
+    modifiedDate: "2023-06-30",
+}, {
+    id: 't0003',
+    title: 'Third Target',
+    ability: 1,
+    stage: '高階',
+    tracked: true,
+    timerMon: 0,
+    timerYear: 5,
+    progress: 50000,
+    createDate: "2023-09-15",
+    modifiedDate: "2023-10-16",
+}
+])
+
 
 function openOption() {
     activeTargetOption.value = true
 }
 function closeOption() {
     activeTargetOption.value = false
+}
+
+function getProgress(item) {
+    let num = Math.floor(item.progress / ((item.timerYear * 75000 + item.timerMon * 100) / 100), 1)
+    return Math.min(Math.max(num, 0), 100);
 }
 
 </script>
@@ -19,12 +74,9 @@ function closeOption() {
     <div class="container">
         <div class="target">
             <h2>----- Target -----</h2>
-            <TargetCard :title="'First Target'" :stage="'初階'" :progress=100 :create-date="'2023-01-01'"
-                :modified-date="'2023-07-01'" tracked detail @click="openOption" />
-            <TargetCard :title="'First Target'" :stage="'初階'" :progress=100 :create-date="'2023-01-01'" :modified-date="''"
-                tracked detail @click="openOption" />
-            <TargetCard :title="'First Target'" :stage="'初階'" :progress=100 :create-date="'2023-01-01'"
-                :modified-date="'2023-07-01'" tracked @click="openOption" />
+            <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :title="item.title"
+                :stage="item.stage" :progress="getProgress(item)" :create-date="item.createDate"
+                :modified-date="item.modifiedDate" :tracked="item.tracked" detail @click="openOption" />
         </div>
 
         <div v-show="activeTargetOption" class="target target-option border">

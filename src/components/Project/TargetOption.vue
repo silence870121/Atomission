@@ -4,7 +4,7 @@ const prop = defineProps({
     targetItem: Object
 })
 const selectTitle = ["main", "sub"]
-const selectTimerMon = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const selectTimerMon = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 </script>
 

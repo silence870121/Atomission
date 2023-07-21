@@ -3,10 +3,10 @@ defineProps({
     title: String,
     progress: Number,
     stage: String,
-    detail: Boolean,
     tracked: Boolean,
     createDate: String,
     modifiedDate: String,
+    detail: Boolean,
 })
 
 </script>
