@@ -88,9 +88,6 @@ function getProgress(item) {
 
 <style scoped>
 h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: left;
     padding-bottom: 1rem;
 }
 
