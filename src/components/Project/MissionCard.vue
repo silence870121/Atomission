@@ -43,7 +43,8 @@ defineProps({
 
 <style scoped>
 .mission-card {
-    width: 100%;
+    /* max-width: 540px; */
+    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -54,6 +55,7 @@ defineProps({
 .mission-card h3 {
     font-size: 1.25rem;
     font-weight: bold;
+    padding: 0 5rem;
     padding-top: 1rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid;
