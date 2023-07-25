@@ -3,7 +3,7 @@ import { ref } from 'vue';
 //? import Swiper vue 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 //? import Swiper Modules  
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { Mousewheel, Pagination } from 'swiper/modules';
 //? import Swiper Styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -128,7 +128,7 @@ const onSwiper = (swiper) => {
 const onSlideChange = () => {
     console.log('slide change');
 };
-const modules = [EffectCoverflow, Pagination]
+const modules = [Mousewheel, Pagination]
 
 function handleMission(item) {
     console.log(item.id);
@@ -151,8 +151,8 @@ function handleMission(item) {
                     slideShadows: false,
                 }" :pagination="{ dynamicBullets: true, }" :modules="modules" class="mySwiper swiper-h mission-view">
                 <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="32" :modules="modules">
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
                                 @click="handleMission(item)" />
@@ -160,32 +160,32 @@ function handleMission(item) {
                     </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="32" :modules="modules">
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList.filter(item => item.type == 'Daily') ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="32" :modules="modules">
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="32" :modules="modules">
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="16" :modules="modules">
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="16" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
                         </swiper-slide>
@@ -220,6 +220,18 @@ function handleMission(item) {
     width: 100%;
     height: 100%;
     padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.swiper-h::after {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -2rem;
+    left: -2rem;
+    box-shadow: inset 0 0 5rem var(--surface-color);
+    pointer-events: none;
 }
 
 .swiper-v {
