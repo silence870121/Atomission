@@ -35,7 +35,7 @@ defineProps({
                 </div>
             </li>
         </ul>
-        <div v-if="isTip" class="mission-tip"><svg-icon name="info" size="xs" />
+        <div v-if="isTip && mission.tip" class="mission-tip"><svg-icon name="info" size="xs" />
             <p>{{ mission.tip }}</p>
         </div>
     </div>
@@ -43,19 +43,18 @@ defineProps({
 
 <style scoped>
 .mission-card {
-    /* max-width: 540px; */
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 0 1.5rem;
+    cursor: pointer;
 }
 
 .mission-card h3 {
+    width: 100%;
     font-size: 1.25rem;
     font-weight: bold;
-    padding: 0 5rem;
     padding-top: 1rem;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid;
@@ -71,7 +70,6 @@ defineProps({
     border-radius: 1rem;
     color: var(--on-primary-color);
     background-color: var(--on-surface-color);
-    /* margin: 0.5rem 0; */
     font-size: 0.5rem;
     padding: 0.25rem 1rem;
 }
@@ -123,7 +121,10 @@ defineProps({
     width: 100%;
     display: flex;
     gap: 0.25rem;
+    padding-top: 0.5rem;
     padding-bottom: 1.5rem;
+    border-top: 1px solid var(--surface-variant-color);
+    /* border-image: var(--border-center-row) 1; */
 }
 
 .mission-tip p {

@@ -13,6 +13,9 @@ import MissionCard from '@/components/Project/MissionCard.vue';
 import MissionOption from '@/components/Project/MissionOption.vue';
 
 let activeMissionOption = ref(false)
+let showDesc = ref(false)
+let showTarget = ref(false)
+let showTip = ref(false)
 
 let missionList = ref([
     {
@@ -82,7 +85,7 @@ let missionList = ref([
         ],
         createDate: "2023-02-01",
         modifiedDate: "2023-02-28",
-        tip: "This is a Weekly mission. You must complete the mission, or else you will lose this mission score."
+        tip: ""
     }, {
         id: "m0003",
         title: "Third mission",
@@ -126,6 +129,11 @@ const onSlideChange = () => {
     console.log('slide change');
 };
 const modules = [EffectCoverflow, Pagination]
+
+function handleMission(item) {
+    console.log(item.id);
+}
+
 </script>
 
 <template>
@@ -133,45 +141,57 @@ const modules = [EffectCoverflow, Pagination]
     <div class="container">
         <div class="mission">
             <h2> Mission </h2>
-            <swiper :effect="'coverflow'" spaceBetween="16" :grabCursor="true" :centeredSlides="false" :slidesPerView="3"
-                :coverflowEffect="{
+            <swiper :effect="'coverflow'" spaceBetween="0" :grabCursor="true" :centeredSlides="false"
+                :breakpoints="{ 720: { slidesPerView: 2 }, 1080: { slidesPerView: 3 }, 1440: { slidesPerView: 4 }, 1800: { slidesPerView: 4 }, }"
+                :slidesPerView="1" :coverflowEffect="{
                     rotate: 0,
                     stretch: 0,
                     depth: 0,
                     modifier: 1,
                     slideShadows: false,
-                }" :pagination="{ dynamicBullets: true }" :modules="modules" class="mySwiper swiper-h mission-view">
+                }" :pagination="{ dynamicBullets: true, }" :modules="modules" class="mySwiper swiper-h mission-view">
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
-                        :spaceBetween="16" :pagination="{
-                            clickable: true,
-                        }" :modules="modules">
+                        :spaceBetween="32" :modules="modules">
+                        <swiper-slide v-for=" item  in  missionList ">
+                            <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
+                                @click="handleMission(item)" />
+                        </swiper-slide>
+                    </swiper>
+                </swiper-slide>
+                <swiper-slide>
+                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
+                        :spaceBetween="32" :modules="modules">
+                        <swiper-slide v-for=" item  in  missionList.filter(item => item.type == 'Daily') ">
+                            <MissionCard :mission="item" isDesc isTarget isTip />
+                        </swiper-slide>
+                    </swiper>
+                </swiper-slide>
+                <swiper-slide>
+                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
+                        :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <ul name="Weekly" class="mission-group">
-                        <li v-for=" item  in  missionList.filter(m => m.type == 'Weekly') ">
+                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
+                        :spaceBetween="32" :modules="modules">
+                        <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
-                        </li>
-                    </ul>
+                        </swiper-slide>
+                    </swiper>
                 </swiper-slide>
                 <swiper-slide>
-                    <ul name="Stage" class="mission-group">
-                        <li v-for=" item  in  missionList.filter(m => m.type == 'Stage') ">
+                    <swiper class="mySwiper2 swiper-v mission-group" :slidesPerView="'auto'" :direction="'vertical'"
+                        :spaceBetween="16" :modules="modules">
+                        <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" isDesc isTarget isTip />
-                        </li>
-                    </ul>
+                        </swiper-slide>
+                    </swiper>
                 </swiper-slide>
-                <swiper-slide>
-                    <ul name="Stage" class="mission-group">
-                        <li v-for=" item  in  missionList.filter(m => m.type == 'Stage') ">
-                            <MissionCard :mission="item" isDesc isTarget isTip />
-                        </li>
-                    </ul>
-                </swiper-slide>
+
 
             </swiper>
         </div>
@@ -182,36 +202,52 @@ const modules = [EffectCoverflow, Pagination]
 <style scoped>
 .container {
     width: calc(100vw - 10rem);
-    height: calc(100vh - 5rem);
     overflow: hidden;
 }
 
 .mission {
     width: 100%;
     height: 100%;
-}
-
-.mission-view {
-    width: 100%;
-    /* width: 540px; */
-    height: 100%;
-    margin: 0 -1rem;
-}
-
-.mission-view>* {
-    overflow-y: scroll;
-
-}
-
-.mission-group {
-    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+/* * ----- ----- ----- ----- * */
+/* * - Custom Swiper Style - * */
+/* * ----- ----- ----- ----- * */
+.swiper-h {
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.swiper-v {
+    height: 100%;
     padding: 1rem;
 }
 
 .swiper-slide {
     height: auto;
+}
+
+@media (max-width:540px) {
+    .container {
+        width: 100vw;
+        height: calc(100vh - 5rem);
+        overflow: hidden;
+    }
+}
+</style>
+<style>
+.swiper-pagination {
+    height: 0.25rem;
+}
+
+.swiper-pagination-bullet {
+    height: 100%;
+    width: 1rem;
+    border-radius: 1rem;
+    background-color: var(--primary-color);
 }
 </style>
