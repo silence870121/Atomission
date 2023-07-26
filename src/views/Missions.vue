@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Mousewheel, Pagination } from 'swiper/modules';
 //? import Swiper Styles
 import 'swiper/css';
-import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 //? import Missions Components
 import MissionCard from '@/components/Project/MissionCard.vue';
@@ -122,12 +121,6 @@ let missionList = ref([
         tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
     }
 ])
-const onSwiper = (swiper) => {
-    console.log(swiper);
-};
-const onSlideChange = () => {
-    console.log('slide change');
-};
 const modules = [Mousewheel, Pagination]
 
 function handleMission(item) {
@@ -141,15 +134,12 @@ function handleMission(item) {
     <div class="container">
         <div class="mission">
             <h2> Mission </h2>
-            <swiper :effect="'coverflow'" spaceBetween="0" :grabCursor="true" :centeredSlides="false"
-                :breakpoints="{ 720: { slidesPerView: 2 }, 1080: { slidesPerView: 3 }, 1440: { slidesPerView: 4 }, 1800: { slidesPerView: 4 }, }"
-                :slidesPerView="1" :coverflowEffect="{
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 0,
-                    modifier: 1,
-                    slideShadows: false,
-                }" :pagination="{ dynamicBullets: true, }" :modules="modules" class="mySwiper swiper-h mission-view">
+            <!--? Outer Swiper -->
+            <swiper spaceBetween="0" :grabCursor="true" :centeredSlides="false" :pagination="{
+                dynamicBullets: true,
+            }" :breakpoints="{ 540: { slidesPerView: 'auto' } }" :modules="modules"
+                class="mySwiper swiper-h mission-view">
+                <!--! Inner Swiper -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
@@ -191,26 +181,35 @@ function handleMission(item) {
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
-
-
+                <!--! Inner Swiper -->
             </swiper>
+            <!--? Outer Swiper -->
         </div>
-
+        <div v-show="activeTargetOption" class="  mission-option border">
+            <button class="close-btn" @click="closeOption"> <svg-icon name="close" /> </button>
+            <MissionOption />
+        </div>
     </div>
 </template>
 
 <style scoped>
 .container {
-    width: calc(100vw - 10rem);
     overflow: hidden;
+    padding-bottom: 0.5rem;
 }
 
 .mission {
+    flex: 1;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow: hidden;
+}
+
+.mission-option {
+    width: 360px;
 }
 
 /* * ----- ----- ----- ----- * */
@@ -219,7 +218,8 @@ function handleMission(item) {
 .swiper-h {
     width: 100%;
     height: 100%;
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem;
+    padding-top: 0;
 }
 
 .swiper-h::after {
@@ -240,14 +240,18 @@ function handleMission(item) {
 }
 
 .swiper-slide {
+    width: auto;
     height: auto;
 }
 
 @media (max-width:540px) {
     .container {
-        width: 100vw;
-        height: calc(100vh - 5rem);
-        overflow: hidden;
+        width: 100%;
+    }
+
+    .swiper-h {
+        padding: 1.5rem;
+        padding-top: 0;
     }
 }
 </style>

@@ -29,7 +29,10 @@ defineProps({
         <p v-if="isTarget" class="mission-for-target">{{ mission.forTarget }}</p>
         <ul class="mission-list">
             <li v-for="item in mission.list">
-                <p><span>-{{ item.content }}</span>[{{ item.done }}/{{ item.requestNum }} {{ item.unit }}] </p>
+                <p>
+                    <span>-{{ item.content }}</span>
+                    <span>[ <b>{{ item.done }}</b> <small>/ {{ item.requestNum }}</small> {{ item.unit }} ]</span>
+                </p>
                 <div class="mission-check">
                     <svg-icon v-show="item.done >= item.requestNum" name="complete" size="xs" />
                 </div>
@@ -43,12 +46,14 @@ defineProps({
 
 <style scoped>
 .mission-card {
+    width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 0 1.5rem;
     cursor: pointer;
+    user-select: none;
 }
 
 .mission-card h3 {
@@ -96,6 +101,15 @@ defineProps({
     padding: 1rem 0;
 }
 
+.mission-list b {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.mission-list small {
+    font-size: 0.75rem;
+}
+
 .mission-list li {
     display: flex;
     flex-direction: row;
@@ -132,5 +146,11 @@ defineProps({
     margin-top: -0.125rem;
     line-height: 1.25rem;
     text-align: left;
+}
+
+@media (max-width: 540px) {
+    .mission-card {
+        width: 100%;
+    }
 }
 </style>
