@@ -1,7 +1,7 @@
 <script setup>
 import TargetCard from '@/components/Project/TargetCard.vue';
+import HomeMasonry from '@/components/HomeMasonry.vue';
 </script>
-
 <template>
     <Router />
     <div class="container">
@@ -29,10 +29,13 @@ import TargetCard from '@/components/Project/TargetCard.vue';
                     Mission
                     <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
                 </h2>
+                <div class="waterfall">
+                    <HomeMasonry />
+                </div>
             </div>
 
         </div>
-        <div class="home">
+        <div class="home-side">
 
             <h2>Sub Container</h2>
             <div class="home-chart"></div>
@@ -44,6 +47,11 @@ import TargetCard from '@/components/Project/TargetCard.vue';
 
 <style scoped>
 .home {
+    flex: 1;
+}
+
+.home,
+.home-side {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
@@ -85,6 +93,12 @@ import TargetCard from '@/components/Project/TargetCard.vue';
 .home-area-target>>>.target-svg {
     width: 3rem;
     height: 3rem;
+}
+
+
+.waterfall {
+    /* height: 200vh; */
+    border: 1px solid var(--border-color);
 }
 
 /* * ----- ----- ----- ----- * */
