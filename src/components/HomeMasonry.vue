@@ -10,15 +10,12 @@ const columnsCount = computed(() => { return Math.min(Math.max(Math.floor(Masonr
 
 function renderMasonry() {
     MasonryContainerWidth.value = document.querySelector('.masonry').offsetWidth
-    console.log(MasonryContainerWidth.value);
+    // console.log(MasonryContainerWidth.value);
 }
 
 onMounted(() => {
     renderMasonry()
 })
-window.onload = function () {
-    renderMasonry()
-}
 window.onresize = function () {
     renderMasonry()
 }
@@ -28,7 +25,9 @@ window.onresize = function () {
         <h3>Waterfall</h3>
         <p>column: {{ MasonryContainerWidth + " & " + columnsCount }}</p>
         <ul class="masonry-container">
-            <li v-for="i in columnsCount" class="masonry-box"></li>
+            <li v-for="i in 5" class="masonry-box" :style="{ width: 100 / columnsCount + '%' }">
+                <div class="masonry-inner"></div>
+            </li>
         </ul>
     </div>
 </template>
@@ -38,13 +37,18 @@ window.onresize = function () {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem 0;
+    /* gap: 1rem; */
+    padding: 1rem 0.5rem;
 }
 
 .masonry-box {
-    flex: 1;
-    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    /* flex: 1; */
+}
+
+.masonry-inner {
+
     height: 180px;
+    border: 1px solid var(--border-color);
 }
 </style>
