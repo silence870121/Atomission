@@ -116,5 +116,9 @@ import HomeMasonry from '@/components/HomeMasonry.vue';
     .home-sub {
         display: none;
     }
+
+    .home-side {
+        display: none;
+    }
 }
 </style>

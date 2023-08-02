@@ -19,6 +19,7 @@ main {
 
 .container {
 	flex: 1;
+	margin-left: 12rem;
 	padding: 2rem;
 	gap: 2rem;
 	display: flex;
@@ -86,6 +87,8 @@ h2 {
 	}
 
 	.container {
+		margin: 0;
+		margin-top: 44px;
 		padding: 2rem 15px;
 		flex-direction: column;
 	}

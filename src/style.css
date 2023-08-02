@@ -197,6 +197,7 @@ body {
   /* min-width: 360px; */
   /* min-height: 100vh; */
   background: var(--background);
+  background-attachment: fixed;
   color: var(--on-background-color);
 
 }

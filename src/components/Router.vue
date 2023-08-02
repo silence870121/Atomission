@@ -73,14 +73,18 @@ function toLocal(page) {
 
 <style scoped  >
 .navbar {
+    position: fixed;
+    width: 12rem;
+    height: 100%;
     display: flex;
-    gap: 1.5rem;
     flex-direction: column;
+    gap: 1.5rem;
     padding: 3rem 1rem;
     background-color: var(--surface-color);
     border-image: var(--border-center) 1;
     border-right: 1px solid;
 }
+
 
 .navbar .title,
 .navbar .location {
@@ -172,6 +176,8 @@ function toLocal(page) {
 
 @media (max-width:540px) {
     .navbar {
+        z-index: 1;
+        position: fixed;
         width: 100%;
         gap: 0.5rem;
         flex-direction: row;
@@ -180,6 +186,8 @@ function toLocal(page) {
         height: 44px;
         border-bottom: 1px solid;
         border-image: var(--border-center-row) 1;
+        backdrop-filter: blur(1rem);
+        box-shadow: 0 0.5rem 1rem var(--on-primary-color);
     }
 
     .navbar .title {
