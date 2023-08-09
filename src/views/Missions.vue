@@ -1,17 +1,29 @@
 <script setup>
 import { ref } from 'vue';
-//? import Swiper vue 
+//? import Swiper
+// Swiper vue 
 import { Swiper, SwiperSlide } from 'swiper/vue';
-//? import Swiper Modules  
+// Swiper Modules  
 import { Mousewheel, Pagination } from 'swiper/modules';
-//? import Swiper Styles
+// Swiper Styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+
 //? import Missions Components
 import MissionCard from '@/components/Project/MissionCard.vue';
 import MissionOption from '@/components/Project/MissionOption.vue';
 
-let activeMissionOption = ref(false)
+//? Swiper configs
+const modules = [Mousewheel, Pagination]
+
+
+//? show mission options
+let activeMissionOption = ref(true)
+
+function openOption() { activeMissionOption.value = true }
+function closeOption() { activeMissionOption.value = false }
+
+//? show mission details
 let showDesc = ref(false)
 let showTarget = ref(false)
 let showTip = ref(false)
@@ -121,7 +133,7 @@ let missionList = ref([
         tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
     }
 ])
-const modules = [Mousewheel, Pagination]
+
 
 function handleMission(item) {
     console.log(item.id);
@@ -135,17 +147,17 @@ function handleMission(item) {
         <div class="mission">
             <h2> Mission </h2>
             <!--? Outer Swiper -->
-            <swiper spaceBetween="0" :grabCursor="true" :centeredSlides="false" :pagination="{
-                dynamicBullets: true,
-            }" :breakpoints="{ 540: { slidesPerView: 'auto' } }" :modules="modules"
-                class="mySwiper swiper-h mission-view">
+            <swiper class="mySwiper swiper-h mission-view" spaceBetween="0" :grabCursor="true" :centeredSlides="false"
+                :pagination="{
+                    dynamicBullets: true,
+                }" :breakpoints="{ 540: { slidesPerView: 'auto' } }" :modules="modules">
                 <!--! Inner Swiper -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
                             <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
-                                @click="handleMission(item)" />
+                                @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
@@ -153,7 +165,7 @@ function handleMission(item) {
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList.filter(item => item.type == 'Daily') ">
-                            <MissionCard :mission="item" isDesc isTarget isTip />
+                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
@@ -161,7 +173,7 @@ function handleMission(item) {
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip />
+                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
@@ -169,7 +181,7 @@ function handleMission(item) {
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip />
+                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
@@ -177,7 +189,7 @@ function handleMission(item) {
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="16" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip />
+                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
@@ -185,7 +197,7 @@ function handleMission(item) {
             </swiper>
             <!--? Outer Swiper -->
         </div>
-        <div v-show="activeTargetOption" class="  mission-option border">
+        <div v-show="activeMissionOption" class="mission-option border">
             <button class="close-btn" @click="closeOption"> <svg-icon name="close" /> </button>
             <MissionOption />
         </div>
@@ -209,7 +221,13 @@ function handleMission(item) {
 }
 
 .mission-option {
+    margin-top: 2.5rem;
     width: 360px;
+    position: fixed;
+    z-index: 1;
+    right: 1rem;
+    backdrop-filter: blur(1rem);
+    box-shadow: 0 0.5rem 1rem 1rem var(--surface-color);
 }
 
 /* * ----- ----- ----- ----- * */
@@ -230,7 +248,6 @@ function handleMission(item) {
     bottom: 0;
     right: -2rem;
     left: -2rem;
-    box-shadow: inset 0 0 5rem var(--surface-color);
     pointer-events: none;
 }
 

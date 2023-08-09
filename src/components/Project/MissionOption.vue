@@ -4,18 +4,7 @@ const prop = defineProps({
     missionItem: Object
 })
 const selectTitle = ["main", "sub"]
-const selectParts = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth"]
-const selectPartsColor = {
-    'first': '#111',
-    'first': '#111',
-    'second': '#333',
-    'third': '#555',
-    'forth': '#777',
-    'five': '#999',
-    'sixth': '#aaa',
-    'seventh': '#ccc',
-    'eighth': '#eee'
-}
+
 
 const selectTimerMon = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
