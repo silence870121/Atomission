@@ -176,7 +176,7 @@ function toLocal(page) {
 
 @media (max-width:540px) {
     .navbar {
-        z-index: 1;
+        z-index: 99;
         position: fixed;
         width: 100%;
         gap: 0.5rem;
@@ -186,7 +186,6 @@ function toLocal(page) {
         height: 44px;
         border-bottom: 1px solid;
         border-image: var(--border-center-row) 1;
-        backdrop-filter: blur(1rem);
         box-shadow: 0 0.5rem 1rem var(--on-primary-color);
     }
 

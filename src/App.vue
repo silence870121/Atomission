@@ -36,7 +36,7 @@ main {
 	height: 44px;
 	display: flex;
 	align-items: center;
-	z-index: 9;
+	z-index: 9999;
 }
 
 h2 {
