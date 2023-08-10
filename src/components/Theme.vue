@@ -62,7 +62,6 @@ const setProperty = (config) => {
 }
 //? Default Theme Style
 onMounted(() => {
-    console.log(THEME_STYLE);
     getTheme(THEME_STYLE)
 })
 
