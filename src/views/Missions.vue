@@ -48,17 +48,7 @@ let missionList = ref([
                 done: 30,
                 requestNum: 50,
                 unit: "unit"
-            }, {
-                content: "Mission Item 3",
-                done: 50,
-                requestNum: 50,
-                unit: "unit"
-            }, {
-                content: "Mission Item 4",
-                done: 70,
-                requestNum: 50,
-                unit: "unit"
-            },
+            }
         ],
         createDate: "2023-01-01",
         modifiedDate: "2023-01-31",
@@ -87,12 +77,7 @@ let missionList = ref([
                 done: 55,
                 requestNum: 30,
                 unit: "unit"
-            }, {
-                content: "Mission Item 4",
-                done: 75,
-                requestNum: 30,
-                unit: "unit"
-            },
+            }
         ],
         createDate: "2023-02-01",
         modifiedDate: "2023-02-28",
@@ -131,6 +116,25 @@ let missionList = ref([
         createDate: "2023-03-01",
         modifiedDate: "2023-03-31",
         tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
+    }, {
+        id: "m0004",
+        title: "Forth mission",
+        type: "Stage",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission",
+        level: 1,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 5,
+                requestNum: 10,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-03-01",
+        modifiedDate: "2023-03-31",
+        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
     }
 ])
 
@@ -152,6 +156,7 @@ function handleMission(item) {
                     dynamicBullets: true,
                 }" :breakpoints="{ 540: { slidesPerView: 'auto' } }" :modules="modules">
                 <!--! Inner Swiper -->
+                <!--? Column 1 -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
@@ -161,22 +166,18 @@ function handleMission(item) {
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
+                <!--? Column 2 -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList.filter(item => item.type == 'Daily') ">
-                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
+                        <swiper-slide
+                            v-for=" item  in  missionList.filter(item => item.type == 'Weekly' || item.type == 'Stage') ">
+                            <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
+                                @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
-                <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
-                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
-                        </swiper-slide>
-                    </swiper>
-                </swiper-slide>
+                <!--? Column 3 -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
@@ -185,6 +186,16 @@ function handleMission(item) {
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
+                <!--? Column 4 -->
+                <swiper-slide>
+                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
+                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
+                        <swiper-slide v-for=" item  in  missionList ">
+                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
+                        </swiper-slide>
+                    </swiper>
+                </swiper-slide>
+                <!--? Column 5 -->
                 <swiper-slide>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="16" :modules="modules">

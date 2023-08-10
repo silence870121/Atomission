@@ -1,6 +1,7 @@
 <script setup>
 import TargetCard from '@/components/Project/TargetCard.vue';
 import HomeMasonry from '@/components/HomeMasonry.vue';
+import Masonry from '@/components/Masonry.vue';
 </script>
 <template>
     <Router />
@@ -30,7 +31,8 @@ import HomeMasonry from '@/components/HomeMasonry.vue';
                     <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
                 </h2>
                 <div class="waterfall">
-                    <HomeMasonry />
+                    <!-- <HomeMasonry /> -->
+                    <Masonry />
                 </div>
             </div>
 
