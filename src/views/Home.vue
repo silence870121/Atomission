@@ -30,7 +30,7 @@ import Masonry from '@/components/Masonry.vue';
                     Mission
                     <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
                 </h2>
-                <div class="waterfall">
+                <div class="home-masonry">
                     <!-- <HomeMasonry /> -->
                     <Masonry />
                 </div>
@@ -97,10 +97,8 @@ import Masonry from '@/components/Masonry.vue';
     height: 3rem;
 }
 
-
-.waterfall {
-    /* height: 200vh; */
-    border: 1px solid var(--border-color);
+.home-masonry {
+    /* border: 1px solid var(--surface-variant-color); */
 }
 
 /* * ----- ----- ----- ----- * */

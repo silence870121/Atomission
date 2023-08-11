@@ -175,28 +175,25 @@ window.onresize = () => { renderMasonry() }
 
 //? 初始化列表欄位
 function resetMasonryColumn() {
-    columnList.value = new Array(columnsCount.value).fill([])
     columnHeights.value = new Array(columnsCount.value).fill(0)
+    columnList.value = []
+    for (let i = 0; i < columnsCount.value; i++) {
+        columnList.value.push([])
+    }
 }
 
 function appendCell(list) {
     list.forEach(item => {
-
+        //? 判斷最低高度
         const minHeight = Math.min(...columnHeights.value)
-
+        //? 查詢最低高度的陣列索引
         const indexOfMinHeight = columnHeights.value.indexOf(minHeight)
-        console.log('最低列表的索引 ' + indexOfMinHeight);
 
-        console.log(item.list.length);
-        console.log('將item 加入至 列表' + indexOfMinHeight);
-        // console.log(columnList.value[indexOfMinHeight]);
-
-        columnList.value[0].push(item)
+        //? 對 最低高度的數組 增加 當前物件的高度
         columnHeights.value[indexOfMinHeight] += item.list.length
 
-        console.log(columnList.value);
-        console.log(columnList.value[0]);
-        console.log(columnHeights.value);
+        //? 在 最低高度的次級列表 加入 當前的物件
+        columnList.value[indexOfMinHeight].push(item)
     })
 }
 
@@ -207,21 +204,17 @@ function appendCell(list) {
     <div class="v-masonry">
         <ul v-for="list in columnList" class="masonry-list">
             <li v-for="item in list" class="masonry-cell">
-                <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
+                <MissionCard :mission="item" isDesc isTarget isTip />
             </li>
         </ul>
     </div>
 </template>
 
 <style scoped>
-:root {
-    --masonry-gap: 1rem;
-}
-
 .v-masonry {
     width: 100%;
     display: flex;
-    gap: var(--masonry-gap);
+    gap: 1.5rem;
     flex-direction: row;
     flex-wrap: nowrap;
 }
@@ -230,10 +223,14 @@ function appendCell(list) {
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: var(--masonry-gap);
+    gap: 1.5rem;
 }
 
 .masonry-cell {
+    width: 100%;
+}
+
+.mission-card {
     width: 100%;
 }
 </style>
