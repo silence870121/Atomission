@@ -38,25 +38,25 @@
                     "itemId": "1",
                     "content": "細項內容1",
                     "unit": "個",
-                    "requestNum": 50
+                    "requiredNum": 50
                 },
                 {
                     "itemId": "2",
                     "content": "細項內容2",
                     "unit": "個",
-                    "requestNum": 50
+                    "requiredNum": 50
                 },
                 {
                     "itemId": "3",
                     "content": "細項內容3",
                     "unit": "個",
-                    "requestNum": 50
+                    "requiredNum": 50
                 },
                 {
                     "itemId": "4",
                     "content": "細項內容4",
                     "unit": "個",
-                    "requestNum": 50
+                    "requiredNum": 50
                 }
             ]
         },

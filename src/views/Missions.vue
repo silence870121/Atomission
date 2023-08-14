@@ -13,20 +13,23 @@ import 'swiper/css/pagination';
 import MissionCard from '@/components/Project/MissionCard.vue';
 import MissionOption from '@/components/Project/MissionOption.vue';
 
+import { storeToRefs } from 'pinia';
+import { useMissionStore } from '../stores/mission';
+
+
+
 //? Swiper configs
 const modules = [Mousewheel, Pagination]
 
 
 //? show mission options
-let activeMissionOption = ref(true)
-
+let activeMissionOption = ref(false)
 function openOption() { activeMissionOption.value = true }
 function closeOption() { activeMissionOption.value = false }
 
-//? show mission details
-let showDesc = ref(false)
-let showTarget = ref(false)
-let showTip = ref(false)
+const mission = useMissionStore()
+const { showTarget, showDesc, showTip } = storeToRefs(mission)
+mission.showTip = false
 
 let missionList = ref([
     {
@@ -247,8 +250,9 @@ function handleMission(item) {
 .swiper-h {
     width: 100%;
     height: 100%;
-    padding: 1.5rem;
-    padding-top: 0;
+    /* padding: 1.5rem;
+    padding-top: 0; */
+    padding-bottom: 1.5rem;
 }
 
 .swiper-h::after {
