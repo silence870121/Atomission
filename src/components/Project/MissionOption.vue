@@ -3,11 +3,10 @@ import Select from "@/components/OptionItem_select.vue";
 const prop = defineProps({
     missionItem: Object
 })
-const selectTitle = ["main", "sub"]
-
-
-const selectTimerMon = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const selectBranch = ["main", "sub"]
+const selectTarget = ["Target 1", "Target 2", "Target 3"]
+const selectType = ["Daily", "Weekly", "Stage"]
+const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
 </script>
 
 <template>
@@ -19,26 +18,43 @@ const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
             <div class="option-branch">
                 <svg-icon name="branch" size="xs" />
-                <Select :items="selectTitle" icon-size="xs" />
+                <Select :items="selectBranch" icon-size="xs" />
             </div>
-        </div>
-
-
-        <div class="option-item">
-            <div class="option-info">
-                <h3>Timer</h3>
-                <p>Timer Dec.</p>
-            </div>
-            <Select :items="selectTimerYear" unit="年" icon-size="s" />
-            <Select :items="selectTimerMon" unit="月" icon-size="s" />
         </div>
         <div class="option-item">
             <div class="option-info">
-                <h3>Learning Ability</h3>
-                <p>Timer Dec.</p>
+                <h3>Pin</h3>
+                <p>Pin your mission</p>
             </div>
-            <Select :items="selectTimerYear" icon-size="s" />
+            <label class="option-pin" for="pin"></label>
+            <input type="checkbox" name="" id="pin">
         </div>
+
+        <div class="option-item">
+            <div class="option-info">
+                <h3>Target</h3>
+                <p>Select target that mission at. </p>
+            </div>
+            <Select :items="selectTarget" icon-size="s" />
+        </div>
+        <div class="option-item">
+            <div class="option-info">
+                <h3>Type</h3>
+                <p>Select Mission type</p>
+            </div>
+            <Select :items="selectType" icon-size="s" />
+        </div>
+        <div class="option-item">
+            <div class="option-info">
+                <h3>Level</h3>
+                <p>how difficulty of the mission.</p>
+            </div>
+            <Select :items="selectLevel" icon-size="s" />
+        </div>
+        <button class="option-btn">
+            <svg-icon name="warning" size="s" />
+            Delete Mission
+        </button>
     </div>
 </template>
 
@@ -108,5 +124,17 @@ const selectTimerYear = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 .option-info p {
     font-size: 0.75rem;
+}
+
+.option-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: bold;
+    color: var(--on-primary-color);
+    background-color: var(--error-color);
+    padding: 0.5rem;
+    margin: 4rem 2rem;
 }
 </style>

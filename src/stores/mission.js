@@ -1,3 +1,4 @@
+import { async } from "fast-glob";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -43,14 +44,53 @@ export const useMissionStore = defineStore('mission', () => {
     const showTip = ref(true)
     const showDesc = ref(true)
 
+    const missionList = ref(["mission list data"])
+
     function sendItemToOption(item) {
         temp.value = item
     }
+
+    function createMission(item) {
+        missionList.value.push(item)
+    }
+    function updateMission(item) {
+        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
+        missionList.value[indexOfTargetMission] = item
+    }
+    function deleteMission(item) {
+        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
+        missionList.value.slice(indexOfTargetMission, 1)
+    }
+    function editMission(item) {
+        temp.value = { ...item }
+    }
+
+    function completeMission(item) {
+        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
+        if (indexOfTargetMission) {
+            updateMission(item)
+        } else {
+            createMission(item)
+        }
+    }
+
+
+    //? API Methods
+    async function fetchData(API) {
+        await fetch(API, function (err, data) { return data })
+    }
+
+
     return {
         temp,
         showTarget,
         showTip,
         showDesc,
-        sendItemToOption
+        sendItemToOption,
+        createMission,
+        updateMission,
+        deleteMission,
+        editMission,
+        completeMission
     }
 })

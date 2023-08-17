@@ -140,7 +140,7 @@ let missionList = ref([
         tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
     }
 ])
-
+const typeList = ["Daily", "Weekly", "Stage"]
 
 function handleMission(item) {
     console.log(item.id);
@@ -160,53 +160,16 @@ function handleMission(item) {
                 }" :breakpoints="{ 540: { slidesPerView: 'auto' } }" :modules="modules">
                 <!--! Inner Swiper -->
                 <!--? Column 1 -->
-                <swiper-slide>
+                <swiper-slide v-for=" group in typeList">
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
+                        <swiper-slide v-for=" item  in  missionList.filter(item => item.type == group)">
                             <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
                                 @click="handleMission(item), openOption()" />
                         </swiper-slide>
                     </swiper>
                 </swiper-slide>
-                <!--? Column 2 -->
-                <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
-                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide
-                            v-for=" item  in  missionList.filter(item => item.type == 'Weekly' || item.type == 'Stage') ">
-                            <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip"
-                                @click="handleMission(item), openOption()" />
-                        </swiper-slide>
-                    </swiper>
-                </swiper-slide>
-                <!--? Column 3 -->
-                <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
-                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
-                        </swiper-slide>
-                    </swiper>
-                </swiper-slide>
-                <!--? Column 4 -->
-                <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
-                        :direction="'vertical'" :spaceBetween="32" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
-                        </swiper-slide>
-                    </swiper>
-                </swiper-slide>
-                <!--? Column 5 -->
-                <swiper-slide>
-                    <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
-                        :direction="'vertical'" :spaceBetween="16" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" isDesc isTarget isTip @click="handleMission(item), openOption()" />
-                        </swiper-slide>
-                    </swiper>
-                </swiper-slide>
+
                 <!--! Inner Swiper -->
             </swiper>
             <!--? Outer Swiper -->
@@ -235,13 +198,13 @@ function handleMission(item) {
 }
 
 .mission-option {
-    margin-top: 2.5rem;
+    /* margin-top: 2.5rem; */
     width: 360px;
-    position: fixed;
-    z-index: 1;
-    right: 1rem;
+    height: 50rem;
     backdrop-filter: blur(1rem);
     box-shadow: 0 0.5rem 1rem 1rem var(--surface-color);
+
+    /* border: 1px solid black; */
 }
 
 /* * ----- ----- ----- ----- * */
@@ -274,6 +237,17 @@ function handleMission(item) {
 .swiper-slide {
     width: auto;
     height: auto;
+}
+
+@media (max-width:1080px) {
+    .mission-option {
+        position: fixed;
+        z-index: 99999;
+        top: 5rem;
+        right: 1rem;
+        height: calc(100% - 6rem);
+        box-shadow: 0 0 2rem var(--on-primary-color);
+    }
 }
 
 @media (max-width:540px) {
