@@ -1,8 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue';
-let selectValue = ref('----')
 let isSelect = ref(false)
 const prop = defineProps({
+    selectValue: {
+        default: '----'
+    },
     items: Array,
     colorful: Boolean,
     hex: Object,
@@ -30,7 +32,7 @@ document.addEventListener('click', function close() {
 <template>
     <div class="select" @click.stop>
         <div class="select-overlay" @click="toggleSelect">
-            <p> {{ selectValue }}</p>
+            <p> {{ prop.selectValue }}</p>
             <svg-icon name="select" :size="iconSize" />
         </div>
         <p class="select-unit" v-if="prop.unit">{{ prop.unit }}</p>

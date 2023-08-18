@@ -176,7 +176,7 @@ function handleMission(item) {
         </div>
         <div v-show="activeMissionOption" class="mission-option border">
             <button class="close-btn" @click="closeOption"> <svg-icon name="close" /> </button>
-            <MissionOption />
+            <MissionOption :missionItem="mission.temp" />
         </div>
     </div>
 </template>

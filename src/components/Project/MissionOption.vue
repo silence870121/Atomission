@@ -1,5 +1,7 @@
 <script setup>
 import Select from "@/components/OptionItem_select.vue";
+import Switch from "@/components/OptionItem_switch.vue";
+import { ref } from "vue";
 const prop = defineProps({
     missionItem: Object
 })
@@ -7,6 +9,8 @@ const selectBranch = ["main", "sub"]
 const selectTarget = ["Target 1", "Target 2", "Target 3"]
 const selectType = ["Daily", "Weekly", "Stage"]
 const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
+
+let switchOn = ref(false)
 </script>
 
 <template>
@@ -18,7 +22,7 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
 
             <div class="option-branch">
                 <svg-icon name="branch" size="xs" />
-                <Select :items="selectBranch" icon-size="xs" />
+                <Select :items="selectBranch" icon-size="xs" :selectValue="missionItem.branch" />
             </div>
         </div>
         <div class="option-item">
@@ -26,8 +30,7 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
                 <h3>Pin</h3>
                 <p>Pin your mission</p>
             </div>
-            <label class="option-pin" for="pin"></label>
-            <input type="checkbox" name="" id="pin">
+            <Switch :switchOn="switchOn" @click="switchOn = !switchOn" />
         </div>
 
         <div class="option-item">
@@ -35,21 +38,29 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
                 <h3>Target</h3>
                 <p>Select target that mission at. </p>
             </div>
-            <Select :items="selectTarget" icon-size="s" />
+            <Select :items="selectTarget" icon-size="s" :selectValue="missionItem.fromTarget" />
         </div>
         <div class="option-item">
             <div class="option-info">
                 <h3>Type</h3>
                 <p>Select Mission type</p>
             </div>
-            <Select :items="selectType" icon-size="s" />
+            <Select :items="selectType" icon-size="s" :selectValue="missionItem.type" />
         </div>
         <div class="option-item">
             <div class="option-info">
                 <h3>Level</h3>
                 <p>how difficulty of the mission.</p>
             </div>
-            <Select :items="selectLevel" icon-size="s" />
+            <Select :items="selectLevel" icon-size="s" :selectValue="missionItem.difficulty" />
+        </div>
+        <div class="option-item">
+            <ul class="option-mission-item">
+                <li v-for="item in missionItem.itemList">
+                    <p>- {{ item.content }}</p>
+                    <p>[ {{ item.requiredNum }} <span>{{ item.unit }}</span> ]</p>
+                </li>
+            </ul>
         </div>
         <button class="option-btn">
             <svg-icon name="warning" size="s" />
@@ -75,7 +86,6 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
     padding-right: 1rem;
     flex-direction: row;
     align-items: center;
-    /* border: 1px solid var(--border-color); */
     background-color: var(--surface-color);
 }
 
@@ -90,7 +100,6 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
     font-size: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--surface-variant-color);
-    /* border-image: var(--border-center-row) 1; */
     white-space: nowrap;
 }
 
@@ -103,8 +112,6 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
     gap: 0.25rem;
     padding: 0.25rem 0.5rem;
     align-items: center;
-    /* background: var(--surface-variant-color); */
-    /* border-radius: var(--border-radius-sm); */
 }
 
 .option-branch>.select .select-overlay {
@@ -124,6 +131,21 @@ const selectLevel = ["Easier", "Easy", "Normal", "Hard", "Harder"]
 
 .option-info p {
     font-size: 0.75rem;
+}
+
+.option-mission-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+}
+
+.option-mission-item li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .option-btn {
