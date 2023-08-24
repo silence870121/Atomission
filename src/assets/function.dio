@@ -1,0 +1,140 @@
+<mxfile host="65bd71144e">
+    <diagram id="3p3A1VNbfBS3VODVtuUF" name="Page-1">
+        <mxGraphModel dx="1065" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="37" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;gradientColor=none;dashed=1;glass=0;fillColor=none;arcSize=4;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="340" width="200" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="3" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="3" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Mission page" style="rounded=0;whiteSpace=wrap;html=1;direction=west;fontSize=16;horizontal=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="40" y="120" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;fontSize=16;horizontal=1;fontStyle=0" edge="1" parent="1" source="8" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="mission" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fontSize=16;horizontal=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="12" target="32">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Create Btn" style="rounded=0;whiteSpace=wrap;html=1;direction=west;fontSize=16;horizontal=1;fontStyle=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="240" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontSize=16;" edge="1" parent="1" source="16" target="29">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=16;" edge="1" parent="1" source="16" target="40">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="460" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Mission Area" style="rounded=0;whiteSpace=wrap;html=1;direction=west;fontSize=16;horizontal=1;fontStyle=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="120" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="yes" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="18" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="18" target="23">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="200" y="410"/>
+                            <mxPoint x="200" y="580"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="cancel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="24">
+                    <mxGeometry x="0.4365" y="1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-89" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="Complete?" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="380" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=16;" edge="1" parent="1" source="21" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Create mission to mission list." style="whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="480" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Clear option form data." style="whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="560" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="29" target="54">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="Update mission items number." style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;gradientColor=none;arcSize=8;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="32" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Option page" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;gradientColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="320" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="40" target="52">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Modify mission option." style="rounded=1;whiteSpace=wrap;html=1;glass=0;strokeWidth=1;fontSize=16;fillColor=#647687;arcSize=8;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;" edge="1" parent="1" source="43" target="54">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="480" y="620"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;gradientColor=none;dashed=1;glass=0;fillColor=none;arcSize=4;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="300" width="200" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="yes" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="47" target="49">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="47" target="50">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="560" y="370"/>
+                            <mxPoint x="560" y="540"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="cancel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="45">
+                    <mxGeometry x="0.4365" y="1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-89" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="Complete?" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=16;" edge="1" parent="1" source="49" target="50">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="Update this mission option." style="whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="440" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="Clear option form data." style="whiteSpace=wrap;html=1;fontSize=16;rounded=0;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="520" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" style="edgeStyle=none;html=1;fontSize=16;" edge="1" parent="1" source="52" target="47">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="Option page" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;gradientColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="Mission Area" style="rounded=0;whiteSpace=wrap;html=1;glass=0;sketch=0;strokeWidth=1;fontSize=16;fillColor=#647687;arcSize=0;fontColor=#ffffff;strokeColor=#314354;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="600" width="120" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
