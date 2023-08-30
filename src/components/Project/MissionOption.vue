@@ -22,7 +22,8 @@ let switchOn = ref(false)
 
             <div class="option-branch">
                 <svg-icon name="branch" size="xs" />
-                <Select :items="selectBranch" icon-size="xs" :selectValue="missionItem.branch" />
+                <Select :items="selectBranch" icon-size="xs" :selectValue="missionItem.branch"
+                    @update="(e) => missionItem.branch = e" />
             </div>
         </div>
         <div class="option-item">
@@ -38,21 +39,24 @@ let switchOn = ref(false)
                 <h3>Target</h3>
                 <p>Select target that mission at. </p>
             </div>
-            <Select :items="selectTarget" icon-size="s" :selectValue="missionItem.fromTarget" />
+            <Select :items="selectTarget" icon-size="s" :selectValue="missionItem.fromTarget"
+                @update="(e) => missionItem.fromTarget = e" />
         </div>
         <div class="option-item">
             <div class="option-info">
                 <h3>Type</h3>
                 <p>Select Mission type</p>
             </div>
-            <Select :items="selectType" icon-size="s" :selectValue="missionItem.type" />
+            <Select :items="selectType" icon-size="s" :selectValue="missionItem.type"
+                @update="(e) => missionItem.type = e" />
         </div>
         <div class="option-item">
             <div class="option-info">
                 <h3>Level</h3>
                 <p>how difficulty of the mission.</p>
             </div>
-            <Select :items="selectLevel" icon-size="s" :selectValue="missionItem.difficulty" />
+            <Select :items="selectLevel" icon-size="s" :selectValue="missionItem.difficulty"
+                @update="(e) => missionItem.difficulty = e" />
         </div>
         <div class="option-item">
             <ul class="option-mission-item">
@@ -62,10 +66,16 @@ let switchOn = ref(false)
                 </li>
             </ul>
         </div>
-        <button class="option-btn">
-            <svg-icon name="warning" size="s" />
-            Delete Mission
-        </button>
+        <div class="option-btn">
+            <button class="option-complete ">
+                <svg-icon name="complete" size="s" />
+                Save Mission
+            </button>
+            <button class="option-delete">
+                <svg-icon name="warning" size="s" />
+                Delete Mission
+            </button>
+        </div>
     </div>
 </template>
 
@@ -150,13 +160,32 @@ let switchOn = ref(false)
 
 .option-btn {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
+}
+
+.option-btn button {
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.25rem;
     font-weight: bold;
+    padding: 0.5rem;
+    color: var(--on-primary-color);
+    background-color: var(--primary-color);
+}
+
+.option-btn .option-delete {
+    opacity: 0.25;
+    margin-top: 2rem;
     color: var(--on-primary-color);
     background-color: var(--error-color);
-    padding: 0.5rem;
-    margin: 4rem 2rem;
+    transition: opacity 500ms linear;
+}
+
+.option-btn .option-delete:hover {
+    opacity: 1;
 }
 </style>

@@ -11,6 +11,8 @@ const prop = defineProps({
     unit: String,
     iconSize: String,
 })
+const emit = defineEmits(['update'])
+
 
 function openSelect(params) {
     isSelect.value = true
@@ -22,7 +24,8 @@ function toggleSelect(params) {
     isSelect.value = !isSelect.value
 }
 function selectItem(item) {
-    selectValue.value = item
+    emit('update', item)
+    closeSelect()
 }
 document.addEventListener('click', function close() {
     closeSelect()
@@ -37,8 +40,7 @@ document.addEventListener('click', function close() {
         </div>
         <p class="select-unit" v-if="prop.unit">{{ prop.unit }}</p>
         <ul v-if="isSelect" class="select-list">
-            <li v-for="item in prop.items" @click="$emit('return', item), selectItem(item), closeSelect()"
-                :aria-valuetext="item">
+            <li v-for="item in prop.items" @click="selectItem(item)" :aria-valuetext="item">
                 {{ item }}
             </li>
         </ul>
