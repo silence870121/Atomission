@@ -161,6 +161,7 @@ function handleMission(item) {
                 <!--! Inner Swiper -->
                 <!--? Column 1 -->
                 <swiper-slide v-for=" group in typeList">
+                    <h3>{{ group }}</h3>
                     <swiper class="mySwiper2 swiper-v mission-group" :mousewheel="true" :slidesPerView="'auto'"
                         :direction="'vertical'" :spaceBetween="32" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList.filter(item => item.type == group)">
