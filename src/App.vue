@@ -25,7 +25,6 @@ main {
 
 .container {
 	flex: 1;
-	margin-left: 12rem;
 	padding: 2rem;
 	gap: 2rem;
 	display: flex;

@@ -177,17 +177,49 @@ select {
   -webkit-text-size-adjust: 100%;
 }
 
-
 * {
-  --background: linear-gradient(135deg, var(--background-base-color), var(--background-color), var(--background-base-color), var(--background-variant-color));
-  --border: linear-gradient(135deg, var(--border-color), var(--border-variant-color), var(--border-color), var(--border-variant-color));
-  --border-center: linear-gradient(var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
-  --border-center-row: linear-gradient(90deg, var(--border-center-variant-color), var(--border-center-color), var(--border-center-variant-color));
+  --background: linear-gradient(135deg,
+      var(--background-base-color) 0%, var(--background-from-color) 35%,
+      var(--background-base-color) 70%, var(--background-to-color) 100%);
+
+  --surface: linear-gradient(to bottom,
+      var(--surface-from-color) 0%, var(--surface-to-color) 100%);
+
+  --surface-variant: linear-gradient(to bottom,
+      var(--surface-variant-from-color) 0%, var(--surface-variant-to-color) 100%);
+
+  --border: linear-gradient(to bottom,
+      var(--stroke-from-color) 75%, var(--stroke-to-color) 100%);
+
+  --line-row: linear-gradient(to right, var(--stroke-to-color) 0%,
+      var(--stroke-from-color) 50%, var(--stroke-to-color) 100%);
+
+  --line-column: linear-gradient(to bottom, var(--stroke-to-color) 0%,
+      var(--stroke-from-color) 50%, var(--stroke-to-color) 100%);
+
+  --active: linear-gradient(135deg,
+      var(--active-from-color) 0%, var(--active-to-color) 100%);
+
+  --action: linear-gradient(135deg,
+      var(--action-from-color) 0%, var(--action-to-color) 100%);
+
+  --nav-rim: radial-gradient(125% 125% at 50% 125%,
+      var(--nav-rim-from-color) 0%,
+      var(--nav-rim-to-color) 100%);
+
+  --nav-active: linear-gradient(135deg,
+      var(--nav-active-to-color) 0%,
+      var(--nav-active-from-color) 50%,
+      var(--nav-active-to-color) 100%);
+
+  --glow-light: radial-gradient(50% 50% at 50% 100%,
+      var(--glow-light-from-color) 0%,
+      var(--glow-light-step-color) 50%,
+      var(--glow-light-to-color) 100%);
 
   --border-radius-sm: 0.25rem;
   --border-radius-md: 0.5rem;
   --border-radius-lg: 1rem;
-
 }
 
 body {
