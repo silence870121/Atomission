@@ -31,6 +31,12 @@ export default createRouter({
         }
         ,
         {
+            path: '/test',
+            name: 'test',
+            component: () => import('@/views/Test.vue'),
+        }
+        ,
+        {
             path: '/404',
             name: '404',
             component: () => import('@/views/Error.vue'),

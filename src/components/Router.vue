@@ -65,6 +65,18 @@ function toLocal(page) {
                         Setting
                     </router-link>
                 </li>
+                <li>
+                    <router-link to="/test" @click="toLocal('test')">
+                        <svg-icon name="info" />
+                        Test
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/error" @click="toLocal('error')">
+                        <svg-icon name="info" />
+                        Error
+                    </router-link>
+                </li>
             </ul>
         </div>
 
@@ -73,7 +85,6 @@ function toLocal(page) {
 
 <style scoped  >
 .navbar {
-    position: fixed;
     width: 12rem;
     height: 100%;
     display: flex;
