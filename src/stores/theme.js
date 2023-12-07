@@ -11,10 +11,10 @@ export const useThemeStore = defineStore('theme', () => {
         ['--wireframe-surface-variant-color', 'hsl(210, 100%, 85%)'],
         ['--wireframe-placeholder-color', 'hsl(210, 100%, 80%)'],
 
-        ['--label-primary-color', 'hsla(210, 100%, 35%, 1)'],
-        ['--label-secondary-color', 'hsla(210, 100%, 35%, 0.6)'],
-        ['--label-tertiary-color', 'hsla(210, 100%, 35%, 0.4)'],
-        ['--label-quaternary-color', 'hsla(210, 100%, 35%, 0.2)'],
+        ['--label-primary-color', 'hsla(210, 100%, 25%, 1)'],
+        ['--label-secondary-color', 'hsla(210, 100%, 25%, 0.6)'],
+        ['--label-tertiary-color', 'hsla(210, 100%, 25%, 0.4)'],
+        ['--label-quaternary-color', 'hsla(210, 100%, 25%, 0.2)'],
 
         ['--background-base-color', 'hsl(  0,   0%, 100%)'],
         ['--background-from-color', 'hsl(210, 100%,  90%)'],
