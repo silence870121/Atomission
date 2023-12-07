@@ -1,10 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-let location = ref('Atomission')
 
-const getLocation = onMounted(() => {
-    if (window.location.pathname.substring(1)) return location.value = window.location.pathname.substring(1)
-})
+
 function toggleMenu(params) {
     document.querySelector('.navbar-menu').classList.toggle('show')
 }
@@ -23,167 +20,199 @@ function toLocal(page) {
 
 <template>
     <nav class="navbar">
-        <h1 class="title">Atomission</h1>
-        <h2 class="location">{{ location }}</h2>
-        <button class="navbar-user" @click="toggleMenu">
-            <!-- <Logo class="logo" /> -->
-            <svg-icon class="logo" name="favicon" size="sm" />
-            <span>UserName</span>
-        </button>
-        <div class="navbar-menu">
-            <button class="close-btn" @click="closeMenu">
-                <svg-icon name="close" />
-            </button>
+        <div class="nav-title">
+            <svg-icon class="logo" name="favicon" size="md" />
+            <h1 class="title">Atomission</h1>
+        </div>
+
+        <!-- <button class="close-btn" @click="closeMenu">
+            <svg-icon name="close" />
+        </button> -->
+        <div class="nav-menu">
             <ul>
                 <li>
                     <router-link to="/" @click="toLocal('Atomission')">
-                        <svg-icon name="home" />
+                        <div class="icon"> <svg-icon name="home" /> </div>
                         Home
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/missions" @click="toLocal('missions')">
-                        <svg-icon name="mission" />
+                        <div class="icon"> <svg-icon name="mission" /> </div>
                         Mission
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/targets" @click="toLocal('targets')">
-                        <svg-icon name="target" />
+                        <div class="icon"> <svg-icon name="target" /> </div>
                         Target
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/profile" @click="toLocal('profile')">
-                        <svg-icon name="profiles" />
+                        <div class="icon"><svg-icon name="profiles" /></div>
                         Profiles
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/setting" @click="toLocal('setting')">
-                        <svg-icon name="setting" />
+                        <div class="icon"><svg-icon name="setting" /></div>
                         Setting
                     </router-link>
                 </li>
+
+            </ul>
+        </div>
+        <div class="nav-menu">
+            <h3>My story line</h3>
+            <ul>
                 <li>
                     <router-link to="/test" @click="toLocal('test')">
-                        <svg-icon name="info" />
+                        <div class="icon"> <svg-icon name="info" /> </div>
                         Test
                     </router-link>
                 </li>
+            </ul>
+        </div>
+        <div class="nav-menu">
+            <h3>My team</h3>
+            <ul>
+
                 <li>
                     <router-link to="/error" @click="toLocal('error')">
-                        <svg-icon name="info" />
+                        <div class="icon"> <svg-icon name="info" /> </div>
                         Error
                     </router-link>
                 </li>
             </ul>
         </div>
-
     </nav>
 </template>
 
 <style scoped  >
 .navbar {
-    width: 12rem;
-    height: 100%;
+    /* width: 15rem; */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 3rem 1rem;
-    background-color: var(--surface-color);
-    border-image: var(--border-center) 1;
+    background: var(--surface);
+    border-image: var(--border) 1;
     border-right: 1px solid;
+    gap: 1rem;
+    color: var(--label-secondary-color);
 }
 
-
-.navbar .title,
-.navbar .location {
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-
-.navbar .location {
-    display: none;
-}
-
-.navbar-user {
+.nav-title {
     display: flex;
-    justify-content: start;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    padding: 0 16px;
-    font-size: 1rem;
+    /* gap: 1rem; */
+    padding: 1rem;
+    padding-top: 2rem;
+    color: var(--label-primary-color);
 }
 
-.logo {
+.nav-title h1 {
+    font-size: 2rem;
+    /* line-height: 1.5; */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    background: var(--active);
+    background-clip: text;
+    color: transparent;
+    padding-right: 1rem;
+}
+
+.nav-menu h3 {
+    text-align: left;
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+
+.nav-menu ul li .icon {
+    color: var(--label-quaternary-color);
     width: 2rem;
     height: 2rem;
-}
-
-.logo::after {
-    border-radius: 50%;
-}
-
-.navbar-menu {
     display: flex;
-    flex-direction: column;
-}
-
-.navbar-menu .close-btn {
-    display: none;
-}
-
-
-.navbar-menu ul {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.navbar-menu li {
-    width: 100%;
-}
-
-.navbar-menu li a {
-    color: var(--primary-color);
-    padding: 0.5rem 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
+    justify-content: center;
+}
+
+.nav-menu ul li .icon svg {
+    width: 1.5rem;
+}
+
+.nav-menu ul li .router-link-exact-active .icon {
+    color: var(--label-primary-color);
+    /* background: var(--active); */
+    border-radius: 3rem;
+    position: relative;
+    background: var(--surface);
+}
+
+.nav-menu ul li .router-link-exact-active .icon::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -1px;
+    top: -1px;
+    bottom: -1px;
+    right: -1px;
+    padding: 1px;
+    border-radius: 3rem;
+    background: var(--active);
+    --m-o: content-box, padding-box;
+    --m-i: linear-gradient(white, black);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-origin: var(--m-o);
+    -webkit-mask-origin: var(--m-o);
+    mask-clip: var(--m-o);
+    -webkit-mask-clip: var(--m-o);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+}
+
+.nav-menu ul li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-image: var(--line-row) 1;
+    border-bottom: 1px solid;
     transition: all 200ms ease-in-out;
 }
 
-.navbar-menu li a:hover,
-.navbar-menu li a.router-link-exact-active {
-    background-color: var(--surface-variant-color);
-    /* background-color: var(--primary-variant-color); */
-    color: var(--on-surface-color);
-    border-radius: 0.5rem;
-    transition: all 0s;
+.nav-menu ul li a:hover {
+    color: var(--label-primary-color);
 }
 
-.navbar-menu li img {
-    width: 1.5rem;
-    height: 1.5rem;
-    /* fill: var(--primary-color); */
+.nav-menu ul li a::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: var(--nav-active);
+    opacity: 0;
 }
 
-
-
-
-.navbar-footer {
-    align-self: center;
-    flex: 1;
+.nav-menu ul li a:hover::after {
+    opacity: 0.75;
+    transition: all 200ms ease-in-out;
 }
 
+.nav-menu ul li a.router-link-exact-active {
+    background: var(--nav-active);
+    color: var(--label-primary-color);
+}
 
+.nav-menu ul li a.router-link-exact-active,
+.nav-menu ul li:last-child a {
+    border: none
+}
 
 @media (max-width:540px) {
     .navbar {
@@ -200,22 +229,9 @@ function toLocal(page) {
         box-shadow: 0 0.5rem 1rem var(--on-primary-color);
     }
 
-    .navbar .title {
-        display: none;
-    }
-
     .navbar .location {
         display: block;
         padding-bottom: 0.25rem;
-    }
-
-    .navbar-user {
-        padding: 0;
-    }
-
-    .navbar-user span {
-        display: none;
-        order: 0;
     }
 
     .logo {
@@ -223,9 +239,6 @@ function toLocal(page) {
         height: 2rem;
     }
 
-    .navbar h2 {
-        order: 1;
-    }
 
     .navbar-menu {
         display: none;
