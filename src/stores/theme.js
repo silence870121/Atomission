@@ -85,7 +85,7 @@ export const useThemeStore = defineStore('theme', () => {
 
 
         ['--glow-light-from-color', 'hsla(45, 100%, 80%, 1)'],
-        ['--glow-light-step-color', 'hsla(45,  60%, 60%, 0.25)'],
+        ['--glow-light-step-color', 'hsla(45,  60%, 50%, 0.25)'],
         ['--glow-light-to-color', 'hsla(45,  60%, 10%, 0)'],
 
 
@@ -95,11 +95,11 @@ export const useThemeStore = defineStore('theme', () => {
         switch (setting.isDarkMode) {
             case true:
                 setStyleProperty(DARK_THEME)
-                document.querySelector('.theme-btn').innerHTML = "Dark Mode"
+                // document.querySelector('.theme-btn').innerHTML = "Dark Mode"
                 break;
             case false:
                 setStyleProperty(LIGHT_THEME)
-                document.querySelector('.theme-btn').innerHTML = "Light Mode";
+                // document.querySelector('.theme-btn').innerHTML = "Light Mode";
                 break;
             default:
                 break;

@@ -10,9 +10,6 @@ onMounted(() => {
 	<main>
 		<router-view />
 	</main>
-	<div class="theme">
-		<ThemeBtn />
-	</div>
 </template>
 
 <style>
@@ -25,24 +22,12 @@ main {
 
 .container {
 	flex: 1;
-	padding: 2rem;
-	gap: 2rem;
 	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: space-between;
+	flex-direction: column;
+	align-items: start;
+	justify-content: start;
 }
 
-.theme {
-	position: fixed;
-	top: 0;
-	right: 0;
-	margin: 0 1rem;
-	height: 44px;
-	display: flex;
-	align-items: center;
-	z-index: 9999;
-}
 
 h2 {
 	font-size: 1.5rem;
