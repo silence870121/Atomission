@@ -111,25 +111,6 @@ let missionList = ref([
         createDate: "2023-03-01",
         modifiedDate: "2023-03-31",
         tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
-    }, {
-        id: "m0004",
-        title: "Forth mission",
-        type: "Stage",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission",
-        level: 1,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 5,
-                requestNum: 10,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-03-01",
-        modifiedDate: "2023-03-31",
-        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
     }
 ])
 
@@ -145,16 +126,16 @@ let missionList = ref([
                     <router-link to="/targets" @click="toLocal('Target')">more ></router-link>
                 </h2>
                 <ul class="home-content">
-                    <li class="enabled">
+                    <li>
                         <TargetCard :title="'First Target'" :progress=100 />
                     </li>
-                    <li class="enabled">
+                    <li>
                         <TargetCard :title="'First Target'" :progress=100 />
                     </li>
-                    <li class="">
+                    <li class="disabled">
                         <TargetCard :title="'First Target'" :progress=100 />
                     </li>
-                    <li class="">
+                    <li class="disabled">
                         <TargetCard :title="'First Target'" :progress=100 />
                     </li>
                 </ul>
@@ -170,7 +151,10 @@ let missionList = ref([
                             dynamicBullets: true,
                         }" :grabCursor="true" :modules="modules">
                         <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission="item" :isDesc="showDesc" :isTarget="showTarget" :isTip="showTip" />
+                            <MissionCard :mission=item />
+                        </swiper-slide>
+                        <swiper-slide v-for="i in 5 - missionList.length ">
+                            <MissionCard class="disabled" />
                         </swiper-slide>
                     </swiper>
 
@@ -208,20 +192,16 @@ let missionList = ref([
     gap: 1rem;
 }
 
-.home-content li {
+.home-content .disabled {
     opacity: 0.25;
-}
-
-.home-content li.enabled {
-    opacity: 1;
 }
 
 .home-aside {
     position: absolute;
     right: 3rem;
     background: var(--surface);
-    width: 16rem;
-    height: 9rem;
+    width: 20rem;
+    height: 15rem;
     margin-top: 10rem;
     padding: 1rem;
     border-radius: 0.5rem;
