@@ -15,14 +15,14 @@ import 'swiper/css/pagination';
 import MissionCard from '@/components/Project/MissionCard.vue';
 import { storeToRefs } from 'pinia';
 import { useMissionStore } from '../stores/mission';
+import { useTargetStore } from '../stores/target';
 
 //? Swiper configs
 const modules = [Mousewheel, Pagination]
 
 //? Mission configs
 const mission = useMissionStore()
-const { showTarget, showDesc, showTip } = storeToRefs(mission)
-mission.showTip = false
+const target = useMissionStore()
 let missionList = ref([
     {
         id: "m0001",
@@ -127,16 +127,16 @@ let missionList = ref([
                 </h2>
                 <ul class="home-content">
                     <li>
-                        <TargetCard :title="'First Target'" :progress=100 />
+                        <TargetCard />
                     </li>
                     <li>
-                        <TargetCard :title="'First Target'" :progress=100 />
+                        <TargetCard />
                     </li>
                     <li class="disabled">
-                        <TargetCard :title="'First Target'" :progress=100 />
+                        <TargetCard />
                     </li>
                     <li class="disabled">
-                        <TargetCard :title="'First Target'" :progress=100 />
+                        <TargetCard />
                     </li>
                 </ul>
             </section>
@@ -183,7 +183,8 @@ let missionList = ref([
 .home-section {
     display: flex;
     flex-direction: column;
-    padding: 4rem 1rem;
+    padding: 0 2rem;
+    padding-top: 4rem;
 }
 
 .home-content {
@@ -231,6 +232,6 @@ let missionList = ref([
     height: 100%;
     width: 1rem;
     border-radius: 1rem;
-    background-color: var(--label-secondary-color);
+    background-color: var(--wireframe-placeholder-color);
 }
 </style>

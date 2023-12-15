@@ -8,7 +8,7 @@ const props = defineProps({
     },
     size: {
         type: String,
-        default: "sm",
+        // default: "sm",
     }
 })
 const symbolId = computed(() => { return `#icon-${props.name}` })

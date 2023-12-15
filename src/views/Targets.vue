@@ -1,10 +1,11 @@
 <script setup>
+import Header from '@/components/Header.vue';
 import TargetCard from '@/components/Project/TargetCard.vue';
 import TargetOption from '@/components/Project/TargetOption.vue';
+import { useTargetStore } from '../stores/target';
 import { ref } from 'vue';
 
-let activeTargetOption = ref(false)
-
+const targetSetting = useTargetStore()
 let defaultTarget = {
     id: String,
     title: String,
@@ -26,7 +27,7 @@ let targetList = ref([{
     tracked: false,
     timerMon: 12,
     timerYear: 1,
-    progress: 0,
+    score: 0,
     createDate: "2023-01-01",
     modifiedDate: "2023-02-01",
 }, {
@@ -37,7 +38,7 @@ let targetList = ref([{
     tracked: true,
     timerMon: 0,
     timerYear: 2,
-    progress: 50000,
+    score: 50000,
     createDate: "2023-05-31",
     modifiedDate: "2023-06-30",
 }, {
@@ -48,13 +49,20 @@ let targetList = ref([{
     tracked: true,
     timerMon: 0,
     timerYear: 5,
-    progress: 50000,
+    score: 50000,
     createDate: "2023-09-15",
     modifiedDate: "2023-10-16",
 }
 ])
 
+function selectCardMode() {
+    targetSetting.isCardMode = true
+}
+function selectListMode() {
+    targetSetting.isCardMode = false
+}
 
+let activeTargetOption = ref(false)
 function openOption() {
     activeTargetOption.value = true
 }
@@ -62,59 +70,86 @@ function closeOption() {
     activeTargetOption.value = false
 }
 
-function getProgress(item) {
-    let num = Math.floor(item.progress / ((item.timerYear * 75000 + item.timerMon * 100) / 100), 1)
-    return Math.min(Math.max(num, 0), 100);
-}
 
 </script>
 
 <template>
     <Router />
     <div class="container">
+        <Header />
         <div class="target">
-            <h2>----- Target -----</h2>
-            <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :title="item.title"
-                :stage="item.stage" :progress="getProgress(item)" :create-date="item.createDate"
-                :modified-date="item.modifiedDate" :tracked="item.tracked" detail @click="openOption" />
+            <div class="target-head">
+                <h2>----- Target -----</h2>
+                <div v-if="targetSetting.isCardMode" class="target-mode">
+                    <button @click="selectCardMode" class="active">Card</button>
+                    <button @click="selectListMode">List</button>
+                </div>
+                <div v-else class="target-mode">
+                    <button @click="selectCardMode">Card</button>
+                    <button @click="selectListMode" class="active">List</button>
+                </div>
+            </div>
+            <div class="target-content">
+                <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :target="item"
+                    :mode="targetSetting.isCardMode" />
+            </div>
+
         </div>
 
-        <div v-show="activeTargetOption" class="target target-option border">
-            <button class="close-btn" @click="closeOption"> <svg-icon name="close" /> </button>
-            <TargetOption />
-        </div>
     </div>
 </template>
 
 <style scoped>
-h2 {
-    padding-bottom: 1rem;
-}
-
-
 .target {
+    width: 100%;
+    max-width: 35rem;
     display: flex;
-    gap: 1rem;
     flex-direction: column;
-    padding-bottom: 1rem;
+    gap: 1rem;
+    padding: 2rem;
 }
 
-.target-option {
-    position: fixed;
-    right: 0;
-    margin: 2rem;
-    margin-top: 3.5rem;
-    /* background-color: var(--surface-color); */
-    box-shadow: 0 0 1rem var(--on-surface-color);
-    backdrop-filter: blur(1rem);
+.target-head {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 10rem;
 }
 
-@media (max-width: 540px) {
-    .target-option {
-        left: 0;
-        margin: 1rem 15px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+.target-head h2 {
+    flex: 1;
+}
+
+.target-mode {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.target-mode button {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    font-weight: bold;
+
+    color: var(--wireframe-placeholder-color);
+    background: var(--wireframe-surface-color);
+}
+
+.target-content {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+}
+
+.target-mode button.active {
+    color: var(--wireframe-surface-color);
+    background: var(--wireframe-placeholder-color);
 }
 </style>
