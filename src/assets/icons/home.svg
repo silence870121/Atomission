@@ -1,3 +1,6 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 40V28H28V40H38V24H44L24 6L4 24H10V40H20Z" fill="currentColor" />
+    <path d="M13.5 38L15 17L24 8L33 17L34.5 38H27.5L26.5 26.5L24 24L21.5 26.5L20.5 38H13.5Z"
+        fill="currentcolor" />
+    <path d="M11.5 38L13 20L11 22L8 38H11.5Z" fill="currentcolor" />
+    <path d="M37 22L35 20L36.5 38H40L37 22Z" fill="currentcolor" />
 </svg>
