@@ -1,86 +1,69 @@
 <script setup>
 </script>
-<!-- TODO -->
 <template>
-    <div class="container">
-        <div class="error">
-            <svg-icon name="favicon" size="lg" />
-            <div class="error-message">
-                <h2 class="error-title">404</h2>
-                <p class="error-subtitle">Error</p>
-                <p>Page not found</p>
-                <router-link to="/" @click="toLocal('Atomission')" class="error-btn border">
-                    back Home
-                </router-link>
-            </div>
-            <svg-icon name="pattern" size="lg" class="error-pattern" />
-        </div>
-
+    <div class="error">
+        <p class="code">404</p>
+        <h1 class="title">Page not found</h1>
+        <div class="divider"> </div>
+        <blockquote class="quote">
+            But if you don't change your direction, and if you keep looking, you may end up
+            where you are heading.
+        </blockquote>
+        <router-link to="/" @click="toLocal('Atomission')" class="btn">
+            back Home
+        </router-link>
     </div>
 </template>
 
 <style scoped>
-svg {
-    width: 20rem;
-    height: 20rem;
-    color: var(--surface-variant-color);
-    color: var(--on-surface-color);
-}
-
 .error {
-    width: 100%;
     flex: 1;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.error-message {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 0 4rem;
-    border-image: var(--active) 1;
-    border-left: 1px solid;
-    font-size: 1.25rem;
-}
-
-.error-title {
+    align-items: center;
+    padding: 8rem 2rem;
+    margin-left: -10rem;
     text-align: center;
-    font-size: 7.5rem;
-    font-weight: 600;
-    background: var(--active);
-    background-clip: text;
-    color: transparent;
 }
 
-.error-subtitle {
-    font-size: 5rem;
+.code {
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: 600;
+    color: var(--active-from-color);
+}
+
+.title {
+    padding-top: 12px;
+    letter-spacing: 2px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--active-from-color);
+}
+
+.divider {
+    margin: 24px auto 18px;
+    width: 10rem;
+    height: 1px;
+    background: var(--line-row);
+}
+
+.quote {
+    max-width: 16rem;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
     color: var(--label-secondary-color);
 }
 
-.error-btn {
+.btn {
     padding: 0.5rem 1rem;
     margin-top: 2rem;
     border-radius: 2rem;
-    background: var(--action);
-}
-
-.error-btn::after {
-    border-radius: 2rem;
-    background: var(--active);
-
-    padding: 2px;
-}
-
-.error-pattern {
-    position: fixed;
-    z-index: -999;
-    right: 0;
-    height: 100vh;
-    width: 100vh;
+    /* background: var(--action); */
+    border: 2px solid var(--wireframe-placeholder-color);
 }
 </style>
