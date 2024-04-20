@@ -46,29 +46,241 @@ export const useMissionStore = defineStore('mission', () => {
     const showTip = ref(true)
     const showDesc = ref(true)
 
-    const missionList = ref(["mission list data"])
+    const data = ref([{
+        id: "m0001",
+        title: "First mission",
+        type: "Daily",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission,This is the first mission, ",
+        level: 5,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 10,
+                requestNum: 50,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 30,
+                requestNum: 50,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-01-01",
+        modifiedDate: "2023-01-31",
+        tip: "This is a daily mission. "
+    }, {
+        id: "m0002",
+        title: "Second mission",
+        type: "Weekly",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the Second mission.This is the first mission.This is the first mission.",
+        level: 3,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 15,
+                requestNum: 30,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 35,
+                requestNum: 30,
+                unit: "unit"
+            }, {
+                content: "Mission Item 3",
+                done: 55,
+                requestNum: 30,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-02-01",
+        modifiedDate: "2023-02-28",
+        tip: ""
+    }, {
+        id: "m0003",
+        title: "Third mission",
+        type: "Stage",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission",
+        level: 1,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 5,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 15,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 3",
+                done: 25,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 4",
+                done: 35,
+                requestNum: 10,
+                unit: "unit"
+            },
+        ],
+        createDate: "2023-03-01",
+        modifiedDate: "2023-03-31",
+        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
+    }, {
+        id: "m0004",
+        title: "Forth mission",
+        type: "Stage",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission",
+        level: 1,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 5,
+                requestNum: 10,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-03-01",
+        modifiedDate: "2023-03-31",
+        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
+    }, {
+        id: "m0001",
+        title: "First mission",
+        type: "Daily",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission,This is the first mission, ",
+        level: 5,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 10,
+                requestNum: 50,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 30,
+                requestNum: 50,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-01-01",
+        modifiedDate: "2023-01-31",
+        tip: "This is a daily mission. "
+    }, {
+        id: "m0002",
+        title: "Second mission",
+        type: "Weekly",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the Second mission.This is the first mission.This is the first mission.",
+        level: 3,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 15,
+                requestNum: 30,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 35,
+                requestNum: 30,
+                unit: "unit"
+            }, {
+                content: "Mission Item 3",
+                done: 55,
+                requestNum: 30,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-02-01",
+        modifiedDate: "2023-02-28",
+        tip: ""
+    }, {
+        id: "m0003",
+        title: "Third mission",
+        type: "Stage",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission",
+        level: 1,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 5,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 2",
+                done: 15,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 3",
+                done: 25,
+                requestNum: 10,
+                unit: "unit"
+            }, {
+                content: "Mission Item 4",
+                done: 35,
+                requestNum: 10,
+                unit: "unit"
+            },
+        ],
+        createDate: "2023-03-01",
+        modifiedDate: "2023-03-31",
+        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
+    }, {
+        id: "m0004",
+        title: "Forth mission",
+        type: "Stage",
+        branch: "Main",
+        forTarget: "First target",
+        description: "This is the first mission",
+        level: 1,
+        list: [
+            {
+                content: "Mission Item 1",
+                done: 5,
+                requestNum: 10,
+                unit: "unit"
+            }
+        ],
+        createDate: "2023-03-01",
+        modifiedDate: "2023-03-31",
+        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
+    }])
 
     function sendItemToOption(item) {
         temp.value = item
     }
 
     function createMission(item) {
-        missionList.value.push(item)
+        data.value.push(item)
     }
     function updateMission(item) {
-        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
-        missionList.value[indexOfTargetMission] = item
+        const indexOfTargetMission = data.findIndex(mission => { mission.id = item.id })
+        data.value[indexOfTargetMission] = item
     }
     function deleteMission(item) {
-        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
-        missionList.value.slice(indexOfTargetMission, 1)
+        const indexOfTargetMission = data.findIndex(mission => { mission.id = item.id })
+        data.value.slice(indexOfTargetMission, 1)
     }
     function editMission(item) {
         temp.value = { ...item }
     }
 
     function completeMission(item) {
-        const indexOfTargetMission = missionList.findIndex(mission => { mission.id = item.id })
+        const indexOfTargetMission = data.findIndex(mission => { mission.id = item.id })
         if (indexOfTargetMission) {
             updateMission(item)
         } else {
@@ -84,6 +296,7 @@ export const useMissionStore = defineStore('mission', () => {
 
 
     return {
+        data,
         temp,
         showTarget,
         showTip,
