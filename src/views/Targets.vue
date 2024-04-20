@@ -1,5 +1,4 @@
 <script setup>
-import Header from '@/components/Header.vue';
 import TargetCard from '@/components/Project/TargetCard.vue';
 import TargetOption from '@/components/Project/TargetOption.vue';
 import { useTargetStore } from '../stores/target';
@@ -69,32 +68,35 @@ function openOption() {
 function closeOption() {
     activeTargetOption.value = false
 }
+const FILTER_LIST = ["初階", "中階", "專家", "大師"]
 
+
+function setFilter(params) {
+    if (params) return console.log(params)
+    console.log('SHOW ALL')
+}
 
 </script>
 
 <template>
     <Router />
-    <div class="container">
-        <Header />
-        <div class="target">
-            <div class="target-head">
-                <h2>----- Target -----</h2>
-                <div v-if="targetSetting.isCardMode" class="target-mode">
-                    <button @click="selectCardMode" class="active">Card</button>
-                    <button @click="selectListMode">List</button>
-                </div>
-                <div v-else class="target-mode">
-                    <button @click="selectCardMode">Card</button>
-                    <button @click="selectListMode" class="active">List</button>
-                </div>
+    <div class="target">
+        <div class="target-head">
+            <h2>----- Target -----</h2>
+            <div v-if="targetSetting.isCardMode" class="target-mode">
+                <button @click="selectCardMode" class="active">Card</button>
+                <button @click="selectListMode">List</button>
             </div>
-            <div class="target-content">
-                <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :target="item"
-                    :mode="targetSetting.isCardMode" />
+            <div v-else class="target-mode">
+                <button @click="selectCardMode">Card</button>
+                <button @click="selectListMode" class="active">List</button>
             </div>
-
         </div>
+        <div class="target-content">
+            <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :target="item"
+                :mode="targetSetting.isCardMode" />
+        </div>
+
 
     </div>
 </template>
