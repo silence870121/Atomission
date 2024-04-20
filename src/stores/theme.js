@@ -117,6 +117,18 @@ export const useThemeStore = defineStore('theme', () => {
         setting.isDarkMode = !setting.isDarkMode
         renderThemeStyle()
     }
-
-    return { renderThemeStyle, switchTheme }
+    function darkTheme() {
+        setting.isDarkMode = true
+        renderThemeStyle()
+    }
+    function lightTheme() {
+        setting.isDarkMode = false
+        renderThemeStyle()
+    }
+    return {
+        renderThemeStyle,
+        switchTheme,
+        darkTheme,
+        lightTheme
+    }
 })
