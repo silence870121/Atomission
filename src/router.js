@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 
+
 export default createRouter({
     history: createWebHistory(),
     routes: [
@@ -13,6 +14,18 @@ export default createRouter({
             path: '/missions',
             name: 'missions',
             component: () => import('@/views/Missions.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'missionHome',
+                    component: () => import('@/views/Mission_Home.vue'),
+                },
+                {
+                    path: 'edit',
+                    name: 'missionEdit',
+                    component: () => import('@/views/Mission_edit.vue'),
+                }
+            ]
         },
         {
             path: '/targets',
