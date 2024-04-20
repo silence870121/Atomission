@@ -9,7 +9,7 @@ const prop = defineProps({
     },
     columnWidth: {
         type: Number,
-        default: 360,
+        default: 320,
         //? 元素寬度
     },
     widthGap: {
@@ -22,10 +22,10 @@ const prop = defineProps({
         default: 16
         //? 元素高度間隔
     },
-    itemList: {
+    list: {
         type: Array,
         // required: true,
-        //? 元素列表
+        //? 渲染列表
     },
     isDebounce: {
         type: Boolean,
@@ -36,135 +36,25 @@ const prop = defineProps({
         type: Boolean,
         default: true,
         //? 延遲讀取
-    }
+    },
 })
 
 
-//? Masonry database
-let missionList = ref([
-    {
-        id: "m0001",
-        title: "First mission",
-        type: "Daily",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission,This is the first mission, ",
-        level: 5,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 10,
-                requestNum: 50,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 30,
-                requestNum: 50,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-01-01",
-        modifiedDate: "2023-01-31",
-        tip: "This is a daily mission. "
-    }, {
-        id: "m0002",
-        title: "Second mission",
-        type: "Weekly",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the Second mission.This is the first mission.This is the first mission.",
-        level: 3,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 15,
-                requestNum: 30,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 35,
-                requestNum: 30,
-                unit: "unit"
-            }, {
-                content: "Mission Item 3",
-                done: 55,
-                requestNum: 30,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-02-01",
-        modifiedDate: "2023-02-28",
-        tip: ""
-    }, {
-        id: "m0003",
-        title: "Third mission",
-        type: "Stage",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission",
-        level: 1,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 5,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 15,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 3",
-                done: 25,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 4",
-                done: 35,
-                requestNum: 10,
-                unit: "unit"
-            },
-        ],
-        createDate: "2023-03-01",
-        modifiedDate: "2023-03-31",
-        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
-    }, {
-        id: "m0004",
-        title: "Forth mission",
-        type: "Stage",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission",
-        level: 1,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 5,
-                requestNum: 10,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-03-01",
-        modifiedDate: "2023-03-31",
-        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
-    }
-])
-
-
-
-
+// 每欄的列表
 let columnList = ref([])
+// 每欄的高度
 let columnHeights = ref([])
 
+// 瀑布的寬度
 let masonryWidth = ref(720)
+// 瀑布的欄數
 let columnsCount = ref(2)
 
 function renderMasonry() {
     masonryWidth.value = document.querySelector('.v-masonry').offsetWidth
     columnsCount.value = Math.min(Math.max(Math.floor(masonryWidth.value / prop.columnWidth), 1), prop.maxColumn)
     resetMasonryColumn()
-    appendCell(missionList.value)
+    appendCell(prop.list)
 
 }
 
@@ -190,7 +80,7 @@ function appendCell(list) {
         const indexOfMinHeight = columnHeights.value.indexOf(minHeight)
 
         //? 對 最低高度的數組 增加 當前物件的高度
-        columnHeights.value[indexOfMinHeight] += item.list.length
+        columnHeights.value[indexOfMinHeight] += item.list.length + 320
 
         //? 在 最低高度的次級列表 加入 當前的物件
         columnList.value[indexOfMinHeight].push(item)
@@ -202,9 +92,9 @@ function appendCell(list) {
 
 <template>
     <div class="v-masonry">
-        <ul v-for="list in columnList" class="masonry-list">
+        <ul v-for="list in columnList" class="masonry-column">
             <li v-for="item in list" class="masonry-cell">
-                <MissionCard :mission="item" isDesc isTarget isTip />
+                <MissionCard :mission="item" />
             </li>
         </ul>
     </div>
@@ -216,10 +106,11 @@ function appendCell(list) {
     display: flex;
     gap: 1.5rem;
     flex-direction: row;
+    justify-content: space-around;
     flex-wrap: nowrap;
 }
 
-.masonry-list {
+.masonry-column {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -228,9 +119,12 @@ function appendCell(list) {
 
 .masonry-cell {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .mission-card {
     width: 100%;
+    max-width: 25rem;
 }
 </style>

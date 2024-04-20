@@ -1,15 +1,51 @@
 <script setup>
+import { onMounted } from 'vue';
+onMounted(() => {
+
+    const viewpoint = document.querySelector('.viewpoint');
+
+    const option = {
+        root: null,
+        rootMargin: "-80px 0px -80% 0px",
+        threshold: 0,
+    }
+    function activeView(entries, owner) {
+        if (entries[0].isIntersecting) {
+            viewpoint.classList.add('v-inner');
+        } else {
+
+            viewpoint.classList.remove('v-inner');
+        }
+    }
+
+    const observer = new IntersectionObserver(activeView, option);
+    observer.observe(document.querySelector(".content"));
+})
 </script>
-<!-- TODO -->
 <template>
-    <div class="container">
+    <div class="test">
         <div class="test-nav">
-            <a href="/">&lt; Back Home</a>
+            <router-link to="/" @click="toLocal('Atomission')">
+                &lt; Back Home
+            </router-link>
         </div>
         <div class="test-location">
             <p>#test page</p>
         </div>
-        <div class="color-system">
+
+
+        <div class="viewpoint">
+            <div class="inner">
+                <p></p>
+            </div>
+        </div>
+        <div class="observer">
+            <div class="content">
+            </div>
+        </div>
+
+        <!-- ? hide -->
+        <div class="color-system" v-show="false">
             <h2>color system</h2>
             <h3>Wireframe:</h3>
             <div class="row">
@@ -58,54 +94,56 @@
             </div>
 
         </div>
+
     </div>
 </template>
-<style>
-:root {
-    --background: linear-gradient(135deg,
-            var(--background-base-color) 0%, var(--background-from-color) 35%,
-            var(--background-base-color) 70%, var(--background-to-color) 100%);
 
-    --surface: linear-gradient(to bottom,
-            var(--surface-from-color) 0%, var(--surface-to-color) 100%);
-
-    --surface-variant: linear-gradient(to bottom,
-            var(--surface-variant-from-color) 0%, var(--surface-variant-to-color) 100%);
-
-    --border: linear-gradient(to bottom,
-            var(--stroke-from-color) 75%, var(--stroke-to-color) 100%);
-
-    --line-row: linear-gradient(var(--stroke-to-color) 0%,
-            var(--stroke-from-color) 50%, var(--stroke-to-color) 100%);
-
-    --line-column: linear-gradient(to bottom, var(--stroke-to-color) 0%,
-            var(--stroke-from-color) 50%, var(--stroke-to-color) 100%);
-
-    --active: linear-gradient(135deg,
-            var(--active-from-color) 0%, var(--active-to-color) 100%);
-
-    --action: linear-gradient(135deg,
-            var(--action-from-color) 0%, var(--action-to-color) 100%);
-
-    --nav-rim: radial-gradient(125% 125% at 50% 125%,
-            var(--nav-rim-from-color) 0%,
-            var(--nav-rim-to-color) 100%);
-
-    --nav-active: linear-gradient(135deg,
-            var(--nav-active-to-color) 0%,
-            var(--nav-active-from-color) 50%,
-            var(--nav-active-to-color) 100%);
-
-    --glow-light: radial-gradient(,
-            var(--glow-light-from-color) 0%,
-            var(--glow-light-step-color) 50%,
-            var(--glow-light-to-color) 100%);
+<style scoped>
+.test {
+    z-index: -1;
+    overflow-x: auto;
 }
 
-* {
-    color: var(--label-primary-color);
+.observer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.viewpoint {
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    position: fixed;
+    padding-top: 80px;
+    padding-bottom: 80%;
+}
+
+
+.inner {
+    flex: 1;
+    height: 100%;
+    border: 1px solid white;
+}
+
+.content {
+    margin: 80rem 0;
+    width: 50rem;
+    height: 1rem;
+    background: hsla(240, 100%, 50%, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    border: 1px solid white;
+}
+
+.v-inner {
+    background: hsla(90, 100%, 50%, 0.25);
+}
+</style>
+<style scoped>
 .row {
     width: 100%;
     display: flex;
@@ -136,6 +174,31 @@
     width: 100%;
     text-align-last: left;
     padding: 0.5rem;
+}
+
+.test-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.test-location {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+.test::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right bottom, var(--primary-variant-color) 0%, transparent 100%);
+    opacity: 0.5;
 }
 
 /* wireframe color | solid */
@@ -223,35 +286,5 @@
 
 .glow-light {
     background: var(--glow-light);
-}
-</style>
-<style scoped>
-.test-nav {
-    position: fixed;
-    width: 50%;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-}
-
-.test-location {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 1rem;
-}
-
-.test::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to right bottom, var(--primary-variant-color) 0%, transparent 100%);
-    opacity: 0.5;
 }
 </style>

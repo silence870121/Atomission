@@ -7,6 +7,7 @@ onMounted(() => {
 })
 </script>
 <template>
+	<Header />
 	<main>
 		<router-view />
 	</main>
@@ -18,16 +19,10 @@ main {
 	height: 100%;
 	display: flex;
 	flex-direction: row;
-}
 
-.container {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	justify-content: start;
+	padding-left: 10rem;
+	margin-top: 3.5rem;
 }
-
 
 h2 {
 	font-size: 1.5rem;
@@ -69,19 +64,5 @@ h2 {
 	right: 0;
 	padding: 0;
 	margin: 0.5rem;
-}
-
-@media (max-width: 540px) {
-	main {
-		flex-direction: column;
-	}
-
-	.container {
-		margin: 0;
-		margin-top: 44px;
-		padding: 2rem 15px;
-		flex-direction: column;
-	}
-
 }
 </style>

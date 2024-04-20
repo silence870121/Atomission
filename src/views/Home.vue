@@ -3,8 +3,6 @@ import { ref } from 'vue';
 import TargetCard from '@/components/Project/TargetCard.vue';
 // import MissionCard from '@/components/Project/MissionCard.vue';
 
-import Header from '@/components/Header.vue';
-
 //? Swiper vue 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Mousewheel, Pagination } from 'swiper/modules';
@@ -117,79 +115,79 @@ let missionList = ref([
 </script>
 <template>
     <Router />
-    <div class="container">
-        <Header />
-        <div class="home">
-            <section class="home-section">
-                <h2 class="home-title">
-                    Target
-                    <router-link to="/targets" @click="toLocal('Target')">more ></router-link>
-                </h2>
-                <ul class="home-content">
-                    <li>
-                        <TargetCard />
-                    </li>
-                    <li>
-                        <TargetCard />
-                    </li>
-                    <li class="disabled">
-                        <TargetCard />
-                    </li>
-                    <li class="disabled">
-                        <TargetCard />
-                    </li>
-                </ul>
-            </section>
-            <section class="home-section">
-                <h2 class="home-title">
-                    Mission
-                    <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
-                </h2>
-                <div class="home-content">
-                    <swiper class="mySwiper home-swiper" slidesPerView="auto" :spaceBetween="32" :centeredSlides="false"
-                        :pagination="{
-                            dynamicBullets: true,
-                        }" :grabCursor="true" :modules="modules">
-                        <swiper-slide v-for=" item  in  missionList ">
-                            <MissionCard :mission=item />
-                        </swiper-slide>
-                        <swiper-slide v-for="i in 5 - missionList.length ">
-                            <MissionCard class="disabled" />
-                        </swiper-slide>
-                    </swiper>
+    <div class="home">
+        <section class="home-section">
+            <h2 class="home-title">
+                My Area
+                <router-link to="/targets" @click="toLocal('Target')">more ></router-link>
+            </h2>
+            <ul class="home-content">
+                <li>
+                    <TargetCard />
+                </li>
+                <li class="disabled">
+                    <TargetCard />
+                </li>
+                <li class="disabled">
+                    <TargetCard />
+                </li>
+                <li class="disabled">
+                    <TargetCard />
+                </li>
+            </ul>
+        </section>
+        <section class="home-section">
+            <h2 class="home-title">
+                My Mission
+                <router-link to="/missions" @click="toLocal('Mission')">more ></router-link>
+            </h2>
+            <div class="home-content">
+                <swiper class="mySwiper home-swiper" slidesPerView="auto" :spaceBetween="32" :centeredSlides="false"
+                    :pagination="{
+                    dynamicBullets: true,
+                }" :grabCursor="true" :modules="modules">
+                    <swiper-slide v-for=" item  in  missionList ">
+                        <MissionCard :mission=item />
+                    </swiper-slide>
+                    <swiper-slide v-for="i in 5 - missionList.length ">
+                        <MissionCard class="disabled" />
+                    </swiper-slide>
+                </swiper>
 
-                </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
-        <aside class="home-aside border">
-            <h2>Sub Container</h2>
-            <div class="home-chart"></div>
-        </aside>
     </div>
+
 </template>
 
 <style scoped>
-.container {
-    height: 100vh;
-    overflow: hidden;
-}
-
 .home {
-    position: relative;
     width: 100%;
+    display: flex;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 .home-section {
     display: flex;
     flex-direction: column;
     padding: 0 2rem;
-    padding-top: 4rem;
+    padding-top: 3rem;
+}
+
+.home-title a {
+    color: var(--label-secondary-color);
+    padding-left: 1rem;
+    font-size: 1rem;
+    text-transform: lowercase;
 }
 
 .home-content {
     display: flex;
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     gap: 1rem;
 }
 
@@ -223,7 +221,7 @@ let missionList = ref([
 }
 </style>
 
-<style  >
+<style>
 .swiper-pagination {
     height: 0.25rem;
 }

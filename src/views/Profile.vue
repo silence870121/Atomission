@@ -2,9 +2,8 @@
 
 <template>
     <Router />
-    <div class="container">
-        <h2> Profile </h2>
-    </div>
+    <h2> Profile </h2>
+
 </template>
 
 <style scoped></style>
