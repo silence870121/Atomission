@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useMissionStore } from '../stores/mission';
+import { useMissionStore } from '@stores/mission';
 
 
 const mission = useMissionStore()

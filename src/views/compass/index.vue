@@ -1,7 +1,7 @@
 <script setup>
 import TargetCard from '@/components/Project/TargetCard.vue';
 import TargetOption from '@/components/Project/TargetOption.vue';
-import { useTargetStore } from '../stores/target';
+import { useTargetStore } from '@stores/target';
 import { ref } from 'vue';
 
 const targetSetting = useTargetStore()

@@ -12,8 +12,8 @@ import 'swiper/css/pagination';
 //? import Missions
 import MissionCard from '@/components/Project/MissionCard.vue';
 import { storeToRefs } from 'pinia';
-import { useMissionStore } from '../stores/mission';
-import { useTargetStore } from '../stores/target';
+import { useMissionStore } from '@stores/mission';
+import { useTargetStore } from '@stores/target';
 
 //? Swiper configs
 const modules = [Mousewheel, Pagination]
@@ -144,9 +144,9 @@ let missionList = ref([
             <div class="home-content">
                 <swiper class="mySwiper home-swiper" slidesPerView="auto" :spaceBetween="32" :centeredSlides="false"
                     :pagination="{
-                    dynamicBullets: true,
-                }" :grabCursor="true" :modules="modules">
-                    <swiper-slide v-for=" item  in  missionList ">
+                        dynamicBullets: true,
+                    }" :grabCursor="true" :modules="modules">
+                    <swiper-slide v-for=" item in missionList ">
                         <MissionCard :mission=item />
                     </swiper-slide>
                     <swiper-slide v-for="i in 5 - missionList.length ">

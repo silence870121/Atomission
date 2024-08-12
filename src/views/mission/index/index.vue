@@ -1,6 +1,6 @@
 <script setup>
 import Masonry from '@/components/Masonry.vue';
-import { useMissionStore } from '../stores/mission';
+import { useMissionStore } from '@stores/mission';
 const mission = useMissionStore()
 </script>
 
@@ -12,7 +12,7 @@ const mission = useMissionStore()
             <button type="button">filter</button>
         </form>
         <button type="button">
-            <router-link to="/missions/edit">
+            <router-link to="/mission/edit">
                 New mission
             </router-link>
         </button>

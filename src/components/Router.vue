@@ -7,19 +7,19 @@ const index = ref([
         icon: "home",
         content: "home"
     }, {
-        path: "/targets",
+        path: "/compass",
         icon: "target",
         content: "area"
     }, {
-        path: "/missions",
+        path: "/mission",
         icon: "mission",
         content: "mission"
     }, {
-        path: "/profile",
+        path: "/profiles",
         icon: "profiles",
         content: "profiles"
     }, {
-        path: "/setting",
+        path: "/settings",
         icon: "setting",
         content: "setting"
     }
@@ -30,7 +30,7 @@ const customIndex = ref([
         icon: "info",
         content: "test"
     }, {
-        path: "/error",
+        path: "/404",
         icon: "info",
         content: "error"
     }

@@ -9,7 +9,7 @@
             But if you don't change your direction, and if you keep looking, you may end up
             where you are heading.
         </blockquote>
-        <router-link to="/" @click="toLocal('Atomission')" class="btn">
+        <router-link to="/" class="btn">
             back Home
         </router-link>
     </div>

@@ -3,7 +3,7 @@
 <template>
     <div class="function-bar">
         <button type="button">
-            <router-link to="/missions">
+            <router-link to="/mission">
                 Back mission
             </router-link>
         </button>
