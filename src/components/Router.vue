@@ -116,7 +116,7 @@ a {
     overflow: hidden;
 }
 
-a.router-link-exact-active,
+a.router-link-active,
 .nav-group ul li:last-child a {
     border: none
 }
@@ -142,18 +142,18 @@ a:hover::after {
     transition: all 200ms ease-in-out;
 }
 
-.router-link-exact-active,
-.router-link-exact-active:hover {
+.router-link-active,
+.router-link-active:hover {
     font-weight: 600;
     background: var(--nav-active);
     color: var(--active-from-color);
 }
 
-.router-link-exact-active::after {
+.router-link-active::after {
     display: none;
 }
 
-.router-link-exact-active .nav-icon {
+.router-link-active .nav-icon {
     color: var(--active-from-color);
 }
 
