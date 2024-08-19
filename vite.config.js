@@ -3,12 +3,16 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import UnoCSS from 'unocss/vite'
+
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue({
       reactivityTransform: true,
     }),
+    UnoCSS(),
     createSvgIconsPlugin({
       // 指定需要占存的Icon目錄
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],

@@ -16,8 +16,10 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.238",
     "@vitejs/plugin-vue": "^4.1.0",
     "fast-glob": "^3.3.0",
+    "unocss": "^0.62.2",
     "vite": "^4.2.0",
     "vite-plugin-svg-icons": "^2.0.1"
   }
