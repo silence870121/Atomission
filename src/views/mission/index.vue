@@ -1,26 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { storeToRefs } from 'pinia';
-import { useMissionStore } from '@stores/mission';
-
-
-const mission = useMissionStore()
-const { showTarget, showDesc, showTip } = storeToRefs(mission)
-mission.showTip = false
-
-
-
-const FILTER_LIST = ["Daily", "Weekly", "Stage"]
-let missionFilter = ref('')
-function setFilter(params) {
-    if (params) {
-        console.log(params);
-        missionFilter.value = params
-    } else {
-        console.log('SHOW ALL')
-        missionFilter.value = ''
-    }
-}
 
 let isScrolling = ref(false)
 function isScrollTop(params) {

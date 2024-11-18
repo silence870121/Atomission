@@ -1,7 +1,9 @@
 <script setup>
 import Masonry from '@/components/Masonry.vue';
-import { useMissionStore } from '@stores/mission';
-const mission = useMissionStore()
+import { useDataStore } from '@stores/data';
+const DataStore = useDataStore()
+
+
 </script>
 
 <template>

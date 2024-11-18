@@ -11,105 +11,17 @@ import 'swiper/css/pagination';
 
 //? import Missions
 import MissionCard from '@/components/Project/MissionCard.vue';
-import { storeToRefs } from 'pinia';
 import { useMissionStore } from '@stores/mission';
-import { useTargetStore } from '@stores/target';
+import { useCompassStore } from '@stores/compass';
 
 //? Swiper configs
 const modules = [Mousewheel, Pagination]
 
 //? Mission configs
 const mission = useMissionStore()
-const target = useMissionStore()
+const compass = useCompassStore()
 let missionList = ref([
-    {
-        id: "m0001",
-        title: "First mission",
-        type: "Daily",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission,This is the first mission, ",
-        level: 5,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 10,
-                requestNum: 50,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 30,
-                requestNum: 50,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-01-01",
-        modifiedDate: "2023-01-31",
-        tip: "This is a daily mission. "
-    }, {
-        id: "m0002",
-        title: "Second mission",
-        type: "Weekly",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the Second mission.This is the first mission.This is the first mission.",
-        level: 3,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 15,
-                requestNum: 30,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 35,
-                requestNum: 30,
-                unit: "unit"
-            }, {
-                content: "Mission Item 3",
-                done: 55,
-                requestNum: 30,
-                unit: "unit"
-            }
-        ],
-        createDate: "2023-02-01",
-        modifiedDate: "2023-02-28",
-        tip: ""
-    }, {
-        id: "m0003",
-        title: "Third mission",
-        type: "Stage",
-        branch: "Main",
-        forTarget: "First target",
-        description: "This is the first mission",
-        level: 1,
-        list: [
-            {
-                content: "Mission Item 1",
-                done: 5,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 2",
-                done: 15,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 3",
-                done: 25,
-                requestNum: 10,
-                unit: "unit"
-            }, {
-                content: "Mission Item 4",
-                done: 35,
-                requestNum: 10,
-                unit: "unit"
-            },
-        ],
-        createDate: "2023-03-01",
-        modifiedDate: "2023-03-31",
-        tip: "This is a daily mission. You must complete the mission, or else you will lose this mission score."
-    }
+
 ])
 
 </script>

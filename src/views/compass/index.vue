@@ -1,64 +1,69 @@
 <script setup>
-import TargetCard from '@/components/Project/TargetCard.vue';
-import TargetOption from '@/components/Project/TargetOption.vue';
-import { useTargetStore } from '@stores/target';
+import CompassCard from '@/components/compass/Compass_Card.vue';
+import compassOption from '@/components/compass/Compass_Option.vue';
+import { useCompassStore } from '@stores/compass';
 import { ref } from 'vue';
 
-const targetSetting = useTargetStore()
+const setting = useCompassStore()
 let defaultTarget = {
-    id: String,
-    title: String,
-    ability: Number,
-    stage: String,
-    tracked: Boolean,
-    timerMon: Number,
-    timerYear: Number,
-    progress: Number,
-    createDate: String,
-    modifiedDate: String,
+    id: "c2401001",
+    name: "name",
+    stage: "stage",
+    landmark: 1000,
+    score: 999,
+    aptness: "",
+    create_date: "yyyy-mm-dd",
+    edit_date: "",
+    isActive: true,
+    halveScore: false,
+    isMarked: false,
+    children: [],
 }
 
-let targetList = ref([{
-    id: 't0001',
-    title: 'First Target',
-    ability: 3,
-    stage: '初階',
-    tracked: false,
-    timerMon: 12,
-    timerYear: 1,
-    score: 0,
-    createDate: "2023-01-01",
-    modifiedDate: "2023-02-01",
-}, {
-    id: 't0002',
-    title: 'second Target',
-    ability: 5,
-    stage: '中階',
-    tracked: true,
-    timerMon: 0,
-    timerYear: 2,
-    score: 50000,
-    createDate: "2023-05-31",
-    modifiedDate: "2023-06-30",
-}, {
-    id: 't0003',
-    title: 'Third Target',
-    ability: 1,
-    stage: '高階',
-    tracked: true,
-    timerMon: 0,
-    timerYear: 5,
-    score: 50000,
-    createDate: "2023-09-15",
-    modifiedDate: "2023-10-16",
-}
+let targetList = ref([
+    {
+        id: "c2401001",
+        name: "name",
+        stage: "stage",
+        landmark: 1000,
+        score: 999,
+        aptness: "",
+        create_date: "yyyy-mm-dd",
+        edit_date: "",
+        isActive: true,
+        halveScore: false,
+        isMarked: false,
+        children: [],
+    }, {
+        id: 't0002',
+        title: 'second Target',
+        ability: 5,
+        stage: '中階',
+        tracked: true,
+        timerMon: 0,
+        timerYear: 2,
+        score: 50000,
+        createDate: "2023-05-31",
+        modifiedDate: "2023-06-30",
+    }, {
+        id: 't0003',
+        title: 'Third Target',
+        ability: 1,
+        stage: '高階',
+        tracked: true,
+        timerMon: 0,
+        timerYear: 5,
+        score: 50000,
+        createDate: "2023-09-15",
+        modifiedDate: "2023-10-16",
+    }
 ])
 
 function selectCardMode() {
-    targetSetting.isCardMode = true
+    setting.isCardMode = true
 }
 function selectListMode() {
-    targetSetting.isCardMode = false
+    setting.isCardMode = false
 }
 
 let activeTargetOption = ref(false)
