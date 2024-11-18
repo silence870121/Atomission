@@ -10,47 +10,46 @@ defineProps({
 </script>
 
 <template>
-    <div class="header">
+    <div class="nav">
         <!-- logo & theme mode -->
         <div class="logo">
             <svg-icon name="favicon" size="sm" />
             <p>Atomission</p>
-            <ThemeBtn />
         </div>
         <!-- search area -->
         <form class="search">
             <input type="text" placeholder="ctrl + K">
-            <button> <svg-icon name="setting" size="s" /> </button>
+            <button class="search-btn" @click="console.log('info')">
+                <i class="i-carbon:search" />
+            </button>
         </form>
         <!-- action button -->
-        <div class="btn-group">
-            <button class="btn"><svg-icon name="setting" size="s" /></button>
-            <button class="btn"><svg-icon name="setting" size="s" /></button>
-            <button class="btn user"><svg-icon name="profiles" size="s" /></button>
+        <div class="action">
+            <a @click="console.log('info')"><i class="i-carbon:information" /></a>
+            <a @click="console.log('info')"><i class="i-carbon:information" /></a>
+            <a @click="console.log('user')"><i class="i-carbon:user" /></a>
+            <ThemeBtn />
         </div>
 
     </div>
 </template>
 
 <style scoped>
-.header {
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0;
+.nav {
     width: 100%;
     height: 3.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem 0 2rem;
+    padding: 0 2rem 0 1rem;
     border-bottom: 1px solid var(--stroke-from-color);
-    backdrop-filter: blur(1rem);
+    /* backdrop-filter: blur(1rem); */
     background: var(--nav-rim);
 }
 
 .logo {
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -61,30 +60,30 @@ defineProps({
 }
 
 .search {
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-auto-flow: column;
     background: var(--action);
-    padding: 0 0.5rem;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 
-.search input {
-    background: none;
+
+.action {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-auto-flow: column;
 }
 
-.search button {
-    padding: 0;
-    margin: 0;
+.action a {
+    font-size: 1.5rem;
+    display: flex;
+    cursor: pointer;
+    color: var(--label-secondary-color);
+    transition: all 200ms linear;
 }
 
-.btn-group {
-    height: 3.5rem;
-}
-
-.btn {
-    width: 3rem;
-    height: 100%;
+.action a:hover {
+    color: var(--label-primary-color);
 }
 </style>

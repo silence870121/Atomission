@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import MissionCard from '@/components/Project/MissionCard.vue';
-const prop = defineProps({
+const props = defineProps({
     maxColumn: {
         type: Number,
         default: 4,
@@ -9,20 +9,20 @@ const prop = defineProps({
     },
     columnWidth: {
         type: Number,
-        default: 320,
+        default: 280,
         //? 元素寬度
     },
-    widthGap: {
+    rowGap: {
         type: Number,
-        default: 16
-        //? 元素寬度間隔
+        default: 2
+        //? 元素寬度間隔 (rem)
     },
-    heightGap: {
+    columnGap: {
         type: Number,
-        default: 16
-        //? 元素高度間隔
+        default: 3
+        //? 元素高度間隔 (rem)
     },
-    list: {
+    data: {
         type: Array,
         // required: true,
         //? 渲染列表
@@ -39,31 +39,25 @@ const prop = defineProps({
     },
 })
 
-
 // 每欄的列表
 let columnList = ref([])
 // 每欄的高度
 let columnHeights = ref([])
-
 // 瀑布的寬度
 let masonryWidth = ref(720)
 // 瀑布的欄數
 let columnsCount = ref(2)
 
 function renderMasonry() {
-    masonryWidth.value = document.querySelector('.v-masonry').offsetWidth
-    columnsCount.value = Math.min(Math.max(Math.floor(masonryWidth.value / prop.columnWidth), 1), prop.maxColumn)
+    masonryWidth.value = document.querySelector('.masonry-row').offsetWidth
+    columnsCount.value = Math.min(Math.max(Math.floor(masonryWidth.value / (props.columnWidth + props.columnGap)), 1), props.maxColumn)
     resetMasonryColumn()
-    appendCell(prop.list)
+    appendCell(props.data)
 
 }
-
-onMounted(() => {
-    renderMasonry()
-})
 window.onresize = () => { renderMasonry() }
 
-//? 初始化列表欄位
+//? 初始化列表欄位數量
 function resetMasonryColumn() {
     columnHeights.value = new Array(columnsCount.value).fill(0)
     columnList.value = []
@@ -71,9 +65,9 @@ function resetMasonryColumn() {
         columnList.value.push([])
     }
 }
-
-function appendCell(list) {
-    list.forEach(item => {
+function appendCell(data) {
+    data.forEach(item => {
+        if (!item.list) return
         //? 判斷最低高度
         const minHeight = Math.min(...columnHeights.value)
         //? 查詢最低高度的陣列索引
@@ -84,15 +78,23 @@ function appendCell(list) {
 
         //? 在 最低高度的次級列表 加入 當前的物件
         columnList.value[indexOfMinHeight].push(item)
+
+
     })
 }
+function hasData(params) {
+    return columnList[0].length == 0
+}
 
-
+onMounted(() => {
+    renderMasonry()
+})
 </script>
 
 <template>
-    <div class="v-masonry">
-        <ul v-for="list in columnList" class="masonry-column">
+    <div class="warning" v-if="hasData"> No any mission</div>
+    <div class="masonry-row" :style="{ '--gap': props.rowGap }">
+        <ul v-for="list in columnList" class="masonry-column" :style="{ '--gap': props.columnGap }">
             <li v-for="item in list" class="masonry-cell">
                 <MissionCard :mission="item" />
             </li>
@@ -101,30 +103,24 @@ function appendCell(list) {
 </template>
 
 <style scoped>
-.v-masonry {
+.masonry-row {
     width: 100%;
     display: flex;
-    gap: 1.5rem;
+    gap: calc(var(--gap) * 1rem);
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: start;
     flex-wrap: nowrap;
+    padding: 0 calc(var(--gap) * 0.5rem);
 }
 
 .masonry-column {
+    gap: calc(var(--gap) * 1rem);
     display: flex;
     flex-direction: column;
-    flex: 1;
-    gap: 1.5rem;
 }
 
 .masonry-cell {
-    width: 100%;
     display: flex;
     justify-content: center;
-}
-
-.mission-card {
-    width: 100%;
-    max-width: 25rem;
 }
 </style>
