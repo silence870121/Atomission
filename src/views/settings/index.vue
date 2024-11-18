@@ -129,14 +129,21 @@ let settingGroup = ref([
         ]
     }
 ])
-
+const debounce = (callback, delay = 500) => {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            callback(...args);
+        }, delay);
+    };
+}
 function scrollInto(id) {
     const View = document.getElementById(id)
     View.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-
-function highLightIndex(id) {
+const highLightIndex = debounce((id) => {
     const index = document.querySelectorAll('.index-group')
     index.forEach(i => {
         i.classList.remove("active")
@@ -145,7 +152,7 @@ function highLightIndex(id) {
             return
         }
     })
-}
+}, 300)
 const option = {
     root: null,
     rootMargin: "-128px 0px -100% 0px",
