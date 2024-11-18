@@ -85,78 +85,87 @@ function setFilter(params) {
 
 <template>
     <Router />
-    <div class="target">
-        <div class="target-head">
-            <h2>----- Target -----</h2>
-            <div v-if="targetSetting.isCardMode" class="target-mode">
-                <button @click="selectCardMode" class="active">Card</button>
-                <button @click="selectListMode">List</button>
-            </div>
-            <div v-else class="target-mode">
-                <button @click="selectCardMode">Card</button>
-                <button @click="selectListMode" class="active">List</button>
+    <div class="container">
+        <div class="compass-bar">
+            <h2>Compass</h2>
+            <div class="compass-btn">
+                <button @click="selectCardMode" :class="{ active: setting.isCardMode }">
+                    <i class="i-carbon:grid"></i>
+                </button>
+                <button @click="selectListMode" :class="{ active: !setting.isCardMode }">
+                    <i class="i-carbon:list-boxes"></i>
+                </button>
             </div>
         </div>
-        <div class="target-content">
-            <TargetCard v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)" :target="item"
-                :mode="targetSetting.isCardMode" />
-        </div>
-
-
+        <ul class="compass-layout" :class="{ 'compass-layout-card': setting.isCardMode }">
+            <li v-for="item in targetList.sort((a, b) => b.tracked - a.tracked)">
+                <CompassCard detail :isCard="setting.isCardMode" />
+            </li>
+        </ul>
     </div>
 </template>
 
 <style scoped>
-.target {
+.container {
     width: 100%;
-    max-width: 35rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    max-width: 1200px;
     padding: 2rem;
 }
 
-.target-head {
+.compass-bar {
     width: 100%;
     display: flex;
-    align-items: start;
-    gap: 10rem;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-.target-head h2 {
-    flex: 1;
-}
-
-.target-mode {
+.compass-btn {
     display: flex;
     gap: 0.5rem;
-    padding: 0.5rem 0;
 }
 
-.target-mode button {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.25rem;
-    font-weight: bold;
-
+.compass-btn button {
+    font-size: 1.5rem;
+    padding: 0.5rem;
     color: var(--wireframe-placeholder-color);
-    background: var(--wireframe-surface-color);
+    border: 1px solid var(--wireframe-placeholder-color);
+    background: var(--action-from-color);
+    border-radius: var(--border-radius-md);
 }
 
-.target-content {
-    width: 100%;
-    display: flex;
-    align-items: start;
-    gap: 1rem;
-    flex-wrap: wrap;
-
-}
-
-.target-mode button.active {
-    color: var(--wireframe-surface-color);
+.compass-btn button.active {
+    color: var(--active-from-color);
     background: var(--wireframe-placeholder-color);
+    transition: all 200ms ease-in-out;
+}
+
+
+.compass-layout {
+    --min: 7.5rem;
+    --max: 25rem;
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--min), var(--max)));
+}
+
+.compass-layout-card {
+    --min: 7.5rem;
+    --max: 15rem;
+    display: grid;
+    padding-top: 1.5rem;
+    gap: 1rem;
+    grid-template-columns: minmax(var(--min), var(--max)) repeat(auto-fit, minmax(var(--min), var(--max)));
+}
+
+@media (max-width:540px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .compass-layout {
+        --max: 100%;
+    }
 }
 </style>

@@ -13,14 +13,15 @@ const DataStore = useDataStore()
             <button type="button">search</button>
             <button type="button">filter</button>
         </form>
-        <button type="button">
+        <button class="create-btn">
+            <i class="i-carbon:add-large"></i>
+            <a href="/mission/edit"></a>
             <router-link to="/mission/edit">
                 New mission
             </router-link>
         </button>
     </div>
-
-    <Masonry :list="mission.data" />
+    <Masonry :data="DataStore.missions" />
 </template>
 
 <style scoped>
@@ -37,5 +38,22 @@ const DataStore = useDataStore()
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.create-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.25rem;
+    padding-right: 0.75rem;
+    border-radius: var(--border-radius-sm);
+    background: var(--action);
+    color: var(--active-from-color);
+    font-size: 0.75rem;
+    text-transform: capitalize;
+}
+
+.create-btn i {
+    font-size: 1rem;
 }
 </style>
