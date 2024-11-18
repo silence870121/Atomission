@@ -3,7 +3,7 @@ const PAGE_TITLE = 'mission'
 const pages = import.meta.glob('./*/page.js', { eager: true, import: 'default' });
 const pagesComps = import.meta.glob('./*/index.vue');
 const children = Object.entries(pages).map(([path, config]) => {
-    console.table(path)
+
     let pageJSPath = path
     // format path
     path = path.replace('./', '').replace('index', '').replace('/page.js', '')
@@ -22,7 +22,7 @@ const children = Object.entries(pages).map(([path, config]) => {
         children: config.children,
     }
 });
-console.table(children)
+
 
 export default {
     meta: {

@@ -89,6 +89,6 @@ routes.push({
     hidden: true
 });
 export default createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/atomission/'),
     routes,
 })

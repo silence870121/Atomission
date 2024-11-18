@@ -1,40 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useMenuStore } from "@stores/menu.js";
 
-const index = ref([
-    {
-        path: "/",
-        icon: "home",
-        content: "home"
-    }, {
-        path: "/compass",
-        icon: "target",
-        content: "area"
-    }, {
-        path: "/mission",
-        icon: "mission",
-        content: "mission"
-    }, {
-        path: "/profiles",
-        icon: "profiles",
-        content: "profiles"
-    }, {
-        path: "/settings",
-        icon: "setting",
-        content: "setting"
-    }
-])
-const customIndex = ref([
-    {
-        path: "/test",
-        icon: "info",
-        content: "test"
-    }, {
-        path: "/404",
-        icon: "info",
-        content: "error"
-    }
-])
+const menuStore = useMenuStore();
 
 </script>
 
@@ -42,24 +10,37 @@ const customIndex = ref([
     <nav class="navbar">
         <div class="nav-group">
             <ul>
-                <li v-for="i in index">
-                    <router-link :to="i.path">
-                        <div class="nav-icon"> <svg-icon :name="i.icon" size="s" /> </div>
+                <li v-for="router in menuStore.routes">
+                    <router-link :to="router.path">
+                        <div class="nav-icon"> <i :class=router.icon /> </div>
                         <div class="content">
-                            {{ i.content }}
+                            {{ router.content }}
+                        </div>
+                    </router-link>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-group" v-for="mission in menuStore.bookmark">
+            <h3>{{ mission.compass }}</h3>
+            <ul>
+                <li v-for="router in mission.routes">
+                    <router-link :to="router.path">
+                        <div class="nav-icon"> <i :class=router.icon /> </div>
+                        <div class="content">
+                            {{ router.content }}
                         </div>
                     </router-link>
                 </li>
             </ul>
         </div>
         <div class="nav-group">
-            <h3>My team</h3>
+            <h3>dev tool</h3>
             <ul>
-                <li v-for="i in customIndex">
-                    <router-link :to="i.path">
-                        <div class="nav-icon"> <svg-icon :name="i.icon" size="s" /> </div>
+                <li v-for="router in menuStore.custom">
+                    <router-link :to="router.path">
+                        <div class="nav-icon"> <i :class=router.icon /> </div>
                         <div class="content">
-                            {{ i.content }}
+                            {{ router.content }}
                         </div>
                     </router-link>
                 </li>
@@ -70,10 +51,6 @@ const customIndex = ref([
 
 <style scoped>
 .navbar {
-    position: fixed;
-    top: 3.5rem;
-    left: 0;
-    height: 100%;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -81,6 +58,7 @@ const customIndex = ref([
     border-image: var(--line-column) 1;
     border-right: 1px solid;
     color: var(--label-secondary-color);
+    text-transform: capitalize;
 }
 
 .nav-group h3 {
@@ -94,6 +72,7 @@ const customIndex = ref([
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
 }
 
 
@@ -160,6 +139,7 @@ a:hover::after {
 @media (max-width:540px) {
     .navbar {
         top: 0;
+        bottom: 0;
         left: 0;
         transform: translateX(calc(-100% + 0.5rem));
         position: fixed;
