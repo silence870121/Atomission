@@ -6,13 +6,12 @@ const setting = useSettingStore()
 </script>
 
 <template>
-    <button v-if="setting.isDarkMode" class="theme-btn" @click="theme.lightTheme()">L</button>
-    <button v-else class="theme-btn" @click="theme.darkTheme()">D</button>
+    <a v-if="setting.isDarkMode" @click="theme.lightTheme()">
+        <i class="i-carbon:moon"></i>
+    </a>
+    <a v-else @click="theme.darkTheme()">
+        <i class="i-carbon:sun"></i>
+    </a>
 </template>
 
-<style>
-.theme-btn {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-</style>
+<style></style>

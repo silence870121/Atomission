@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue';
-import { useThemeStore } from '@/stores/theme';
+import { useThemeStore } from '@stores/theme';
 const theme = useThemeStore()
 onMounted(() => {
 	theme.renderThemeStyle()
@@ -15,13 +15,10 @@ onMounted(() => {
 
 <style>
 main {
+	flex: 1;
 	width: 100%;
-	height: 100%;
 	display: flex;
 	flex-direction: row;
-
-	padding-left: 10rem;
-	margin-top: 3.5rem;
 }
 
 h2 {
@@ -36,15 +33,13 @@ h2 {
 }
 
 .border::after {
+	--padding: 1px;
 	content: "";
 	position: absolute;
 	z-index: -1;
-	left: -1px;
-	top: -1px;
-	bottom: -1px;
-	right: -1px;
-	padding: 1px;
-	border-radius: var(--border-radius-md);
+	inset: calc(var(--padding) * -1);
+	padding: calc(var(--padding) * 1.1);
+	border-radius: calc(var(--border-radius-md) + var(--padding));
 	background: var(--border);
 	--m-o: content-box, padding-box;
 	--m-i: linear-gradient(white, black);
