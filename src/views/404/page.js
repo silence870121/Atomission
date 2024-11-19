@@ -3,5 +3,6 @@ export default {
     name: '404-not-found',
     meta: {
         title: '404 Not Found',
+        hideNavbar: true,
     }
 }

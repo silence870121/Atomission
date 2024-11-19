@@ -1,9 +1,11 @@
 <script setup></script>
 
 <template>
-    <Router />
-    <h2> Profile </h2>
+    <div class="container">
+        <h2> Profile </h2>
 
+        <p>no data</p>
+    </div>
 </template>
 
 <style scoped></style>

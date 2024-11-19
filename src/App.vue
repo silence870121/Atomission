@@ -5,10 +5,13 @@ const theme = useThemeStore()
 onMounted(() => {
 	theme.renderThemeStyle()
 })
+
+
 </script>
 <template>
 	<Header />
 	<main>
+		<Router v-if="!$route.meta.hideNavbar" />
 		<router-view />
 	</main>
 </template>
@@ -19,6 +22,14 @@ main {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
+	padding-top: 3.5rem;
+}
+
+.container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
 }
 
 h2 {

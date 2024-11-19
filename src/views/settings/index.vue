@@ -140,7 +140,10 @@ const debounce = (callback, delay = 500) => {
 }
 function scrollInto(id) {
     const View = document.getElementById(id)
-    View.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.scrollTo({
+        top: View.offsetTop - 56,
+        behavior: 'smooth'
+    })
 }
 
 const highLightIndex = debounce((id) => {
@@ -180,8 +183,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Router />
-    <div id="setting" class="setting">
+    <div id="setting" class="container">
         <div class="setting-content">
             <form v-for="form in settingGroup" :id="form.settingId" class="setting-group">
                 <h2> {{ form.groupName }}</h2>
@@ -206,25 +208,20 @@ onUnmounted(() => {
                     <li v-for="i in form.list">{{ i.label }}</li>
                 </ul>
             </div>
-
         </aside>
     </div>
 
 </template>
 
 <style scoped>
-.setting {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.container {
     align-items: start;
-    gap: 4rem;
-    margin-top: -3.5rem;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .setting-content {
-    max-width: 960px;
-    padding-left: 2rem;
+    max-width: 720px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -238,11 +235,11 @@ onUnmounted(() => {
 
 .setting-group h2 {
     font-size: 1.5rem;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     border-image: var(--line-row) 1;
     border-bottom: 1px solid;
-    margin-top: 3.5rem;
+    /* margin-top: 3.5rem; */
     margin-bottom: 1.5rem;
 }
 

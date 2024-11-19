@@ -17,7 +17,6 @@ let missionList = ref([
 
 </script>
 <template>
-    <Router />
     <div class="container">
         <section>
             <h2 class="home-title">
@@ -52,15 +51,6 @@ let missionList = ref([
 </template>
 
 <style scoped>
-.container {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    justify-content: space-between;
-}
-
 section {
     flex: 1;
     display: flex;
@@ -89,5 +79,11 @@ section {
 
 .disabled {
     opacity: 0.25;
+}
+
+@media (max-width:540px) {
+    .container {
+        padding: 1rem;
+    }
 }
 </style>

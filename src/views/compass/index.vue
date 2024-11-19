@@ -84,9 +84,8 @@ function setFilter(params) {
 </script>
 
 <template>
-    <Router />
     <div class="container">
-        <div class="compass-bar">
+        <div class="compass-toolbar">
             <h2>Compass</h2>
             <div class="compass-btn">
                 <button @click="selectCardMode" :class="{ active: setting.isCardMode }">
@@ -106,14 +105,8 @@ function setFilter(params) {
 </template>
 
 <style scoped>
-.container {
-    width: 100%;
-    max-width: 1200px;
-    padding: 2rem;
-}
-
-.compass-bar {
-    width: 100%;
+.compass-toolbar {
+    max-width: 51rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

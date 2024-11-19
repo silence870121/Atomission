@@ -12,10 +12,10 @@ defineProps({
 <template>
     <div class="nav">
         <!-- logo & theme mode -->
-        <div class="logo">
+        <router-link to="/" class="logo">
             <svg-icon name="favicon" size="sm" />
-            <p>Atomission</p>
-        </div>
+            Atomission
+        </router-link>
         <!-- search area -->
         <form class="search">
             <input type="text" placeholder="ctrl + K">
@@ -36,6 +36,8 @@ defineProps({
 
 <style scoped>
 .nav {
+    position: fixed;
+    z-index: 1;
     width: 100%;
     height: 3.5rem;
     display: flex;
@@ -44,7 +46,7 @@ defineProps({
     justify-content: space-between;
     padding: 0 2rem 0 1rem;
     border-bottom: 1px solid var(--stroke-from-color);
-    /* backdrop-filter: blur(1rem); */
+    backdrop-filter: blur(1rem);
     background: var(--nav-rim);
 }
 
@@ -52,12 +54,10 @@ defineProps({
     height: 100%;
     display: flex;
     align-items: center;
-}
-
-.logo p {
     font-weight: 600;
     letter-spacing: 2px;
 }
+
 
 .search {
     display: grid;

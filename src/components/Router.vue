@@ -8,18 +8,17 @@ const menuStore = useMenuStore();
 
 <template>
     <nav class="navbar">
-        <div class="nav-group">
-            <ul>
-                <li v-for="router in menuStore.routes">
-                    <router-link :to="router.path">
-                        <div class="nav-icon"> <i :class=router.icon /> </div>
-                        <div class="content">
-                            {{ router.content }}
-                        </div>
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+
+        <ul class="nav-group">
+            <li v-for="router in menuStore.routes">
+                <router-link :to="router.path">
+                    <div class="nav-icon"> <i :class=router.icon /> </div>
+                    <div class="content">
+                        {{ router.content }}
+                    </div>
+                </router-link>
+            </li>
+        </ul>
         <div class="nav-group" v-for="mission in menuStore.bookmark">
             <h3>{{ mission.compass }}</h3>
             <ul>
@@ -46,20 +45,25 @@ const menuStore = useMenuStore();
                 </li>
             </ul>
         </div>
+
     </nav>
 </template>
 
 <style scoped>
 .navbar {
+    height: calc(100vh - 3.5rem);
+    position: sticky;
+    top: 3.5rem;
     display: flex;
-    gap: 1rem;
     flex-direction: column;
+    gap: 1rem;
     background: var(--surface);
     border-image: var(--line-column) 1;
     border-right: 1px solid;
     color: var(--label-secondary-color);
     text-transform: capitalize;
 }
+
 
 .nav-group h3 {
     text-align: left;

@@ -23,7 +23,6 @@
     justify-content: center;
     align-items: center;
     padding: 8rem 2rem;
-    margin-left: -10rem;
     text-align: center;
 }
 
@@ -63,7 +62,9 @@
     padding: 0.5rem 1rem;
     margin-top: 2rem;
     border-radius: 2rem;
-    /* background: var(--action); */
+    background: var(--action);
     border: 2px solid var(--wireframe-placeholder-color);
+    text-transform: capitalize;
+    font-weight: bold;
 }
 </style>

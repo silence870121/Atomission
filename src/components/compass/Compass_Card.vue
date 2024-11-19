@@ -142,7 +142,7 @@ const getProgress = computed(() => {
 .compass-progress {
     text-align: right;
     text-wrap: nowrap;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 .detail .compass-progress {
@@ -155,5 +155,12 @@ const getProgress = computed(() => {
 .compass-card .compass-progress {
     top: 2.75rem;
     font-size: 1.25rem;
+}
+
+@media (max-width:540px) {
+    .compass-svg {
+        width: 3rem;
+        height: 3rem;
+    }
 }
 </style>
