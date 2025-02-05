@@ -21,7 +21,7 @@ const DataStore = useDataStore()
             </router-link>
         </button>
     </div>
-    <Masonry :data="DataStore.missions" />
+    <Masonry :data="DataStore.missionList" />
 </template>
 
 <style scoped>
