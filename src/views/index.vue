@@ -11,9 +11,6 @@ import { useCompassStore } from '@stores/compass';
 //? Mission configs
 const mission = useMissionStore()
 const compass = useCompassStore()
-let missionList = ref([
-
-])
 
 </script>
 <template>

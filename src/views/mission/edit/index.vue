@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { useDataStore } from '@stores/data';
+const DataStore = useDataStore()
+
+
+</script>
 
 <template>
     <div class="function-bar">
