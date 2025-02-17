@@ -4,24 +4,68 @@ import { ref, watchEffect } from "vue";
 export const useIndexedStore = defineStore('indexedDatabase', () => {
     const storeID = 'indexedDatabase'
 
-    let db = ref()
-    //TODO initIDB
-
+    // TODO: init indexedDB
+    // *--------------------------*
+    // *----- init indexedDB -----*
+    // *--------------------------*
     const initIDB = new Promise((resolve, reject) => {
         const request = window.indexedDB.open('atomission', 1)
         request.onerror = (err) => { reject(err.target.result) }
         request.onsuccess = (res) => {
-            db.value = res.result
+            console.log('indexedDB is ready');
             resolve(res.target.result)
         }
         request.onupgradeneeded = (res) => {
-            db.value = res.result
+            console.log('indexedDB is upgrading');
+            initObjectStore(res)
             resolve(res.target.result)
         }
     })
-
-
-
+    function initObjectStore(res) {
+        const db = res.target.result
+        dbDirectory.forEach(store => {
+            if (!db.objectStoreNames.contains(store.name)) { db.createObjectStore(store.name, { keyPath: store.keyPath }) }
+            checkObjectStore(res.target, store)
+        })
+    }
+    function checkObjectStore(db, store) {
+        if (!store.index) return;
+        const objectStore = db.transaction.objectStore(store.name)
+        store.index.forEach(index => {
+            if (objectStore.indexNames.contains(index.name)) return;
+            objectStore.createIndex(index.name, index.name, { unique: index.unique })
+        })
+    }
+    const dbDirectory = [
+        {
+            name: 'user', keyPath: 'id',
+            index: [
+                { name: 'username', unique: true },
+                { name: 'email', unique: true },
+            ]
+        },
+        { name: 'profile', keyPath: 'id', },
+        { name: 'setting', keyPath: 'id', },
+        {
+            name: 'mission', keyPath: 'id',
+            index: [
+                { name: 'compass', unique: false },
+                { name: 'type', unique: false },
+                { name: 'test', unique: false },
+            ]
+        },
+        { name: 'missionHistory', keyPath: 'id', },
+        {
+            name: 'compass', keyPath: 'id',
+            index: [
+                { name: 'stage', unique: false },
+                { name: 'aptness', unique: false },
+            ]
+        },
+    ]
+    // *------------------------------*
+    // *----- indexedDB function -----*
+    // *------------------------------*
     /**
      * 將資料新增到指定的物件存檔
      * @param {string} url objectStore name
@@ -37,7 +81,6 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
-
     /**
      * 取得物件存檔中的單筆指定資料
      * @param {string} url objectStore name
@@ -53,9 +96,6 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
-
-
-    //TODO getAllStoreData
     /**
      * 取得物件存檔中的所有資料
      * @param {string} url objectStore name  
@@ -70,8 +110,6 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
-
-
     /**
      * 更新物件存檔中的指定資料
      * @param {string} url objectStore name
@@ -102,7 +140,6 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
-
     // TODO: TEST
     // *----------------*
     // *----- TEST -----*
