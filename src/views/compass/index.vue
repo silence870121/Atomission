@@ -1,6 +1,5 @@
 <script setup>
-import CompassCard from '@/components/compass/Compass_Card.vue';
-import compassOption from '@/components/compass/Compass_Option.vue';
+import CompassCard from '@/components/Project/Compass_Card.vue';
 import { useCompassStore } from '@stores/compass';
 import { ref } from 'vue';
 
