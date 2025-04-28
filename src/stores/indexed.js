@@ -9,7 +9,7 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
     // *----- init indexedDB -----*
     // *--------------------------*
     const initIDB = new Promise((resolve, reject) => {
-        const request = window.indexedDB.open('atomission', 1)
+        const request = window.indexedDB.open('atomission', 4)
         request.onerror = (err) => { reject(err.target.result) }
         request.onsuccess = (res) => {
             console.log('indexedDB is ready');
@@ -38,25 +38,25 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
     }
     const dbDirectory = [
         {
-            name: 'user', keyPath: 'id',
+            name: 'user', keyPath: 'user_id',
             index: [
                 { name: 'username', unique: true },
                 { name: 'email', unique: true },
             ]
         },
-        { name: 'profile', keyPath: 'id', },
-        { name: 'setting', keyPath: 'id', },
+        { name: 'profile', keyPath: 'user_id', },
+        { name: 'setting', keyPath: 'user_id', },
         {
-            name: 'mission', keyPath: 'id',
+            name: 'mission', keyPath: 'mission_id',
             index: [
                 { name: 'compass', unique: false },
                 { name: 'type', unique: false },
                 { name: 'test', unique: false },
             ]
         },
-        { name: 'missionHistory', keyPath: 'id', },
+        { name: 'missionHistory', keyPath: 'mission_id', },
         {
-            name: 'compass', keyPath: 'id',
+            name: 'compass', keyPath: 'compass_id',
             index: [
                 { name: 'stage', unique: false },
                 { name: 'aptness', unique: false },
@@ -74,10 +74,10 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
     async function addStoreData(url, data) {
         const db = await initIDB;
         return await new Promise((resolve, reject) => {
-            const transaction = db.value.transaction(url, 'readwrite');
+            const transaction = db.transaction(url, 'readwrite');
             const objectStore = transaction.objectStore(url);
             let Req = objectStore.add(data);
-            Req.onerror = (e) => { reject(e.target.result); };
+            Req.onerror = (e) => { reject(e.target.error); };
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
@@ -92,7 +92,7 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             const transaction = db.transaction(url);
             const objectStore = transaction.objectStore(url);
             let Req = objectStore.get(id);
-            Req.onerror = (e) => { reject(e.target.result); };
+            Req.onerror = (e) => { reject(e.target.error); };
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
@@ -106,7 +106,7 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
             const transaction = db.transaction(url);
             const objectStore = transaction.objectStore(url);
             let Req = objectStore.getAll();
-            Req.onerror = (e) => { reject(e.target.result); };
+            Req.onerror = (e) => { reject(e.target.error); };
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
@@ -118,10 +118,10 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
     async function updateStoreData(url, data) {
         const db = await initIDB;
         return await new Promise((resolve, reject) => {
-            const transaction = db.value.transaction(url, 'readwrite')
+            const transaction = db.transaction(url, 'readwrite')
             const objectStore = transaction.objectStore(url)
             let Req = objectStore.put(data)
-            Req.onerror = (e) => { reject(e.target.result); };
+            Req.onerror = (e) => { reject(e.target.error); };
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
@@ -133,10 +133,10 @@ export const useIndexedStore = defineStore('indexedDatabase', () => {
     async function removeStoreData(url, id) {
         const db = await initIDB;
         return await new Promise((resolve, reject) => {
-            const transaction = db.value.transaction(url, 'readwrite')
+            const transaction = db.transaction(url, 'readwrite')
             const objectStore = transaction.objectStore(url)
             let Req = objectStore.delete(id)
-            Req.onerror = (e) => { reject(e.target.result); };
+            Req.onerror = (e) => { reject(e.target.error); };
             Req.onsuccess = (e) => { resolve(e.target.result); };
         });
     }
