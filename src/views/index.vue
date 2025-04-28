@@ -1,16 +1,18 @@
 <script setup>
 import { ref } from 'vue';
-import CompassCard from '@/components/compass/Compass_Card.vue';
+import CompassCard from '@/components/Project/Compass_Card.vue';
 import MissionCard from '@/components/Project/MissionCard.vue';
 import Swiper from '@/components/layouts/Swiper.vue';
 
 import { useMissionStore } from '@stores/mission';
 import { useCompassStore } from '@stores/compass';
+import { useTimerStore } from '@stores/timer';
 
 
 //? Mission configs
 const mission = useMissionStore()
 const compass = useCompassStore()
+const timer = useTimerStore()
 
 </script>
 <template>
