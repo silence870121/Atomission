@@ -1,0 +1,105 @@
+{
+    "user": {
+        "user_id": "",
+        "profile": {},
+        "settings": {},
+        "compass": {},
+        "mission": {},
+        "missionHistory": {}
+    },
+    "mission": {
+        "mission_id": "",
+        "name": "",
+        "description": "",
+        "compass": "none",
+        "type": "daily",
+        "level": "normal",
+        "create_date": "",
+        "edit_date": "",
+        "limit_date": "",
+        "isActive": true,
+        "isMarked": false,
+        "isCompleted": false,
+        "taskSort": [
+            "task_1",
+            "task_2",
+            "task_4",
+            "task_3"
+        ],
+        "task": {
+            "task_1": {
+                "isActive": true,
+                "content": "Task Content 1",
+                "completedNum": 0,
+                "requiredNum": 0,
+                "unit": "unit"
+            },
+            "task_2": {
+                "isActive": false,
+                "content": "Task Content 2",
+                "completedNum": 0,
+                "requiredNum": 0,
+                "unit": "unit"
+            },
+            "task_3": {
+                "isActive": false,
+                "content": "Task Content 3",
+                "completedNum": 0,
+                "requiredNum": 0,
+                "unit": "unit"
+            },
+            "task_4": {
+                "isActive": false,
+                "content": "Task Content 4",
+                "completedNum": 0,
+                "requiredNum": 0,
+                "unit": "unit"
+            }
+        }
+    },
+    "missionHistory": {
+        "mission_id": {
+            "yyyy-mm-dd": {
+                "status": "completed | in-progress | failed",
+                "task_1": 0,
+                "task_2": 0,
+                "task_3": 0,
+                "task_4": 0
+            }
+        }
+    },
+    "compass": {
+        "compass_id": "c0001",
+        "name": "Compass Name",
+        "stage": "stage",
+        "landmark": 0,
+        "progress": 0,
+        "aptness": "Easier | Easy | Normal | Hard | Harder",
+        "create_date": "yyyy-mm-dd",
+        "edit_date": "yyyy-mm-dd",
+        "isActive": false,
+        "halveScore": false,
+        "isMarked": true
+    },
+    "profile": {
+        "user_id": "",
+        "username": "username",
+        "password": "password",
+        "name": "name",
+        "email": "username@example.com",
+        "bio": "Tell us a little bit about yourself",
+        "avatar": "/avatar.png",
+        "location": "City, Country",
+        "website": "https://example.com"
+    },
+    "settings": {
+        "user_id": "",
+        "theme": "light",
+        "language": "en",
+        "notifications": true,
+        "privacy": {
+            "location": false,
+            "dataSharing": false
+        }
+    }
+}

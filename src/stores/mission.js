@@ -1,32 +1,12 @@
 import { defineStore } from "pinia";
 import { useDataStore } from "@stores/data"
 import { ref } from "vue";
-
+import defaultData from "@/assets/default.json";
 export const useMissionStore = defineStore('mission', () => {
-    const missionDataStore = useDataStore().db_missions
+    const dataStore = useDataStore()
 
     //? CONSTANTS
-    const DEFAULT_MISSION = {
-        id: '',
-        name: '',
-        description: '',
-        compass: '',
-        type: 'Select Type',
-        level: 'Normal',
-        create_date: 'yyyy-mm-dd',
-        edit_date: '',
-        limit_date: '',
-        isMarked: false,
-        isCompleted: false,
-        itemList: [
-            {
-                name: '任務細項',
-                completed_num: 0,
-                request_num: 1,
-                unit: '單位'
-            }
-        ]
-    }
+    const DEFAULT_MISSION = defaultData.mission
     const OPTION = {
         type: {
             daily: '每日',
@@ -46,64 +26,26 @@ export const useMissionStore = defineStore('mission', () => {
         }
     }
     //? Mission's edit database
-    let missionForm = ref({
-        id: "",
-        name: "",
-        description: "",
-        compass: "---none---",
-        type: "once",
-        level: "normal",
-        create_date: "yyyy-mm-dd",
-        edit_date: "yyyy-mm-dd",
-        limit_date: "yyyy-mm-dd",
-        isMarked: false,
-        isCompleted: false,
-        itemList: [
-            {
-                name: "任務細項-1",
-                completed_num: 0,
-                request_num: 1,
-                unit: "單位"
-            },
-            {
-                name: "任務細項-2",
-                completed_num: 0,
-                request_num: 1,
-                unit: "單位"
-            }, {
-                name: "任務細項-3",
-                completed_num: 0,
-                request_num: 1,
-                unit: "單位"
-            }, {
-                name: "任務細項-4",
-                completed_num: 0,
-                request_num: 1,
-                unit: "單位"
-            },
-        ]
-    })
+    let missionEditor = ref({ ...defaultData.mission })
+    let missionList = ref([])
 
-    function clearMissionForm() {
-        missionForm.value = {}
+    function getAllMission() {
+        dataStore.getAllData('user').then((res) => {
+            missionList.value = res
+        })
     }
-
-    function editMission(id) {
+    function sortTask(mission) {
+        mission.taskSort.sort((a, b) => {
+            return mission.task[b].isActive - mission.task[a].isActive
+        })
     }
-    function saveMission(id) {
-
-    }
-    function createMission() {
-        clearMissionForm()
-    }
-
-    function generateID() {
-        const missionLength = useDataStore().db_profile.missionLength
-        missionLength = missionLength++
-        return `m${missionLength}`
-    }
-
 
     return {
+        sortTask,
+        DEFAULT_MISSION,
+        OPTION,
+        missionEditor,
+        missionList,
+        getAllMission
     }
 })
