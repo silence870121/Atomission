@@ -12,6 +12,9 @@ export default defineConfig({
   plugins: [
     vue({
       reactivityTransform: true,
+      script: {
+        defineModel: true,
+      },
     }),
     UnoCSS(),
     createSvgIconsPlugin({
@@ -25,6 +28,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@icons': fileURLToPath(new URL('./src/assets/icons', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
       '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
     },
   },
