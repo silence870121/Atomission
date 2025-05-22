@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import MissionCard from '@/components/Project/MissionCard.vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+import MissionCard from '@/components/mission/MissionCard.vue';
 const props = defineProps({
     maxColumn: {
         type: Number,

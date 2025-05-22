@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-import CompassCard from '@/components/Project/Compass_Card.vue';
-import MissionCard from '@/components/Project/MissionCard.vue';
+import CompassCard from '@/components/compass/CompassCard.vue';
+import MissionCard from '@/components/mission/MissionCard.vue';
 import Swiper from '@/components/layouts/Swiper.vue';
 
 import { useMissionStore } from '@stores/mission';
