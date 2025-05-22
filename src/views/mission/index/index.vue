@@ -1,27 +1,32 @@
 <script setup>
 import Masonry from '@/components/Masonry.vue';
+import basicButton from '@/components/basic/button.vue';
+import formText from '@/components/form/text.vue';
 import { useDataStore } from '@stores/data';
+import { useMissionStore } from '@stores/mission';
+import { onMounted } from 'vue';
+
+const PAGE_PATH = '/mission'
 const DataStore = useDataStore()
+const MissionStore = useMissionStore()
 
-
+onMounted(() => {
+    MissionStore.getAllMission()
+})
 </script>
 
 <template>
     <div class="function-bar">
         <form action="">
-            <input type="text" name="filter" id="" placeholder="ctrl + K">
-            <button type="button">search</button>
-            <button type="button">filter</button>
+            <form-text name="filter" placeholder="ctrl + K" />
+            <basic-button round background icon="i-carbon:search" />
+            <basic-button round background icon="i-carbon:filter" />
         </form>
-        <button class="create-btn">
-            <i class="i-carbon:add-large"></i>
-            <a href="/mission/edit"></a>
-            <router-link to="/mission/edit">
-                New mission
-            </router-link>
-        </button>
+        <basic-button @click="$router.push('/mission/edit')" round background icon="i-carbon:add-large">
+            New mission
+        </basic-button>
     </div>
-    <Masonry :data="DataStore.missionList" />
+    <Masonry :data="MissionStore.missionList" />
 </template>
 
 <style scoped>
@@ -38,6 +43,7 @@ const DataStore = useDataStore()
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
 }
 
 .create-btn {

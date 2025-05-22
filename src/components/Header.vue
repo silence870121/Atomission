@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="nav">
+    <header class="nav">
         <!-- logo & theme mode -->
         <router-link to="/" class="logo">
             <svg-icon name="favicon" size="sm" />
@@ -31,7 +31,7 @@ defineProps({
             <ThemeBtn />
         </div>
 
-    </div>
+    </header>
 </template>
 
 <style scoped>

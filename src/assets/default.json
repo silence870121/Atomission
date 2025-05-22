@@ -17,8 +17,8 @@
         "create_date": "",
         "edit_date": "",
         "limit_date": "",
-        "isActive": true,
-        "isMarked": false,
+        "isEnabled": true,
+        "isMarked": true,
         "isCompleted": false,
         "taskSort": [
             "task_1",
@@ -70,16 +70,17 @@
     },
     "compass": {
         "compass_id": "c0001",
-        "name": "Compass Name",
-        "stage": "stage",
-        "landmark": 0,
+        "name": "",
+        "description": "",
+        "stage": "normal",
+        "landmark": 30,
         "progress": 0,
-        "aptness": "Easier | Easy | Normal | Hard | Harder",
+        "aptness": "normal",
+        "isMarked": false,
         "create_date": "yyyy-mm-dd",
         "edit_date": "yyyy-mm-dd",
-        "isActive": false,
-        "halveScore": false,
-        "isMarked": true
+        "isEnabled": true,
+        "isFull": true
     },
     "profile": {
         "user_id": "",
