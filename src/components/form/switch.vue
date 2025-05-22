@@ -1,6 +1,9 @@
 <script setup>
 const props = defineProps({
-
+    name: {
+        type: String,
+        default: 'switch',
+    },
     size: {
         type: String,
         default: '1rem',

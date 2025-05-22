@@ -15,6 +15,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    placeholder: {
+        type: String,
+        default: '',
+    },
 })
 const text = defineModel('text', {
     type: String,
@@ -24,7 +28,8 @@ const text = defineModel('text', {
 
 <template>
     <div class="form-text" :class="{ 'flex': props.flex, 'disabled': props.disabled }">
-        <input type="text" :placeholder="props.name" v-model="text" :style="{ 'text-align': center ? 'center' : '' }" />
+        <input type="text" :placeholder="props.placeholder" v-model="text"
+            :style="{ 'text-align': center ? 'center' : '' }" :disabled="props.disabled" />
     </div>
 </template>
 
@@ -58,8 +63,8 @@ const text = defineModel('text', {
 }
 
 .disabled {
-    pointer-events: none;
     opacity: 0.25;
+    cursor: not-allowed;
 }
 
 input {
@@ -68,5 +73,10 @@ input {
     line-height: 1.5rem;
     padding: 0.25rem 0.5rem;
     width: 100%;
+}
+
+input:disabled {
+    pointer-events: none;
+    font-style: italic;
 }
 </style>

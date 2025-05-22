@@ -1,5 +1,6 @@
 <script setup>
 import basicButton from '@/components/basic/button.vue';
+import { onMounted } from 'vue';
 const props = defineProps({
     step: {
         type: Number,
@@ -38,15 +39,17 @@ const validateInput = () => {
     number.value = value;
 };
 
+onMounted(validateInput)
 
 </script>
 
 <template>
     <div class="form-number" :class="{ 'disabled': props.disabled }">
-        <basic-button @click="decrease" icon="i-carbon:subtract-large" />
+        <basic-button @click="decrease" :disabled="props.disabled || number <= props.min"
+            icon="i-carbon:subtract-large" />
         <input type="number" v-model="number" placeholder="0" :step="props.step" :min="props.min" :max="props.max"
-            @input="validateInput" />
-        <basic-button @click="increase" icon="i-carbon:add-large" />
+            @input="validateInput" :disabled="props.disabled" />
+        <basic-button @click="increase" :disabled="props.disabled || number >= props.max" icon="i-carbon:add-large" />
 
     </div>
 </template>
@@ -57,22 +60,27 @@ const validateInput = () => {
     background: var(--action);
     border-radius: var(--border-radius-sm);
     transition: opacity 100ms ease-out;
+    overflow: hidden;
 }
 
-.disabled {
-    pointer-events: none;
-    opacity: 0.5;
+.form-number.disabled {
+    cursor: not-allowed;
 }
 
 input[type=number] {
     width: 4rem;
     padding: 0.25rem;
     text-align: center;
-    background: hsla(0, 0%, 0%, 0.2);
 }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+input:disabled {
+    opacity: 0.25;
+    pointer-events: none;
+    font-style: italic;
 }
 </style>
