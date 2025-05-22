@@ -54,7 +54,7 @@ function renderMasonry() {
     resetMasonryColumn()
     appendCell(props.data)
 }
-window.onresize = () => { renderMasonry() }
+
 
 //? 初始化列表欄位數量
 function resetMasonryColumn() {
@@ -86,9 +86,12 @@ function appendCell(data) {
 function hasData(params) {
     return columnList[0].length == 0
 }
-
 onMounted(() => {
+    window.onresize = () => { renderMasonry() }
     renderMasonry()
+})
+onUnmounted(() => {
+    window.onresize = null
 })
 </script>
 
