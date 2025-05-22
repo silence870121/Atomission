@@ -12,7 +12,7 @@ const menuStore = useMenuStore();
         <ul class="nav-group">
             <li v-for="router in menuStore.routes">
                 <router-link :to="router.path">
-                    <div class="nav-icon"> <i :class=router.icon /> </div>
+                    <div class="nav-icon"> <i :class="router.icon" /> </div>
                     <div class="content">
                         {{ router.content }}
                     </div>
@@ -24,7 +24,7 @@ const menuStore = useMenuStore();
             <ul>
                 <li v-for="router in mission.routes">
                     <router-link :to="router.path">
-                        <div class="nav-icon"> <i :class=router.icon /> </div>
+                        <div class="nav-icon"> <i :class="router.icon" /> </div>
                         <div class="content">
                             {{ router.content }}
                         </div>
@@ -37,7 +37,7 @@ const menuStore = useMenuStore();
             <ul>
                 <li v-for="router in menuStore.custom">
                     <router-link :to="router.path">
-                        <div class="nav-icon"> <i :class=router.icon /> </div>
+                        <div class="nav-icon"> <i :class="router.icon" /> </div>
                         <div class="content">
                             {{ router.content }}
                         </div>
@@ -76,7 +76,7 @@ const menuStore = useMenuStore();
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 

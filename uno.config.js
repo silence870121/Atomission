@@ -9,4 +9,12 @@ export default defineConfig({
             }
         }),
     ],
+    content: {
+        pipeline: {
+            include: [
+                '**/*.vue',
+                'src/**/*.js'],
+            exclude: ['node_modules', 'dist']
+        },
+    },
 })
